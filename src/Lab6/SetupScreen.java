@@ -11,6 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 
 public class SetupScreen {
@@ -93,25 +97,31 @@ public class SetupScreen {
 		btnNewButton_5.setBounds(293, 235, 95, 56);
 		window.getContentPane().add(btnNewButton_5);
 		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBackground(UIManager.getColor("Button.disabledShadow"));
+		panel.setBounds(473, 137, 212, 219);
+		window.getContentPane().add(panel);
+		
 		JLabel lblNewLabel_3 = new JLabel("Name: FalconHeavy");
 		lblNewLabel_3.setBounds(513, 211, 172, 28);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		window.getContentPane().add(lblNewLabel_3);
+		panel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Rocket status");
 		lblNewLabel_4.setBounds(513, 167, 148, 38);
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		window.getContentPane().add(lblNewLabel_4);
+		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Fuel:              Full");
 		lblNewLabel_5.setBounds(513, 256, 148, 28);
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		window.getContentPane().add(lblNewLabel_5);
+		panel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Cleanliness:    Dirty");
 		lblNewLabel_6.setBounds(513, 303, 172, 28);
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		window.getContentPane().add(lblNewLabel_6);
+		panel.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Selected:");
 		lblNewLabel_7.setBounds(33, 351, 103, 28);
@@ -135,7 +145,7 @@ public class SetupScreen {
 		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_6.setBounds(531, 389, 95, 52);
 		window.getContentPane().add(btnNewButton_6);
+		
+		
 	}
-	
-
 }

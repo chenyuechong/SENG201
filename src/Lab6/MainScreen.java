@@ -12,6 +12,8 @@ import javax.swing.JTextPane;
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.UIManager;
 
 public class MainScreen {
 
@@ -98,6 +100,8 @@ public class MainScreen {
 		frmRocketManagerMain.getContentPane().add(btnNewButton_6);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(UIManager.getColor("Button.background"));
+		tabbedPane.setForeground(Color.LIGHT_GRAY);
 		tabbedPane.setBounds(10, 224, 187, 143);
 		frmRocketManagerMain.getContentPane().add(tabbedPane);
 		
