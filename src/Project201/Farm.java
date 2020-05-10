@@ -3,19 +3,13 @@
  */
 package Project201;
 
-import Lab7.GalaxyWeather;
-import Lab7.Starman;
-
-/**
- * @author cheny
- *
- */
 public class Farm {
 
 	
 	private String name ;
 	private int type ;
 	private int money;
+	Farmer myFarmer;
 	/**
 	 * 
 	 */

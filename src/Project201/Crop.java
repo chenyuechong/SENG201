@@ -1,11 +1,22 @@
 package Project201;
 
 public class Crop {
+	private String name = "";
 	private double sellingPrice = 0.0;
 	private double purchasePrice = 0.0;
 	private double heigth = 0.0;
 	private double harvestTime = 0.0;
 	private double leftTimeToHarvest = 0.0;
+	
+	public Crop(String sName, double sSellingPrice, double sPurchasePrice, double sHeigth,double sHarvestTime, double  sLeftTimeToHarvest) {
+		// TODO Auto-generated constructor stub
+		name = sName;
+		purchasePrice = sPurchasePrice;
+		sellingPrice = sSellingPrice;
+		heigth = sHeigth;
+		harvestTime = sHarvestTime;
+		leftTimeToHarvest = sLeftTimeToHarvest;
+	}
 	
 	public void setSellingPrice(double sellingPrice)
 	{
