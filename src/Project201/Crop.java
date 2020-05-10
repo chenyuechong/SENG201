@@ -7,6 +7,8 @@ public class Crop {
 	private double heigth = 0.0;
 	private double harvestTime = 0.0;
 	private double leftTimeToHarvest = 0.0;
+	Items item ;
+
 	
 	public Crop(String sName, double sSellingPrice, double sPurchasePrice, double sHeigth,double sHarvestTime, double  sLeftTimeToHarvest) {
 		// TODO Auto-generated constructor stub
@@ -16,6 +18,10 @@ public class Crop {
 		heigth = sHeigth;
 		harvestTime = sHarvestTime;
 		leftTimeToHarvest = sLeftTimeToHarvest;
+	}
+	
+	public void decreaseHarvestTime(Items item ) {
+		this.harvestTime -= 2.0;
 	}
 	
 	public void setSellingPrice(double sellingPrice)
