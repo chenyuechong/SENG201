@@ -3,6 +3,11 @@ package Project201;
 public class Farmer {
 	private String name = "";
 	private int age = 18;
+	
+	public Farmer(String farmerName) {
+		name = farmerName;
+	}
+	
 	public void setName(String name)
 	{
 		this.name = name;
