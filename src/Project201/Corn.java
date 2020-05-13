@@ -8,8 +8,8 @@ public class Corn extends Crop{
 	
 	public String toString() {
 		
-		System.out.print("bulid a Corn");
-		return ("bulid a Corn");
+		System.out.print("sow a Corn seed");
+		return ("sow a Corn seed");
 		
 	}
 

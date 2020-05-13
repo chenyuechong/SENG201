@@ -4,7 +4,6 @@
 package Project201;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 
@@ -61,6 +60,18 @@ public class Farm {
 	{
 		return type;
 	}
+	public void purshSeed(String seedName, int count) {
+		for(int i = 0;i < count; i++)
+		{
+			cropList.add(myFarmer.buySeed(seedName));
+		}
+	}
+	public void sowSeed(String seedName)
+	{
+		
+		
+	}
+	
 	public String toString()
 	{
 		

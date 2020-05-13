@@ -7,6 +7,7 @@ public class Crop {
 	private double heigth = 0.0;
 	private double harvestTime = 0.0;
 	private double leftTimeToHarvest = 0.0;
+	private double seedTime = 0.0;
 	Items item ;
 
 	
@@ -18,8 +19,11 @@ public class Crop {
 		heigth = sHeigth;
 		harvestTime = sHarvestTime;
 		leftTimeToHarvest = sLeftTimeToHarvest;
+		seedTime = 0.0;
 	}
-	
+	public void sowSeed() {
+		seedTime = System.currentTimeMillis();
+	}
 	public void decreaseHarvestTime(Items item ) {
 		this.harvestTime -= 2.0;
 	}
@@ -60,13 +64,15 @@ public class Crop {
 		return harvestTime;
 	}
 	
-	public void setLeftTimeToHarvest(double leftTimeToHarvest)
-	{
-		 this.leftTimeToHarvest = leftTimeToHarvest;
-	}
+	//public void setLeftTimeToHarvest(double leftTimeToHarvest)
+	//{
+		// this.leftTimeToHarvest = leftTimeToHarvest;
+	//}
 	
 	public double getLeftTimeToHarvest()
 	{
+		double time = System.currentTimeMillis();
+		leftTimeToHarvest = time - this.seedTime;
 		return leftTimeToHarvest;
 	}
 	

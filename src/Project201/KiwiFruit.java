@@ -8,8 +8,8 @@ public class KiwiFruit extends Crop{
 	
 	public String toString() {
 		
-		System.out.print("bulid a KiwiFruit");
-		return ("bulid a KiwiFruit");
+		System.out.print("sow a KiwiFruit seed");
+		return ("sow a KiwiFruit seed");
 		
 	}
 

@@ -53,6 +53,86 @@ public class MainEntrance {
             e.printStackTrace();
         }
 	}
+	public static void printCrop() {
+		
+		System.out.print("welcome aboard, there are 5 types crop seeds:\n 1:Carrot, 2:Corn, 3:Eggplant, 4:KiwiFruit, 5:Tomato) each $2 \n"
+				+"please type the crop name(Ex: 1-5 means 5 Carrots )\n");
+	}
+	
+	public static void printAnimal() {
+		System.out.print("there are 3 types animals:\n 1:Pig, 2:Hen, 3:Cow) each $2 \n"
+				+"please type the animal name and the count you want(Ex: 1-5 means 5 pigs )\n");
+	}
+	
+	public static void printItem() {
+		System.out.print("there are 3 types items:\n 1:AnimalFeedItems, 2:HappyAgentItems, 3:TimeAgentItems) each $20 \n"
+				+"please type the animal name and the count you want(Ex: 1-5 means 5 AnimalFeedItems )\n");
+	}
+	
+	public static void playGame() {
+		String[] crops = {"Carrot", "Corn", "Eggplant", "KiwiFruit", "Tomato"};
+		String[] animals = {"Pig", "Hen", "Cow"};
+		String[] items = {"AnimalFeedItems", "HappyAgentItems", "TimeAgentItems"};
+		printCrop();
+		Scanner input1=new Scanner(System.in);
+		String line=input1.nextLine();
+		boolean isOutLoop = false;
+		while(isOutLoop==false)
+		{
+			String[] crop = line.split("-");
+			if(isNumeric(crop[0]) && (Integer.parseInt(crop[0])<= 5 && Integer.parseInt(crop[0])>=1 ))
+			{
+				if(isNumeric(crop[1]))
+				{ System.out.println("You select to buy "+crops[Integer.parseInt(crop[0])-1]+ " the count is "+ crop[1] +"\n" );
+					break;
+				}
+			}
+			else
+			{
+				printCrop();
+				line=input1.nextLine();
+			}
+		}
+		
+		printAnimal();
+		String line1=input1.nextLine();
+		while(isOutLoop==false)
+		{
+			String[] animal = line1.split("-");
+			if(isNumeric(animal[0]) && (Integer.parseInt(animal[0])<=3 && Integer.parseInt(animal[0])>=0))
+			{
+				if(isNumeric(animal[1]))
+				{ System.out.println(" You select to buy "+animals[Integer.parseInt(animal[0])-1]+ " the count is "+ animal[1] +"\n" );
+					break;
+				}
+			}
+			else
+			{
+				printAnimal();
+				line1=input1.nextLine();
+			}
+		}
+		
+		printItem();
+		String line2=input1.nextLine();
+		while(isOutLoop==false)
+		{
+			String[] item = line2.split("-");
+			if(isNumeric(item[0]) && (Integer.parseInt(item[0])<=3 && Integer.parseInt(item[0])>=0))
+			{
+				if(isNumeric(item[1]))
+				{ 
+					System.out.println(" You select to buy "+items[Integer.parseInt(item[0])-1]+ " the count is "+ item[1] +"\n" );
+					break;
+				}
+			}
+			else
+			{
+				printItem();
+				line2=input1.nextLine();
+			}
+		}
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -156,6 +236,12 @@ public class MainEntrance {
 			System.out.print(myFarm.toString());
 		}
 		
+		while(true)
+		{playGame();
+			}
+		
 	}
+	
+	
 
 }
