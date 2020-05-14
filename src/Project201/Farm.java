@@ -74,7 +74,35 @@ public class Farm {
 	{
 		return type;
 	}
-	
+	public void lostCrop(String seedName) {
+		switch(seedName) {
+		case "Corn":
+			int len = cornList.size();
+			for (int i = 0; i< len/2; i ++)
+				cornList.remove(i);
+			break;
+		case "Carrot":
+			int lenc = carrotList.size();
+			for (int i = 0; i< lenc/2; i ++)
+				carrotList.remove(i);
+			break;
+		case "Eggplant":
+			int lene = eggplantList.size();
+			for (int i = 0; i< lene/2; i ++)
+				eggplantList.remove(i);
+			break;
+		case "KiwiFruit":
+			int lenk = kiwifruitList.size();
+			for (int i = 0; i< lenk/2; i ++)
+				kiwifruitList.remove(i);
+			break;
+		case "Tomato":
+			int lent = tomatoList.size();
+			for (int i = 0; i< lent/2; i ++)
+				tomatoList.remove(i);
+			break;
+		}
+	}
 	
 	public String toString()
 	{

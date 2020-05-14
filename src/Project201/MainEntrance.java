@@ -23,36 +23,7 @@ public class MainEntrance {
 	        return false;  
 		} 
 	
-	public static String readFromFile() {
-		String s ="";
-		 try {
-			 	
-	            FileReader reader = new FileReader("MyFile.txt");
-	            int character;
-	 
-	            while ((character = reader.read()) != -1) {
-	                s += (char)character;
-	            }
-	            reader.close();
-	 
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		 return s;
-		 
-	}
 	
-	public static void writeToFile(String typeId, String farmerName, String farmName, String playDays) {
-		try {
-            FileWriter writer = new FileWriter("MyFile.txt", true);
-            String s = typeId +"-"+farmerName+"-"+farmName+"-"+playDays;
-            writer.write(s);
-            writer.write("\r\n");   // write new line
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
 	public static void printCrop() {
 		
 		System.out.print("welcome aboard, there are 5 types crop seeds:\n 1:Carrot, 2:Corn, 3:Eggplant, 4:KiwiFruit, 5:Tomato) each $2 \n"
@@ -136,7 +107,7 @@ public class MainEntrance {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String s = readFromFile();
+		String s = Controller.readFromFile();
 		if (s == "")
 		{
 			System.out.print("please input how many days do you want to play(5-10 days)：");
@@ -218,7 +189,8 @@ public class MainEntrance {
 					farmName = input1.nextLine();
 					}
 			}
-			writeToFile( typeId,  farmerName,  farmName,  playDays);
+			String ss = typeId +"-"+farmerName+"-"+farmName+"-"+playDays;
+			Controller.writeToFile(ss);
 			
 			System.out.print(s);
 			Controller.createFarm(Integer.parseInt(typeId),farmerName.toUpperCase(), farmName.toUpperCase(), Integer.parseInt(playDays));
