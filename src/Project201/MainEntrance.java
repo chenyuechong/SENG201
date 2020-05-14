@@ -70,9 +70,7 @@ public class MainEntrance {
 	}
 	
 	public static void playGame() {
-		String[] crops = {"Carrot", "Corn", "Eggplant", "KiwiFruit", "Tomato"};
-		String[] animals = {"Pig", "Hen", "Cow"};
-		String[] items = {"AnimalFeedItems", "HappyAgentItems", "TimeAgentItems"};
+		
 		printCrop();
 		Scanner input1=new Scanner(System.in);
 		String line=input1.nextLine();
@@ -83,7 +81,8 @@ public class MainEntrance {
 			if(isNumeric(crop[0]) && (Integer.parseInt(crop[0])<= 5 && Integer.parseInt(crop[0])>=1 ))
 			{
 				if(isNumeric(crop[1]))
-				{ System.out.println("You select to buy "+crops[Integer.parseInt(crop[0])-1]+ " the count is "+ crop[1] +"\n" );
+				{
+					Controller.buySeed(Integer.parseInt(crop[0]),Integer.parseInt(crop[1]));
 					break;
 				}
 			}
@@ -102,7 +101,8 @@ public class MainEntrance {
 			if(isNumeric(animal[0]) && (Integer.parseInt(animal[0])<=3 && Integer.parseInt(animal[0])>=0))
 			{
 				if(isNumeric(animal[1]))
-				{ System.out.println(" You select to buy "+animals[Integer.parseInt(animal[0])-1]+ " the count is "+ animal[1] +"\n" );
+				{ 
+					Controller.buyAnimal(Integer.parseInt(animal[0]),Integer.parseInt(animal[1]));
 					break;
 				}
 			}
@@ -122,7 +122,7 @@ public class MainEntrance {
 			{
 				if(isNumeric(item[1]))
 				{ 
-					System.out.println(" You select to buy "+items[Integer.parseInt(item[0])-1]+ " the count is "+ item[1] +"\n" );
+					Controller.buyItems(Integer.parseInt(item[0]),Integer.parseInt(item[1]));
 					break;
 				}
 			}
@@ -221,8 +221,8 @@ public class MainEntrance {
 			writeToFile( typeId,  farmerName,  farmName,  playDays);
 			
 			System.out.print(s);
-			Farm myFarm = new Farm(Integer.parseInt(typeId),farmerName.toUpperCase(), farmName.toUpperCase(), Integer.parseInt(playDays ));
-			System.out.print(myFarm.toString());
+			Controller.createFarm(Integer.parseInt(typeId),farmerName.toUpperCase(), farmName.toUpperCase(), Integer.parseInt(playDays));
+			//System.out.print(myFarm.toString());
 		}
 		else {
 			System.out.print(s);
@@ -232,13 +232,20 @@ public class MainEntrance {
 			String farmerName=p[1];
 			String farmName=p[2];
 			int playDays =Integer.parseInt(p[3].trim());
-			Farm myFarm = new Farm(typeId,farmerName.toUpperCase(), farmName.toUpperCase(), playDays );
-			System.out.print(myFarm.toString());
+			Controller.createFarm(typeId,farmerName.toUpperCase(), farmName.toUpperCase(), playDays );
+			//System.out.print(myFarm.toString());
 		}
 		
-		while(true)
-		{playGame();
+		for(int i = 0; i <= 5; i++)
+		{
+			if(Controller.myFarm.getMoney()>=0)
+			{
+				Controller.showStore();
+				playGame();
+				Controller.showStore();
 			}
+			
+		}
 		
 	}
 	

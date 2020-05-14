@@ -13,21 +13,26 @@ public class Farm {
 	
 	private String name ;
 	private int type ;
-	private int money;
-	private int playDays;
-	Farmer myFarmer = new Farmer("");
-	ArrayList <Animal> animalList = new ArrayList<Animal> ();
-	ArrayList <Crop> cropList = new ArrayList<Crop> ();
-	ArrayList <Items> itemList = new ArrayList<Items> ();
+	private double money;
+
+	static ArrayList <Pig> pigList = new ArrayList<Pig> ();
+	static ArrayList <Hen> henList = new ArrayList<Hen> ();
+	static ArrayList <Cow> cowList = new ArrayList<Cow> ();
+	static ArrayList <Carrot> carrotList = new ArrayList<Carrot> ();
+	static ArrayList <Corn> cornList = new ArrayList<Corn> ();
+	static ArrayList <Eggplant> eggplantList = new ArrayList<Eggplant> ();
+	static ArrayList <KiwiFruit> kiwifruitList = new ArrayList<KiwiFruit> ();
+	static ArrayList <Tomato> tomatoList = new ArrayList<Tomato> ();
+	static ArrayList <AnimalFeedItems> animalFeedItemsList = new ArrayList<AnimalFeedItems> ();
+	static ArrayList <HappyAgentItems> happyAgentItemsList = new ArrayList<HappyAgentItems> ();
+	static ArrayList <TimeAgentItems> timeAgentitemsList = new ArrayList<TimeAgentItems> ();
 	/**
 	 * 
 	 */
-	public Farm(int typeId, String farmName, String FarmerName, int nPlayDays) {
+	public Farm( int typeId, String farmName) {
 		// TODO Auto-generated constructor stub
-		 type = typeId;
-		 name = farmName;
-		 myFarmer.setName(FarmerName);
-		 playDays = nPlayDays;		 
+		type = typeId;
+		name = farmName;
 		 money = 2000;
 		 if (type == 4)
 			 money = 2400;
@@ -38,19 +43,28 @@ public class Farm {
 	{
 		type = n;
 	}
-	public void setMoney(int n)
+	public void setMoney(double leftMoney)
 	{
-		money = n;
+		money = leftMoney;
 	}
 	
 	public void setName(String name)
 	{
 		this.name = name;
 	}
+	public double getMoney() {
+		return this.money;
+	}
 		
-	public int getMoney()
+	public void decreaseMoney(double m)
 	{
-		return money;
+		 this.money -=m ;
+		 System.out.print("count money: "+ this.money+ "+"+ m +"\n");
+	}
+	
+	public void increaseMoney(double m)
+	{
+		this.money += m;
 	}
 	public String getName()
 	{
@@ -60,22 +74,12 @@ public class Farm {
 	{
 		return type;
 	}
-	public void purshSeed(String seedName, int count) {
-		for(int i = 0;i < count; i++)
-		{
-			cropList.add(myFarmer.buySeed(seedName));
-		}
-	}
-	public void sowSeed(String seedName)
-	{
-		
-		
-	}
+	
 	
 	public String toString()
 	{
 		
-		String outString = "Welcome to " + name +" Farm, "+ myFarmer.getName() +" service for you. you have "+ money +" dollars";
+		String outString = "Welcome to " + name +" Farm, "+" you have "+ money +" dollars \n";
 		return outString;
 	}
 	

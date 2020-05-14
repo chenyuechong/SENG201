@@ -11,17 +11,14 @@ public class Crop {
 	Items item ;
 
 	
-	public Crop(String sName, double sSellingPrice, double sPurchasePrice, double sHeigth,double sHarvestTime, double  sLeftTimeToHarvest) {
+	public Crop(String sName, double sPurchasePrice,  double sSellingPrice,double sHeigth,double sHarvestTime) {
 		// TODO Auto-generated constructor stub
 		name = sName;
 		purchasePrice = sPurchasePrice;
 		sellingPrice = sSellingPrice;
 		heigth = sHeigth;
 		harvestTime = sHarvestTime;
-		leftTimeToHarvest = sLeftTimeToHarvest;
-		seedTime = 0.0;
-	}
-	public void sowSeed() {
+		leftTimeToHarvest = harvestTime;
 		seedTime = System.currentTimeMillis();
 	}
 	public void decreaseHarvestTime(Items item ) {
