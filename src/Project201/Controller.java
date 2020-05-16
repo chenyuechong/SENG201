@@ -58,7 +58,7 @@ public class Controller {
 		try {
 			
 				myFarmer.playWithAnimal(animals[index-1], myFarm);
-				System.out.print("You have played with  " + animals[index-1] + "for a while");
+				System.out.print("You have played with  " + animals[index-1] + "for a while\n");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
