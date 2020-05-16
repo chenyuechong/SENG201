@@ -145,9 +145,24 @@ public class Farm extends Observable{
 		
 			super.setChanged();
 			super.notifyObservers("move to next day");
+			
+			money += moveToNextDayBouns();
 		}
 		else
 			this.isChangeDay = isChangeDay;
+	}
+
+	public double moveToNextDayBouns() {
+		double b = 0.0;
+		b += pigList.size()*5;
+		b += henList.size()*5;
+		b += cowList.size()*5;
+		b += carrotList.size()*5;
+		b += cornList.size()*5;
+		b += eggplantList.size()*5;
+		b += kiwifruitList.size()*5;
+		b += tomatoList.size()*5;
+		return b;
 	}
 	
 	public String toString()

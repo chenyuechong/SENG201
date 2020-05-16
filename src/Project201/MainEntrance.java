@@ -214,6 +214,56 @@ public class MainEntrance {
 			Controller.createFarm(Integer.parseInt(typeId), farmerName.toUpperCase(), farmName.toUpperCase(),
 					Integer.parseInt(playDays));
 			// System.out.print(myFarm.toString());
+			String sprint= "1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds 5: play with animals 6: feed animal 7: decrease crop harvest time 8: make animals happier Other: Save and Exit\n";
+			System.out.print(sprint);
+			Scanner scanner = new Scanner(System.in);
+			String strInput = scanner.nextLine();
+			while (isOutLoop == false) {
+
+				if (Integer.parseInt(strInput) == 1) {
+					Controller.showStore();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} else if (Integer.parseInt(strInput) == 2) {
+					buyItems();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} else if (Integer.parseInt(strInput) == 3) {
+					buyAnimal();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} else if (Integer.parseInt(strInput) == 4) {
+					buyCrop();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else if (Integer.parseInt(strInput) == 5) {
+					playWithAnimals();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else if (Integer.parseInt(strInput) == 6) {
+					feedAnimals();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else if (Integer.parseInt(strInput) == 7) {
+					usingTimeAgent();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else if (Integer.parseInt(strInput) == 8) {
+					usingHappyAgent();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else {
+					Controller.writePlayConfigureToFile();
+					break;
+				}	
+			}
+			
+			System.out.print("thanks for your time to play games");
 		} else {
 			String[] p = s.split("-");
 			int typeId = Integer.parseInt(p[0].trim());
@@ -221,56 +271,60 @@ public class MainEntrance {
 			String farmName = p[2];
 			int playDays = Integer.parseInt(p[3].trim());
 			Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
+			Controller.readPlayConfigureFromFile();
 			// System.out.print(myFarm.toString());
+			String sprint= "1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds 5: play with animals 6: feed animal 7: decrease crop harvest time 8: make animals happier Other: Save and Exit\n";
+			System.out.print(sprint);
+			Scanner scanner = new Scanner(System.in);
+			String strInput = scanner.nextLine();
+			while (isOutLoop == false) {
 
-		}
-		String sprint= "1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds 5: play with animals 6: feed animal 7: decrease crop harvest time 8: make animals happier Other: Save and Exit\n";
-		System.out.print(sprint);
-		Scanner scanner = new Scanner(System.in);
-		String strInput = scanner.nextLine();
-		while (isOutLoop == false) {
-
-			if (Integer.parseInt(strInput) == 1) {
-				Controller.showStore();
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
-			} else if (Integer.parseInt(strInput) == 2) {
-				buyItems();
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
-			} else if (Integer.parseInt(strInput) == 3) {
-				buyAnimal();
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
-			} else if (Integer.parseInt(strInput) == 4) {
-				buyCrop();
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
-			} 
-			else if (Integer.parseInt(strInput) == 5) {
-				playWithAnimals();
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
-			} 
-			else if (Integer.parseInt(strInput) == 6) {
-				feedAnimals();
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
-			} 
-			else if (Integer.parseInt(strInput) == 7) {
-				usingTimeAgent();
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
-			} 
-			else if (Integer.parseInt(strInput) == 8) {
-				usingHappyAgent();
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
-			} 
-			else {
-				Controller.writePlayConfigureToFile();
+				if (Integer.parseInt(strInput) == 1) {
+					Controller.showStore();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} else if (Integer.parseInt(strInput) == 2) {
+					buyItems();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} else if (Integer.parseInt(strInput) == 3) {
+					buyAnimal();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} else if (Integer.parseInt(strInput) == 4) {
+					buyCrop();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else if (Integer.parseInt(strInput) == 5) {
+					playWithAnimals();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else if (Integer.parseInt(strInput) == 6) {
+					feedAnimals();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else if (Integer.parseInt(strInput) == 7) {
+					usingTimeAgent();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else if (Integer.parseInt(strInput) == 8) {
+					usingHappyAgent();
+					System.out.print(sprint);
+					strInput = scanner.nextLine();
+				} 
+				else {
+					Controller.writePlayConfigureToFile();
+					break;
+				}	
 			}
+			
+			System.out.print("thanks for your time to play games");
 		}
+		
 
 	}
 

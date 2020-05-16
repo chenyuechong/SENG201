@@ -72,8 +72,8 @@ public class Farmer {
 	public void addConfigureSeed(String s, Farm myFarm)
 	{
 		//String t = "Carrot:" + h.getHeigth()+ ","+h.getHarvestTime()+","+h.getLeftTimeToHarvest()+","+h.getSellingPrice()+"\n";
-		String sTemp[] = s.split(":");
-		String paraments[] = sTemp[1].split(",");
+		String[] sTemp = s.split(":");
+		String[] paraments = sTemp[1].split(",");
 		switch (sTemp[0]) {
 		case "Corn":
 			Corn corn = new Corn();			
@@ -152,8 +152,8 @@ public class Farmer {
 
 	public void addConfigureAnimal(String s, Farm myFarm) {
 		//String t = "Hen:" + h.getHappiness()+ ","+h.getHealth()+"\n";
-		String sTemp[] = s.split(":");
-		String paraments[] = sTemp[1].split(",");
+		String[] sTemp = s.split(":");
+		String[] paraments = sTemp[1].split(",");
 		switch (sTemp[0]) {
 		case "Pig":
 			Pig p = new Pig();
@@ -203,25 +203,27 @@ public class Farmer {
 	}
 
 	public void addConfigureItems(String s, Farm myFarm) {
-		String sTemp[] = s.split(":");
-		String paraments[] = sTemp[1].split(",");
+		String[] sTemp = s.split(":");
+		if(sTemp[1].equals(" 0"))
+				return;
+		int count = Integer.parseInt(sTemp[1].trim());
 		switch (sTemp[0]) {
 		case "AnimalFeedItems":
-			for (int i  =0; i < Integer.parseInt(paraments[1]);i++)
+			for (int i =0; i < count;i++)
 			{
 			AnimalFeedItems p = new AnimalFeedItems();
 			myFarm.animalFeedItemsList.add(p);		
 			}
 			break;
 		case "TimeAgentItems":
-			for (int i  =0; i < Integer.parseInt(paraments[1]);i++)
+			for (int i =0; i < count;i++)
 			{
 			TimeAgentItems h = new TimeAgentItems();
 			myFarm.timeAgentitemsList.add(h);
 			}
 			break;
 		case "HappyAgentItems":
-			for (int i  =0; i < Integer.parseInt(paraments[1]);i++)
+			for (int i =0; i < count;i++)
 			{
 			HappyAgentItems c = new HappyAgentItems();
 			myFarm.happyAgentItemsList.add(c);		
@@ -467,8 +469,8 @@ public class Farmer {
 	
 	
 	public static String getItemDetail(Farm myFarm) {
-		String s = "Items-AnimalFeedItems: "+ myFarm.animalFeedItemsList.size()+ ",";
-		s += "Items-HappyAgentItems: "+ myFarm.happyAgentItemsList.size()+ ",";
+		String s = "Items-AnimalFeedItems: "+ myFarm.animalFeedItemsList.size()+ "\n";
+		s += "Items-HappyAgentItems: "+ myFarm.happyAgentItemsList.size()+ "\n";
 		s += "Items-TimeAgentItems: "+ myFarm.timeAgentitemsList.size()+ "\n";
 		return s;
 	}

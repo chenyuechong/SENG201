@@ -1,6 +1,7 @@
 package Project201;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -150,7 +151,7 @@ public class Controller {
 				myFarmer.buyItems(items[index - 1], myFarm);
 			}
 			System.out.print("you bought " + items[index - 1] + " count:" + count + ", there are " + myFarm.getMoney()
-					+ " dollars left\t");
+					+ " dollars left\n");
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
 		}
@@ -212,11 +213,14 @@ public class Controller {
 		s+= myFarmer.getItemDetail(myFarm);
 		s+= myFarmer.getAniamlDetail(myFarm);
 		s+= myFarmer.getCropDetail(myFarm);
+		 System.out.println(s);
 		try {
             FileWriter writer = new FileWriter("play.txt", false);
-            writer.write(s);
-            writer.write("\r\n");   // write new line
-            writer.close();
+            BufferedWriter bufferWritter = new BufferedWriter(writer);
+            bufferWritter.write(s);
+            bufferWritter.close();
+
+            System.out.println("Done");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -230,16 +234,26 @@ public class Controller {
 		String str = null;
 		while((str = bufferedReader.readLine()) != null)//read line by line
 		{
-			String line[] = str.split("-");
-			if(line[0]=="money")
+			//System.out.println(str);
+			String[] line = str.split("-");
+			if(line[0].equals("money"))
+			{
+				//System.out.println("money");
 				myFarm.setMoney(Double.parseDouble(line[1]));
-			if(line[0]=="Items")
+			}
+			if(line[0].equals("Items")) {
+				//System.out.println("Items");
 				myFarmer.addConfigureItems(line[1], myFarm);
-			if(line[0]=="Animals")
+			}
+			if(line[0].equals("Animals")) {
+				//System.out.println("Animals");
 				myFarmer.addConfigureAnimal(line[1], myFarm);
-			if(line[0]=="Crop")
+			}
+			if(line[0].equals("Crop")) {
+				//System.out.println("Crop");
 				myFarmer.addConfigureSeed(line[1], myFarm);
-			System.out.println(str);
+			}
+			
 		}
 			
 		//close
