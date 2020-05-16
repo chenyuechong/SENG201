@@ -181,14 +181,33 @@ public class Farmer {
 	{
 		
 	}
-	public void feedAnimal(String animalName)
+	public void feedAnimal(String animalName,Farm myfarm)
 	{
 		
+		/*
+		 * if (myfarm.animalFeedItemsList.size() <= 0) {
+		 * System.out.print("You donot have enough foods to feed animal"); return; }
+		 * else {
+		 * 
+		 * switch (animalName) { case "Pig": for (int i = 0; i < myfarm.pigList.size();
+		 * i++) { Pig p = myfarm.pigList[i]; } break; case "Hen": count = 0; count =
+		 * myFarm.henList.size(); break; case "Cow": count = 0; count =
+		 * myFarm.cowList.size(); break; } }
+		 */
+		 
 	}
 	
 	public void playWithAnimal(String animalName)
 	{
-		
+		/*
+		 * switch(animalName) { case "Pig": Pig p = new Pig(); myFarm.pigList.add(p);
+		 * double leftMoney = myFarm.getMoney() - p.getPurchasePrice();
+		 * myFarm.setMoney(leftMoney); break; case "Hen": Hen h = new Hen();
+		 * myFarm.henList.add(h); double leftMoney1 = myFarm.getMoney() -
+		 * h.getPurchasePrice(); myFarm.setMoney(leftMoney1); break; case "Cow": Cow c =
+		 * new Cow(); myFarm.cowList.add(c); double leftMoney2 = myFarm.getMoney() -
+		 * c.getPurchasePrice(); myFarm.setMoney(leftMoney2); break;
+		 */
 	}
 	
 	public void useHappyAgentItem()

@@ -59,7 +59,7 @@ public class Farm {
 	public void decreaseMoney(double m)
 	{
 		 this.money -=m ;
-		 System.out.print("count money: "+ this.money+ "+"+ m +"\n");
+		 //System.out.print("count money: "+ this.money+ "+"+ m +"\n");
 	}
 	
 	public void increaseMoney(double m)

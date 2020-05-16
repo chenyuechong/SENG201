@@ -14,7 +14,7 @@ public class Animal {
 		health = shealth;
 		happiness = shappiness;
 	}
-	public void Feed(Items item)
+	public void feed(Items item)
 	{
 		this.health *= 2;
 	}

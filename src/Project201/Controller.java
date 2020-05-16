@@ -82,24 +82,31 @@ public class Controller {
 		System.out.print("you bought "+ items[index - 1] + " count:" + count +", there are "+ myFarm.getMoney()+ " dollars left\t");		
 	}
 
+	
+	
 	public static void showStore()
 	{
+		System.out.print( "You have\n crops:  ");
 		for(int i = 0; i<5; i++)
 		{
-			System.out.print("You have " + myFarmer.countCrops(crops[i], myFarm) +" " + crops[i] + "\n");
-			writeToFile(crops[i]+ "-"+ myFarmer.countCrops(crops[i], myFarm));
+			System.out.print( crops[i] + ":"+ myFarmer.countCrops(crops[i], myFarm) +"   " );
+			//writeToFile(crops[i]+ "-"+ myFarmer.countCrops(crops[i], myFarm));
 		}
+		System.out.print( "\n");
+		System.out.print("animals:  ");
 		for(int i = 0; i<3; i++)
 		{
-			System.out.print("You have " + myFarmer.countAnimal(animals[i], myFarm) +" " + animals[i] + "\n");
-			writeToFile(animals[i]+ "-"+ myFarmer.countAnimal(animals[i], myFarm));
+			System.out.print(animals[i] + ":"+ myFarmer.countAnimal(animals[i], myFarm) +"   " );
+			//writeToFile(animals[i]+ "-"+ myFarmer.countAnimal(animals[i], myFarm));
 		}
-		
+		System.out.print( "\n");
+		System.out.print("items:  ");
 		for(int i = 0; i<3; i++)
 		{
-			System.out.print("You have " + myFarmer.countItems(items[i], myFarm) +" " + items[i] + "\n");
-			writeToFile(items[i]+ "-"+ myFarmer.countItems(items[i], myFarm));
+			System.out.print(items[i] + ":" + myFarmer.countItems(items[i], myFarm) + "  " );
+			//writeToFile(items[i]+ "-"+ myFarmer.countItems(items[i], myFarm));
 		}
+		System.out.print( "\n");
 		
 	}
 
