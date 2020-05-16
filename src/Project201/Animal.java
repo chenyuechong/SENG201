@@ -1,12 +1,32 @@
 package Project201;
 
-public class Animal {
+import Lab7.GalaxyWeather;
+import Lab7.Observable;
+import Lab7.Observer;
+
+public class Animal implements Observer{
 	private String name = "";
 	private double purchasePrice = 0.0;
 	private double health = 0.0;
 	private double happiness = 0.0;
 	Items item ;
-
+	
+	@Override
+	  public void update(Observable o, Object arg) {
+	    System.out.println("Received move to next day update!");
+	    this.happiness += 10;
+	    this.health += 10;
+	  }
+	 public void startObserving(Farm farm)
+	  {
+		 farm.addObserver(this);
+	  }
+	  
+	  public void stopObserving(Farm farm) 
+	  {
+		  farm.deleteObserver(this);
+		  
+	  }
 	public Animal(String sname, double spurchasePrice, double shealth, double shappiness) {
 		// TODO Auto-generated constructor stub
 		name = sname;

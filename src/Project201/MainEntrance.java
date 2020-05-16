@@ -224,7 +224,7 @@ public class MainEntrance {
 			// System.out.print(myFarm.toString());
 
 		}
-		String sprint= "1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds 5: play with animals 6: feed animal 7: decrease crop harvest time 8: make animals happier \n";
+		String sprint= "1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds 5: play with animals 6: feed animal 7: decrease crop harvest time 8: make animals happier Other: Save and Exit\n";
 		System.out.print(sprint);
 		Scanner scanner = new Scanner(System.in);
 		String strInput = scanner.nextLine();
@@ -268,8 +268,7 @@ public class MainEntrance {
 				strInput = scanner.nextLine();
 			} 
 			else {
-				System.out.print(sprint);
-				strInput = scanner.nextLine();
+				Controller.writePlayConfigureToFile();
 			}
 		}
 

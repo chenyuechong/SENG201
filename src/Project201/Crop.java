@@ -1,6 +1,9 @@
 package Project201;
 
-public class Crop {
+import Lab7.Observable;
+import Lab7.Observer;
+
+public class Crop implements Observer{
 	private String name = "";
 	private double sellingPrice = 0.0;
 	private double purchasePrice = 0.0;
@@ -10,6 +13,23 @@ public class Crop {
 	private double seedTime = 0.0;
 	Items item ;
 
+	@Override
+	  public void update(Observable o, Object arg) {
+		System.out.println("Received move to next day update!");
+		this.leftTimeToHarvest -= 5;
+		this.heigth += 5;
+	  }
+	
+	public void startObserving(Farm farm)
+	  {
+		 farm.addObserver(this);
+	  }
+	  
+	  public void stopObserving(Farm farm) 
+	  {
+		  farm.deleteObserver(this);
+		  
+	  }
 	
 	public Crop(String sName, double sPurchasePrice,  double sSellingPrice,double sHeigth,double sHarvestTime) {
 		// TODO Auto-generated constructor stub
@@ -68,10 +88,13 @@ public class Crop {
 	
 	public double getLeftTimeToHarvest()
 	{
-		double time = System.currentTimeMillis();
-		leftTimeToHarvest = time - this.seedTime;
 		return leftTimeToHarvest;
 	}
 	
+	public void setLeftTimeToHarvers(double t)
+	{
+		leftTimeToHarvest = t;
+		
+	}
 
 }

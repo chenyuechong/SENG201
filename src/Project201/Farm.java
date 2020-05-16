@@ -5,16 +5,20 @@ package Project201;
 
 import java.util.ArrayList;
 
+import Lab7.Observable;
 
 
 
-public class Farm {
+
+public class Farm extends Observable{
 
 	
 	private String name ;
 	private int type ;
 	private double money;
-
+	static boolean isChangeDay = false;
+	
+	
 	static ArrayList <Pig> pigList = new ArrayList<Pig> ();
 	static ArrayList <Hen> henList = new ArrayList<Hen> ();
 	static ArrayList <Cow> cowList = new ArrayList<Cow> ();
@@ -132,8 +136,19 @@ public class Farm {
 		}
 	}
 	
-	//if has no animals or crops no bonus
 	
+	public void setIsChangeDay(boolean isChangeDay)
+	{
+		if(isChangeDay)
+		{
+			this.isChangeDay = isChangeDay;
+		
+			super.setChanged();
+			super.notifyObservers("move to next day");
+		}
+		else
+			this.isChangeDay = isChangeDay;
+	}
 	
 	public String toString()
 	{

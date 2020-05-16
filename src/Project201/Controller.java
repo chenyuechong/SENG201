@@ -1,9 +1,15 @@
 package Project201;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Random;
+
+import Lab7.Observable;
+
 import java.lang.Math;
 
 public class Controller {
@@ -11,6 +17,7 @@ public class Controller {
 	static Farm myFarm ;
 	static Farmer myFarmer;
 	static int playDays;
+	static int currentDay;
 	static int farmType;
 	static String[] crops = {"Carrot", "Corn", "Eggplant", "KiwiFruit", "Tomato"};
 	static String[] animals = {"Pig", "Hen", "Cow"};
@@ -42,6 +49,7 @@ public class Controller {
 		int i2 = random.nextInt(100);
 		
 	}
+		
 	
 	public static void createFarm(int typeId, String farmerName, String farmName, int nPlayDays)
 	{
@@ -50,7 +58,16 @@ public class Controller {
 		myFarmer = new Farmer(farmerName);
 		playDays = nPlayDays;
 		farmType = typeId;
+		currentDay = 1;
 		
+	}
+	
+	
+	//check farm can got how many bonus
+	public static void moveToNextDay()
+	{
+		currentDay ++;
+		myFarm.setIsChangeDay(true);		
 	}
 	
 	public static void playWithAnimal(int index)
@@ -100,8 +117,7 @@ public class Controller {
 	}
 	
 	
-	public static void buySeed(int index, int count) {
-		
+	public static void buySeed(int index, int count) {		
 		try {
 			System.out.print("need to buy " + count + "seeds\n");
 			for (int i = 0; i < count; i++) {
@@ -168,12 +184,14 @@ public class Controller {
 		
 	}
 
+
 	
-	public static String readFromFile() {
+	
+ 	public static String readFromFile() {
 		String s ="";
 		 try {
 			 	
-	            FileReader reader = new FileReader("MyFile.txt");
+	            FileReader reader = new FileReader("farm.txt");
 	            int character;
 	 
 	            while ((character = reader.read()) != -1) {
@@ -188,9 +206,55 @@ public class Controller {
 		 
 	}
 	
+	public static void writePlayConfigureToFile() {
+		String s ="";
+		s= "money-" + myFarm.getMoney()+"\n";
+		s+= myFarmer.getItemDetail(myFarm);
+		s+= myFarmer.getAniamlDetail(myFarm);
+		s+= myFarmer.getCropDetail(myFarm);
+		try {
+            FileWriter writer = new FileWriter("play.txt", false);
+            writer.write(s);
+            writer.write("\r\n");   // write new line
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	public static void readPlayConfigureFromFile() {
+		try {
+		FileInputStream inputStream = new FileInputStream("play.txt");
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+			
+		String str = null;
+		while((str = bufferedReader.readLine()) != null)//read line by line
+		{
+			String line[] = str.split("-");
+			if(line[0]=="money")
+				myFarm.setMoney(Double.parseDouble(line[1]));
+			if(line[0]=="Items")
+				myFarmer.addConfigureItems(line[1], myFarm);
+			if(line[0]=="Animals")
+				myFarmer.addConfigureAnimal(line[1], myFarm);
+			if(line[0]=="Crop")
+				myFarmer.addConfigureSeed(line[1], myFarm);
+			System.out.println(str);
+		}
+			
+		//close
+		inputStream.close();
+		bufferedReader.close();
+		}
+		catch(IOException e)
+		{
+			System.out.print(e.getMessage());
+		}
+	}
+	
 	public static void writeToFile(String s) {
 		try {
-            FileWriter writer = new FileWriter("myItemsFile.txt", true);
+            FileWriter writer = new FileWriter("farm.txt", false);
             writer.write(s);
             writer.write("\r\n");   // write new line
             writer.close();

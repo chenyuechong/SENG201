@@ -34,27 +34,32 @@ public class Farmer {
 		case "Corn":
 			Corn corn = new Corn();			
 			myFarm.decreaseMoney(corn.getPurchasePrice());
+			corn.startObserving(myFarm);
 			myFarm.cornList.add(corn);
 			break;
 		case "Carrot":
 			Carrot carrot = new Carrot();			
 			myFarm.decreaseMoney(carrot.getPurchasePrice());
+			carrot.startObserving(myFarm);
 			myFarm.carrotList.add(carrot);
 			break;
 		case "Eggplant":
 			Eggplant eggplant = new Eggplant();
 			myFarm.decreaseMoney(eggplant.getPurchasePrice());
+			eggplant.startObserving(myFarm);
 			myFarm.eggplantList.add(eggplant);
 			break;
 		case "KiwiFruit":
 			KiwiFruit kiwifruit = new KiwiFruit();			
 			myFarm.decreaseMoney(kiwifruit.getPurchasePrice());
 			myFarm.kiwifruitList.add(kiwifruit);
+			kiwifruit.startObserving(myFarm);
 			break;
 		case "Tomato":
 			Tomato tomato = new Tomato();			
 			myFarm.decreaseMoney(tomato.getPurchasePrice());
 			myFarm.tomatoList.add(tomato);
+			tomato.startObserving(myFarm);
 			break;
 		}
 		}
@@ -64,6 +69,60 @@ public class Farmer {
 
 	}
 
+	public void addConfigureSeed(String s, Farm myFarm)
+	{
+		//String t = "Carrot:" + h.getHeigth()+ ","+h.getHarvestTime()+","+h.getLeftTimeToHarvest()+","+h.getSellingPrice()+"\n";
+		String sTemp[] = s.split(":");
+		String paraments[] = sTemp[1].split(",");
+		switch (sTemp[0]) {
+		case "Corn":
+			Corn corn = new Corn();			
+			corn.setHeigth(Double.parseDouble(paraments[0]));
+			corn.setHarvestTime(Double.parseDouble(paraments[1]));
+			corn.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
+			corn.setPurchasePrice(Double.parseDouble(paraments[3]));
+			corn.startObserving(myFarm);
+			myFarm.cornList.add(corn);
+			break;
+		case "Carrot":
+			Carrot carrot = new Carrot();			
+			carrot.setHeigth(Double.parseDouble(paraments[0]));
+			carrot.setHarvestTime(Double.parseDouble(paraments[1]));
+			carrot.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
+			carrot.setPurchasePrice(Double.parseDouble(paraments[3]));
+			carrot.startObserving(myFarm);
+			myFarm.carrotList.add(carrot);
+			break;
+		case "Eggplant":
+			Eggplant eggplant = new Eggplant();
+			eggplant.setHeigth(Double.parseDouble(paraments[0]));
+			eggplant.setHarvestTime(Double.parseDouble(paraments[1]));
+			eggplant.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
+			eggplant.setPurchasePrice(Double.parseDouble(paraments[3]));
+			eggplant.startObserving(myFarm);
+			myFarm.eggplantList.add(eggplant);
+			break;
+		case "KiwiFruit":
+			KiwiFruit kiwifruit = new KiwiFruit();			
+			kiwifruit.setHeigth(Double.parseDouble(paraments[0]));
+			kiwifruit.setHarvestTime(Double.parseDouble(paraments[1]));
+			kiwifruit.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
+			kiwifruit.setPurchasePrice(Double.parseDouble(paraments[3]));
+			myFarm.kiwifruitList.add(kiwifruit);
+			kiwifruit.startObserving(myFarm);
+			break;
+		case "Tomato":
+			Tomato tomato = new Tomato();			
+			tomato.setHeigth(Double.parseDouble(paraments[0]));
+			tomato.setHarvestTime(Double.parseDouble(paraments[1]));
+			tomato.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
+			tomato.setPurchasePrice(Double.parseDouble(paraments[3]));
+			myFarm.tomatoList.add(tomato);
+			tomato.startObserving(myFarm);
+			break;
+		}
+	}
+	
 	public void buyAnimal(String animalName, Farm myFarm) throws IOException {
 		try {
 			switch (animalName) {
@@ -71,16 +130,19 @@ public class Farmer {
 				Pig p = new Pig();
 				myFarm.decreaseMoney(p.getPurchasePrice());
 				myFarm.pigList.add(p);
+				p.startObserving(myFarm);
 				break;
 			case "Hen":
 				Hen h = new Hen();
 				myFarm.decreaseMoney(h.getPurchasePrice());
 				myFarm.henList.add(h);
+				h.startObserving(myFarm);
 				break;
 			case "Cow":
 				Cow c = new Cow();
 				myFarm.decreaseMoney(c.getPurchasePrice());
 				myFarm.cowList.add(c);
+				c.startObserving(myFarm);
 				break;
 			}
 		} catch (Exception e) {
@@ -88,6 +150,34 @@ public class Farmer {
 		}
 	}
 
+	public void addConfigureAnimal(String s, Farm myFarm) {
+		//String t = "Hen:" + h.getHappiness()+ ","+h.getHealth()+"\n";
+		String sTemp[] = s.split(":");
+		String paraments[] = sTemp[1].split(",");
+		switch (sTemp[0]) {
+		case "Pig":
+			Pig p = new Pig();
+			p.setHappiness(Double.parseDouble(paraments[0]));
+			p.setHealth(Double.parseDouble(paraments[1]));
+			myFarm.pigList.add(p);
+			p.startObserving(myFarm);
+			break;
+		case "Hen":
+			Hen h = new Hen();
+			h.setHappiness(Double.parseDouble(paraments[0]));
+			h.setHealth(Double.parseDouble(paraments[1]));
+			myFarm.henList.add(h);
+			h.startObserving(myFarm);
+			break;
+		case "Cow":
+			Cow c = new Cow();
+			c.setHappiness(Double.parseDouble(paraments[0]));
+			c.setHealth(Double.parseDouble(paraments[1]));
+			myFarm.cowList.add(c);
+			c.startObserving(myFarm);
+			break;
+		}
+	}
 	public void buyItems(String itemsName, Farm myFarm) throws IOException{
 		try {
 			switch (itemsName) {
@@ -112,6 +202,34 @@ public class Farmer {
 		}
 	}
 
+	public void addConfigureItems(String s, Farm myFarm) {
+		String sTemp[] = s.split(":");
+		String paraments[] = sTemp[1].split(",");
+		switch (sTemp[0]) {
+		case "AnimalFeedItems":
+			for (int i  =0; i < Integer.parseInt(paraments[1]);i++)
+			{
+			AnimalFeedItems p = new AnimalFeedItems();
+			myFarm.animalFeedItemsList.add(p);		
+			}
+			break;
+		case "TimeAgentItems":
+			for (int i  =0; i < Integer.parseInt(paraments[1]);i++)
+			{
+			TimeAgentItems h = new TimeAgentItems();
+			myFarm.timeAgentitemsList.add(h);
+			}
+			break;
+		case "HappyAgentItems":
+			for (int i  =0; i < Integer.parseInt(paraments[1]);i++)
+			{
+			HappyAgentItems c = new HappyAgentItems();
+			myFarm.happyAgentItemsList.add(c);		
+			}
+			break;
+		}
+	}
+	
 	public int countCrops(String seedName, Farm myFarm) {
 		int count = 0;
 		switch (seedName) {
@@ -183,6 +301,8 @@ public class Farmer {
 	public  void checkCropStore(int index, Farm myFarm) {
 		
 	}
+	
+	
 	
 	public void SoldCrop(String seedName) {
 		
@@ -344,4 +464,73 @@ public class Farmer {
 			}
 		
 	}
+	
+	
+	public static String getItemDetail(Farm myFarm) {
+		String s = "Items-AnimalFeedItems: "+ myFarm.animalFeedItemsList.size()+ ",";
+		s += "Items-HappyAgentItems: "+ myFarm.happyAgentItemsList.size()+ ",";
+		s += "Items-TimeAgentItems: "+ myFarm.timeAgentitemsList.size()+ "\n";
+		return s;
+	}
+	
+	public static String getAniamlDetail(Farm myFarm) {
+		String s= "";
+		for(int i = 0 ; i<myFarm.henList.size(); i++)
+		{
+			Hen h = myFarm.henList.get(i);
+			String t = "Animals-Hen:" + h.getHappiness()+ ","+h.getHealth()+"\n";
+			s += t;
+		}
+		for(int i = 0 ; i<myFarm.cowList.size(); i++)
+		{
+			Cow c = myFarm.cowList.get(i);
+			String t = "Animals-Cow:" + c.getHappiness()+ ","+c.getHealth()+"\n";
+			s += t;
+		}
+		
+		for(int i = 0 ; i<myFarm.pigList.size(); i++)
+		{
+			Pig p = myFarm.pigList.get(i);
+			String t = "Animals-Pig:" + p.getHappiness()+ ","+p.getHealth()+"\n";
+			s += t;
+		}
+		return s;
+	}
+	
+	public static String getCropDetail(Farm myFarm) {
+		String s= "";
+		for(int i = 0 ; i<myFarm.carrotList.size(); i++)
+		{
+			Carrot h = myFarm.carrotList.get(i);
+			String t = "Crop-Carrot:" + h.getHeigth()+ ","+h.getHarvestTime()+","+h.getLeftTimeToHarvest()+","+h.getSellingPrice()+"\n";
+			s += t;
+		}
+		for(int i = 0 ; i<myFarm.cornList.size(); i++)
+		{
+			Corn h = myFarm.cornList.get(i);
+			String t = "Crop-Corn:" + h.getHeigth()+ ","+h.getHarvestTime()+","+h.getLeftTimeToHarvest()+","+h.getSellingPrice()+"\n";
+			s += t;
+		}
+		
+		for(int i = 0 ; i<myFarm.eggplantList.size(); i++)
+		{
+			Eggplant h = myFarm.eggplantList.get(i);
+			String t = "Crop-Eggplant:" + h.getHeigth()+ ","+h.getHarvestTime()+","+h.getLeftTimeToHarvest()+","+h.getSellingPrice()+"\n";
+			s += t;
+		}
+		for(int i = 0 ; i<myFarm.kiwifruitList.size(); i++)
+		{
+			KiwiFruit h = myFarm.kiwifruitList.get(i);
+			String t = "Crop-KiwiFruit:" + h.getHeigth()+ ","+h.getHarvestTime()+","+h.getLeftTimeToHarvest()+","+h.getSellingPrice()+"\n";
+			s += t;
+		}
+		for(int i = 0 ; i<myFarm.tomatoList.size(); i++)
+		{
+			Tomato h = myFarm.tomatoList.get(i);
+			String t = "Crop-Tomato:" + h.getHeigth()+ ","+h.getHarvestTime()+","+h.getLeftTimeToHarvest()+","+h.getSellingPrice()+"\n";
+			s += t;
+		}
+		return s;
+	}
+	
 }
