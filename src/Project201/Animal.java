@@ -14,7 +14,7 @@ public class Animal {
 		health = shealth;
 		happiness = shappiness;
 	}
-	public void feed(Items item)
+	public void feed()
 	{
 		this.health *= 2;
 	}
@@ -23,7 +23,7 @@ public class Animal {
 		this.happiness += 10;
 	}
 	
-	public void makeHappy(Items item) {
+	public void increaseHappiness() {
 		this.happiness += 20;
 	}
 	public void setPurchasePrice(double purchasePrice)

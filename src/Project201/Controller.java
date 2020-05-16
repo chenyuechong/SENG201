@@ -53,33 +53,91 @@ public class Controller {
 		
 	}
 	
-	public static void buySeed(int index,int count)
-	{System.out.print("need to buy "+ count +"seeds\n");
-		for(int i =0; i< count; i++)
-		{
-			myFarmer.buySeed(crops[index - 1], myFarm);
+	public static void playWithAnimal(int index)
+	{
+		try {
+			
+				myFarmer.playWithAnimal(animals[index], myFarm);
+				System.out.print("You have played with  " + animals[index] + "for a while");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.print(e.getMessage());
 		}
-		System.out.print("you bought "+ crops[index - 1] + " count:" + count +", there are "+ myFarm.getMoney()+ " dollars left\n");		
+		
 	}
 	
-	public static void buyAnimal(int index,int count)
+	public static void feedAnimal(int index)
 	{
-		System.out.print("need to buy "+ count +"animals\n");
-		for(int i =0; i< count; i++)
-		{
-			myFarmer.buyAnimal(animals[index - 1], myFarm);
+		try {		
+			myFarmer.feedAnimal(animals[index], myFarm);
+			System.out.print("You have played with  " + animals[index] + "for a while\n");		
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+		System.out.print(e.getMessage());
 		}
-		System.out.print("you bought "+ animals[index - 1] + " count:" + count +", there are "+ myFarm.getMoney()+ " dollars left\n");		
 	}
 	
-	public static void buyItems(int index,int count)
+	public static void useTimeAgent(int index)
 	{
-		System.out.print("need to buy "+ count +"items\n");
-		for(int i =0; i< count; i++)
-		{
-			myFarmer.buyItems(items[index - 1], myFarm);
+		try {		
+			myFarmer.useTimeAgentItem(crops[index], myFarm);
+			System.out.print("You have used the timeAgentItem to " + crops[index] + "\n");		
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+		System.out.print(e.getMessage());
 		}
-		System.out.print("you bought "+ items[index - 1] + " count:" + count +", there are "+ myFarm.getMoney()+ " dollars left\t");		
+	}
+	
+	public static void useHappyAgent(int index) {
+		try {		
+			myFarmer.useHappyAgentItem(animals[index], myFarm);
+			System.out.print("You have used happyAgentItem to   " + animals[index] + "\n");		
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+		System.out.print(e.getMessage());
+		}
+	}
+	
+	
+	public static void buySeed(int index, int count) {
+		
+		try {
+			System.out.print("need to buy " + count + "seeds\n");
+			for (int i = 0; i < count; i++) {
+				myFarmer.buySeed(crops[index - 1], myFarm);
+			}
+			System.out.print("you bought " + crops[index - 1] + " count:" + count + ", there are " + myFarm.getMoney()
+					+ " dollars left\n");
+		} catch (IOException e) {
+			System.out.print(e.getMessage());
+		}
+	}
+	
+	public static void buyAnimal(int index, int count) {
+		try {
+			System.out.print("need to buy " + count + "animals\n");
+			for (int i = 0; i < count; i++) {
+				myFarmer.buyAnimal(animals[index - 1], myFarm);
+			}
+			System.out.print("you bought " + animals[index - 1] + " count:" + count + ", there are " + myFarm.getMoney()
+					+ " dollars left\n");
+		} catch (IOException e) {
+			System.out.print(e.getMessage());
+		}
+	}
+
+	public static void buyItems(int index, int count) {
+		try {
+			System.out.print("need to buy " + count + "items\n");
+			for (int i = 0; i < count; i++) {
+				myFarmer.buyItems(items[index - 1], myFarm);
+			}
+			System.out.print("you bought " + items[index - 1] + " count:" + count + ", there are " + myFarm.getMoney()
+					+ " dollars left\t");
+		} catch (IOException e) {
+			System.out.print(e.getMessage());
+		}
 	}
 
 	

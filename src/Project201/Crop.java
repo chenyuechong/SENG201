@@ -21,7 +21,7 @@ public class Crop {
 		leftTimeToHarvest = harvestTime;
 		seedTime = System.currentTimeMillis();
 	}
-	public void decreaseHarvestTime(Items item ) {
+	public void decreaseHarvestTime( ) {
 		this.harvestTime -= 2.0;
 	}
 	

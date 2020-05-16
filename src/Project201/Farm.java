@@ -23,9 +23,12 @@ public class Farm {
 	static ArrayList <Eggplant> eggplantList = new ArrayList<Eggplant> ();
 	static ArrayList <KiwiFruit> kiwifruitList = new ArrayList<KiwiFruit> ();
 	static ArrayList <Tomato> tomatoList = new ArrayList<Tomato> ();
+	
 	static ArrayList <AnimalFeedItems> animalFeedItemsList = new ArrayList<AnimalFeedItems> ();
 	static ArrayList <HappyAgentItems> happyAgentItemsList = new ArrayList<HappyAgentItems> ();
 	static ArrayList <TimeAgentItems> timeAgentitemsList = new ArrayList<TimeAgentItems> ();
+	
+
 	/**
 	 * 
 	 */
@@ -58,14 +61,39 @@ public class Farm {
 		
 	public void decreaseMoney(double m)
 	{
-		 this.money -=m ;
-		 //System.out.print("count money: "+ this.money+ "+"+ m +"\n");
+		if(this.money >= m)
+			this.money -=m ;
+		else
+			throw new IllegalArgumentException("oops, you do not have enough money to buy");
 	}
 	
 	public void increaseMoney(double m)
 	{
 		this.money += m;
 	}
+	
+	public void consumeFeedItems() {
+		if( animalFeedItemsList.size() >= 1)
+			animalFeedItemsList.remove(0);
+		else
+			throw new IllegalArgumentException("oops, you do not have enough food to feed animal");
+			
+	}
+	
+	public void consumeHappyAgentItem() {
+		if( happyAgentItemsList.size() >= 1)
+			happyAgentItemsList.remove(0);
+		else
+			throw new IllegalArgumentException("oops, you do not have happy agent to use");
+	}
+	
+	public void consumeTimeAgentItem() {
+		if( timeAgentitemsList.size() >= 1)
+			timeAgentitemsList.remove(0);
+		else
+			throw new IllegalArgumentException("oops, you do not have time agent to use");
+	}
+	
 	public String getName()
 	{
 		return name;
@@ -103,6 +131,7 @@ public class Farm {
 			break;
 		}
 	}
+	
 	
 	public String toString()
 	{

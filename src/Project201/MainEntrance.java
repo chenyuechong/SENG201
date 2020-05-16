@@ -50,7 +50,7 @@ public class MainEntrance {
 
 	public static void printAnimal() {
 		System.out.print("there are 3 types animals:\n 1:Pig, 2:Hen, 3:Cow) each $2 \n"
-				+ "please type the animal name and the count you want(Ex: 1-5 means 5 pigs )\n");
+				+ "please type the animal number\n");
 	}
 
 	public static void buyAnimal() {
@@ -74,8 +74,8 @@ public class MainEntrance {
 
 	public static void printItem() {
 		System.out
-				.print("there are 3 types items:\n 1:AnimalFeedItems, 2:HappyAgentItems, 3:TimeAgentItems) each $20 \n"
-						+ "please type the animal name and the count you want(Ex: 1-5 means 5 AnimalFeedItems )\n");
+				.print("there are 3 types items:\n 1:AnimalFeedItems, 2:HappyAgentItems, 3:TimeAgentItems each $20 \n"
+						+ "please type the items number \n");
 	}
 
 	public static void buyItems() {
@@ -99,7 +99,44 @@ public class MainEntrance {
 	}
 
 	public static void playWithAnimals() {
-		// Controller.
+		System.out.print("there are 3 types animals: 1:Pig, 2:Hen, 3:Cow  " + "please type the animal number \n");
+		Scanner input1 = new Scanner(System.in);
+		String index = input1.nextLine();
+
+		if (isNumeric(index) && (Integer.parseInt(index) <= 3 && Integer.parseInt(index) >= 0)) {
+			Controller.playWithAnimal(Integer.parseInt(index));
+		}
+
+	}
+	
+	public static void feedAnimals() {
+		System.out.print("there are 3 types animals: 1:Pig, 2:Hen, 3:Cow  " + "please type the animal number \n");
+		Scanner input1 = new Scanner(System.in);
+		String index = input1.nextLine();
+
+		if (isNumeric(index) && (Integer.parseInt(index) <= 3 && Integer.parseInt(index) >= 0)) {
+			Controller.feedAnimal(Integer.parseInt(index));
+		}
+	}
+	
+	public static void usingHappyAgent() {
+		System.out.print("there are 3 types animals: 1:Pig, 2:Hen, 3:Cow  ,you can using this agent " + "please type the animal number \n");
+		Scanner input1 = new Scanner(System.in);
+		String index = input1.nextLine();
+
+		if (isNumeric(index) && (Integer.parseInt(index) <= 3 && Integer.parseInt(index) >= 0)) {
+			Controller.useHappyAgent(Integer.parseInt(index));
+		}
+	}
+	
+	public static void usingTimeAgent() {
+		System.out.print("there are 5 types crop seeds:  1:Carrot, 2:Corn, 3:Eggplant, 4:KiwiFruit, 5:Tomato " + "please type the crop number \n");
+		Scanner input1 = new Scanner(System.in);
+		String index = input1.nextLine();
+
+		if (isNumeric(index) && (Integer.parseInt(index) <= 5 && Integer.parseInt(index) >= 0)) {
+			Controller.useTimeAgent(Integer.parseInt(index));
+		}
 	}
 
 	public static void main(String[] args) {
@@ -187,30 +224,51 @@ public class MainEntrance {
 			// System.out.print(myFarm.toString());
 
 		}
-
-		System.out.print("1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds\n");
+		String sprint= "1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds 5: play with animals 6: feed animal 7: decrease crop harvest time 8: make animals happier \n";
+		System.out.print(sprint);
 		Scanner scanner = new Scanner(System.in);
 		String strInput = scanner.nextLine();
 		while (isOutLoop == false) {
 
 			if (Integer.parseInt(strInput) == 1) {
 				Controller.showStore();
-				System.out.print("\n1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds\n");
+				System.out.print(sprint);
 				strInput = scanner.nextLine();
 			} else if (Integer.parseInt(strInput) == 2) {
 				buyItems();
-				System.out.print("\n1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds\n");
+				System.out.print(sprint);
 				strInput = scanner.nextLine();
 			} else if (Integer.parseInt(strInput) == 3) {
 				buyAnimal();
-				System.out.print("\n1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds\n");
+				System.out.print(sprint);
 				strInput = scanner.nextLine();
 			} else if (Integer.parseInt(strInput) == 4) {
 				buyCrop();
-				System.out.print("\n1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds\n");
+				System.out.print(sprint);
 				strInput = scanner.nextLine();
-			} else {
-				System.out.print("\n1:check store   2: buy items for farm 3: buy animals 4: buy crop seeds\n");
+			} 
+			else if (Integer.parseInt(strInput) == 5) {
+				playWithAnimals();
+				System.out.print(sprint);
+				strInput = scanner.nextLine();
+			} 
+			else if (Integer.parseInt(strInput) == 6) {
+				feedAnimals();
+				System.out.print(sprint);
+				strInput = scanner.nextLine();
+			} 
+			else if (Integer.parseInt(strInput) == 7) {
+				usingTimeAgent();
+				System.out.print(sprint);
+				strInput = scanner.nextLine();
+			} 
+			else if (Integer.parseInt(strInput) == 8) {
+				usingHappyAgent();
+				System.out.print(sprint);
+				strInput = scanner.nextLine();
+			} 
+			else {
+				System.out.print(sprint);
 				strInput = scanner.nextLine();
 			}
 		}
