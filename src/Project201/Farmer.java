@@ -185,21 +185,7 @@ public class Farmer {
 	}
 	
 	public void SoldCrop(String seedName) {
-		/*
-		 * try { switch (seedName) { case "Corn": Corn corn = new Corn();
-		 * myFarm.decreaseMoney(corn.getPurchasePrice()); myFarm.cornList.add(corn);
-		 * break; case "Carrot": Carrot carrot = new Carrot();
-		 * myFarm.decreaseMoney(carrot.getPurchasePrice());
-		 * myFarm.carrotList.add(carrot); break; case "Eggplant": Eggplant eggplant =
-		 * new Eggplant(); myFarm.decreaseMoney(eggplant.getPurchasePrice());
-		 * myFarm.eggplantList.add(eggplant); break; case "KiwiFruit": KiwiFruit
-		 * kiwifruit = new KiwiFruit();
-		 * myFarm.decreaseMoney(kiwifruit.getPurchasePrice());
-		 * myFarm.kiwifruitList.add(kiwifruit); break; case "Tomato": Tomato tomato =
-		 * new Tomato(); myFarm.decreaseMoney(tomato.getPurchasePrice());
-		 * myFarm.tomatoList.add(tomato); break; } } catch (IllegalStateException e) {
-		 * System.out.println(e.getMessage()); }
-		 */
+		
 	}
 
 	public void SoldAnimal(String animalName) {

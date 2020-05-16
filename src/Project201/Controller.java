@@ -57,8 +57,8 @@ public class Controller {
 	{
 		try {
 			
-				myFarmer.playWithAnimal(animals[index], myFarm);
-				System.out.print("You have played with  " + animals[index] + "for a while");
+				myFarmer.playWithAnimal(animals[index-1], myFarm);
+				System.out.print("You have played with  " + animals[index-1] + "for a while");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -70,8 +70,8 @@ public class Controller {
 	public static void feedAnimal(int index)
 	{
 		try {		
-			myFarmer.feedAnimal(animals[index], myFarm);
-			System.out.print("You have played with  " + animals[index] + "for a while\n");		
+			myFarmer.feedAnimal(animals[index-1], myFarm);
+			System.out.print("You have played with  " + animals[index-1] + "for a while\n");		
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
@@ -81,8 +81,8 @@ public class Controller {
 	public static void useTimeAgent(int index)
 	{
 		try {		
-			myFarmer.useTimeAgentItem(crops[index], myFarm);
-			System.out.print("You have used the timeAgentItem to " + crops[index] + "\n");		
+			myFarmer.useTimeAgentItem(crops[index-1], myFarm);
+			System.out.print("You have used the timeAgentItem to " + crops[index-1] + "\n");		
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
@@ -91,8 +91,8 @@ public class Controller {
 	
 	public static void useHappyAgent(int index) {
 		try {		
-			myFarmer.useHappyAgentItem(animals[index], myFarm);
-			System.out.print("You have used happyAgentItem to   " + animals[index] + "\n");		
+			myFarmer.useHappyAgentItem(animals[index-1], myFarm);
+			System.out.print("You have used happyAgentItem to   " + animals[index-1] + "\n");		
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
@@ -190,7 +190,7 @@ public class Controller {
 	
 	public static void writeToFile(String s) {
 		try {
-            FileWriter writer = new FileWriter("MyFile.txt", true);
+            FileWriter writer = new FileWriter("myItemsFile.txt", true);
             writer.write(s);
             writer.write("\r\n");   // write new line
             writer.close();

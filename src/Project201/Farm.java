@@ -132,6 +132,8 @@ public class Farm {
 		}
 	}
 	
+	//if has no animals or crops no bonus
+	
 	
 	public String toString()
 	{
