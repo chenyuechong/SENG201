@@ -29,17 +29,25 @@ import javax.swing.border.EtchedBorder;
 
 public class MainScreen {
 
-	private JFrame frmRocketManagerMain;
+	private JFrame frmManagerMain;
 	private ScreenManager manager;
+	private JTextField textHenField;
+	private JTextField textCowField;
+	private JTextField textPigField;
+	private JTextField textFieldTomato;
+	private JTextField textFieldCarrot;
+	private JTextField textFieldCorn;
+	private JTextField textFieldEggplaint;
+	private JTextField textField_KiwiFruit;
 	
 	public MainScreen(ScreenManager incomingManager) {
 		manager = incomingManager;
 		initialize();
-		frmRocketManagerMain.setVisible(true);
+		frmManagerMain.setVisible(true);
 	}
 	
 	public void closeWindows() {
-		frmRocketManagerMain.dispose();
+		frmManagerMain.dispose();
 	}
 	
 	public void finishedWindow() {
@@ -52,27 +60,27 @@ public class MainScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmRocketManagerMain = new JFrame();
-		frmRocketManagerMain.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 15));
-		frmRocketManagerMain.setTitle("Rocket Manager Main Screen");
-		frmRocketManagerMain.setBounds(100, 100, 945, 775);
-		frmRocketManagerMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmRocketManagerMain.getContentPane().setLayout(null);
+		frmManagerMain = new JFrame();
+		frmManagerMain.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 15));
+		frmManagerMain.setTitle("Rocket Manager Main Screen");
+		frmManagerMain.setBounds(100, 100, 945, 775);
+		frmManagerMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmManagerMain.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Welcome Aboard!");
 		lblNewLabel.setBounds(10, 10,2837, 47);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		frmRocketManagerMain.getContentPane().add(lblNewLabel);
+		frmManagerMain.getContentPane().add(lblNewLabel);
 		
 		JButton btnCleanRocket = new JButton("Move to next day");
 		btnCleanRocket.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCleanRocket.setBounds(59, 691, 187, 37);
-		frmRocketManagerMain.getContentPane().add(btnCleanRocket);
+		frmManagerMain.getContentPane().add(btnCleanRocket);
 		
 		JButton btnRefuelRocket = new JButton("Expand Land");
 		btnRefuelRocket.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRefuelRocket.setBounds(347, 691, 167, 37);
-		frmRocketManagerMain.getContentPane().add(btnRefuelRocket);
+		frmManagerMain.getContentPane().add(btnRefuelRocket);
 		
 		JButton btnNewButton_6 = new JButton("Quit");
 		btnNewButton_6.addActionListener(new ActionListener() {
@@ -82,7 +90,7 @@ public class MainScreen {
 		});
 		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_6.setBounds(761, 691, 143, 37);
-		frmRocketManagerMain.getContentPane().add(btnNewButton_6);
+		frmManagerMain.getContentPane().add(btnNewButton_6);
 		
 		JButton btnCountryStore = new JButton("Country Store");
 		btnCountryStore.addActionListener(new ActionListener() {
@@ -93,7 +101,7 @@ public class MainScreen {
 		});
 		btnCountryStore.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCountryStore.setBounds(761, 10, 143, 37);
-		frmRocketManagerMain.getContentPane().add(btnCountryStore);
+		frmManagerMain.getContentPane().add(btnCountryStore);
 		
 		JLabel lblCropList = new JLabel("Crop List");
 		lblCropList.setBounds(10, 10, 68, 20);
@@ -110,7 +118,7 @@ public class MainScreen {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBounds(20, 52, 889, 175);
-		frmRocketManagerMain.getContentPane().add(panel);
+		frmManagerMain.getContentPane().add(panel);
 		panel.setLayout(null);
 		panel.add(lblNewLabel_1);
 		
@@ -144,43 +152,77 @@ public class MainScreen {
 		lblPigNumber.setBounds(114, 139, 94, 33);
 		panel.add(lblPigNumber);
 		
-		JButton btnChooseOne_2 = new JButton("Choose One");
-		btnChooseOne_2.addActionListener(new ActionListener() {
+		JButton btnChooseHen = new JButton("Interaction");
+		btnChooseHen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.launchAnimalScreen();
+				manager.launchAnimalScreen("Hen", Integer.parseInt(textHenField.getText()));
 				finishedWindow();
 			}
 		});
-		btnChooseOne_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnChooseOne_2.setBounds(731, 51, 148, 33);
-		panel.add(btnChooseOne_2);
+		btnChooseHen.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnChooseHen.setBounds(731, 51, 148, 33);
+		panel.add(btnChooseHen);
 		
-		JButton btnChooseOne_1 = new JButton("Choose One");
-		btnChooseOne_1.addActionListener(new ActionListener() {
+		JButton btnChooseCow = new JButton("Interaction");
+		btnChooseCow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.launchAnimalScreen();
+				manager.launchAnimalScreen("Cow", Integer.parseInt(textCowField.getText()));
 				finishedWindow();
 			}
 		});
-		btnChooseOne_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnChooseOne_1.setBounds(731, 94, 148, 33);
-		panel.add(btnChooseOne_1);
+		btnChooseCow.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnChooseCow.setBounds(731, 94, 148, 33);
+		panel.add(btnChooseCow);
 		
-		JButton btnChooseOne = new JButton("Choose One");
-		btnChooseOne.addActionListener(new ActionListener() {
+		JButton btnChoosePig = new JButton("Interaction");
+		btnChoosePig.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.launchAnimalScreen();
+				manager.launchAnimalScreen("Pig", Integer.parseInt(textPigField.getText()));
 				finishedWindow();
 			}
 		});
-		btnChooseOne.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnChooseOne.setBounds(731, 137, 148, 33);
-		panel.add(btnChooseOne);
+		btnChoosePig.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnChoosePig.setBounds(731, 137, 148, 33);
+		panel.add(btnChoosePig);
+		
+		JLabel lblSerialNumber = new JLabel("Serial Number:");
+		lblSerialNumber.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSerialNumber.setBounds(404, 51, 112, 33);
+		panel.add(lblSerialNumber);
+		
+		textHenField = new JTextField();
+		textHenField.setBounds(526, 51, 148, 33);
+		panel.add(textHenField);
+		textHenField.setColumns(10);
+		textHenField.setText("0");
+		
+		JLabel label = new JLabel("Serial Number:");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		label.setBounds(404, 94, 112, 33);
+		panel.add(label);
+		
+		JLabel label_1 = new JLabel("Serial Number:");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		label_1.setBounds(404, 139, 112, 33);
+		panel.add(label_1);
+		
+		textCowField = new JTextField();
+		textCowField.setColumns(10);
+		textCowField.setBounds(526, 96, 148, 33);
+		panel.add(textCowField);
+		textCowField.setText("0");
+		
+		textPigField = new JTextField();
+		textPigField.setColumns(10);
+		textPigField.setBounds(526, 137, 148, 33);
+		panel.add(textPigField);
+		textPigField.setText("0");
+		
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBounds(20, 251, 889, 247);
-		frmRocketManagerMain.getContentPane().add(panel_1);
+		frmManagerMain.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		panel_1.add(lblCropList);
 		
@@ -234,65 +276,124 @@ public class MainScreen {
 		lblKiwiFruitNumber.setBounds(114, 200, 94, 33);
 		panel_1.add(lblKiwiFruitNumber);
 		
-		JButton btnWaterIt = new JButton("Choose One");
-		btnWaterIt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				manager.launchCropScreen();
-				finishedWindow();
-			}
-		});
-		btnWaterIt.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnWaterIt.setBounds(731, 40, 148, 33);
-		panel_1.add(btnWaterIt);
 		
-		JButton btnChooseOne_3 = new JButton("Choose One");
-		btnChooseOne_3.addActionListener(new ActionListener() {
+		JButton btnChooseCarrot = new JButton("Operate");
+		btnChooseCarrot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.launchCropScreen();
+				manager.launchCropScreen("Carrot", Integer.parseInt(textFieldCarrot.getText()));
 				finishedWindow();
 			}
 		});
-		btnChooseOne_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnChooseOne_3.setBounds(731, 81, 148, 33);
-		panel_1.add(btnChooseOne_3);
+		btnChooseCarrot.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnChooseCarrot.setBounds(731, 80, 148, 33);
+		panel_1.add(btnChooseCarrot);
 		
-		JButton btnChooseOne_4 = new JButton("Choose One");
-		btnChooseOne_4.addActionListener(new ActionListener() {
+		JButton btnChooseCorn = new JButton("Operate");
+		btnChooseCorn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.launchCropScreen();
+				manager.launchCropScreen("Corn", Integer.parseInt(textFieldCorn.getText()));
 				finishedWindow();
 			}
 		});
-		btnChooseOne_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnChooseOne_4.setBounds(731, 124, 148, 33);
-		panel_1.add(btnChooseOne_4);
+		btnChooseCorn.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnChooseCorn.setBounds(731, 121, 148, 33);
+		panel_1.add(btnChooseCorn);
 		
-		JButton btnChooseOne_5 = new JButton("Choose One");
-		btnChooseOne_5.addActionListener(new ActionListener() {
+		JButton btnChooseEggplant = new JButton("Operate");
+		btnChooseEggplant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.launchCropScreen();
+				manager.launchCropScreen("Eggplant", Integer.parseInt(textFieldEggplaint.getText()));
 				finishedWindow();
 			}
 		});
-		btnChooseOne_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnChooseOne_5.setBounds(731, 168, 148, 33);
-		panel_1.add(btnChooseOne_5);
+		btnChooseEggplant.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnChooseEggplant.setBounds(731, 158, 148, 33);
+		panel_1.add(btnChooseEggplant);
 		
-		JButton btnChooseOne_6 = new JButton("Choose One");
-		btnChooseOne_6.addActionListener(new ActionListener() {
+		JButton btnChooseKiwiFruit = new JButton("Operate");
+		btnChooseKiwiFruit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.launchCropScreen();
+				manager.launchCropScreen("KiwiFruit", Integer.parseInt(textField_KiwiFruit.getText()));
 				finishedWindow();
 			}
 		});
-		btnChooseOne_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnChooseOne_6.setBounds(731, 210, 148, 33);
-		panel_1.add(btnChooseOne_6);
+		btnChooseKiwiFruit.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnChooseKiwiFruit.setBounds(731, 200, 148, 33);
+		panel_1.add(btnChooseKiwiFruit);
+		
+		JLabel label_2 = new JLabel("Serial Number:");
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		label_2.setBounds(404, 39, 112, 33);
+		panel_1.add(label_2);
+		
+		textFieldTomato = new JTextField();
+		textFieldTomato.setBounds(530, 41, 148, 33);
+		panel_1.add(textFieldTomato);
+		textFieldTomato.setColumns(10);
+		textFieldTomato.setText("0");
+		
+		JLabel label_3 = new JLabel("Serial Number:");
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		label_3.setBounds(404, 80, 112, 33);
+		panel_1.add(label_3);
+		
+		JLabel label_4 = new JLabel("Serial Number:");
+		label_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		label_4.setBounds(404, 121, 112, 33);
+		panel_1.add(label_4);
+		
+		JLabel label_5 = new JLabel("Serial Number:");
+		label_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		label_5.setBounds(404, 158, 112, 33);
+		panel_1.add(label_5);
+		
+		JLabel label_6 = new JLabel("Serial Number:");
+		label_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		label_6.setBounds(404, 200, 112, 33);
+		panel_1.add(label_6);
+		
+		textFieldCarrot = new JTextField();
+		textFieldCarrot.setColumns(10);
+		textFieldCarrot.setBounds(530, 81, 148, 33);
+		panel_1.add(textFieldCarrot);
+		textFieldCarrot.setText("0");
+		
+		textFieldCorn = new JTextField();
+		textFieldCorn.setColumns(10);
+		textFieldCorn.setBounds(530, 122, 148, 33);
+		panel_1.add(textFieldCorn);
+		textFieldCorn.setText("0");
+		
+		textFieldEggplaint = new JTextField();
+		textFieldEggplaint.setColumns(10);
+		textFieldEggplaint.setBounds(530, 162, 148, 33);
+		panel_1.add(textFieldEggplaint);
+		textFieldEggplaint.setText("0");
+		
+		textField_KiwiFruit = new JTextField();
+		textField_KiwiFruit.setColumns(10);
+		textField_KiwiFruit.setBounds(530, 201, 148, 33);
+		panel_1.add(textField_KiwiFruit);
+		textField_KiwiFruit.setText("0");
+		
+		JButton btnChooseTomato = new JButton("Operate");
+		btnChooseTomato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				manager.launchCropScreen("Tomato", Integer.parseInt(textFieldTomato.getText()));
+				finishedWindow();
+				
+			}
+		});
+		btnChooseTomato.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnChooseTomato.setBounds(731, 38, 148, 33);
+		panel_1.add(btnChooseTomato);
+		
+		
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_2.setBounds(20, 524, 889, 157);
-		frmRocketManagerMain.getContentPane().add(panel_2);
+		frmManagerMain.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		panel_2.add(lblNewLabel_2);
 		
@@ -336,7 +437,7 @@ public class MainScreen {
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(571, 10, 136, 37);
-		frmRocketManagerMain.getContentPane().add(btnNewButton);
+		frmManagerMain.getContentPane().add(btnNewButton);
 		
 			
 		
@@ -363,7 +464,6 @@ public class MainScreen {
 		String s = Controller.readFromFile();
 		Controller.init(s);
 		
-		Controller.showStore();
 		Map<String, Integer> map = Controller.showStore(); 
 		Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 
 		while (entries.hasNext()) { 

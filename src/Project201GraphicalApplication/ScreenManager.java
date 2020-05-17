@@ -33,12 +33,12 @@ public class ScreenManager {
 		SetupScreen setupWindow = new SetupScreen(this);
 	}
 
-	public void launchAnimalScreen() {
-		AnimalScreen setupWindow = new AnimalScreen(this);
+	public void launchAnimalScreen(String animalName, int index) {
+		AnimalScreen setupWindow = new AnimalScreen(this, animalName, index);
 	}
 	
-	public void launchCropScreen() {
-		CropScreen CropWindow = new CropScreen(this);
+	public void launchCropScreen(String cropName, int index) {
+		CropScreen CropWindow = new CropScreen(this, cropName, index);
 	}
 	
 	public void launchStoreScreen() {

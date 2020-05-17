@@ -27,11 +27,15 @@ public class CropScreen {
 	private JTextField textField;
 	private ScreenManager manager;
 	private JTextField textField_1;
+	private String name;
+	private int index;
 	
-	public CropScreen(ScreenManager incomingManager) {
+	public CropScreen(ScreenManager incomingManager,String cropName, int n) {
 		manager = incomingManager;
 		initialize();
 		window.setVisible(true);
+		name = cropName;
+		index = n;
 	}
 	
 	

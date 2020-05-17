@@ -27,11 +27,15 @@ public class AnimalScreen {
 	private JTextField textField;
 	private ScreenManager manager;
 	private JTextField textField_1;
+	private String name;
+	private int index;
 	
-	public AnimalScreen(ScreenManager incomingManager) {
+	public AnimalScreen(ScreenManager incomingManager,String animalName, int n) {
 		manager = incomingManager;
 		initialize();
 		window.setVisible(true);
+		name = animalName;
+		index = n;
 	}
 	
 	
