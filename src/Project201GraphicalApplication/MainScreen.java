@@ -11,6 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.UIManager;
@@ -40,7 +45,9 @@ public class MainScreen {
 	public void finishedWindow() {
 		manager.closeMainScreen(this);
 	}
-
+	
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -52,7 +59,7 @@ public class MainScreen {
 		frmRocketManagerMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRocketManagerMain.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Hello Starman!");
+		JLabel lblNewLabel = new JLabel("Welcome Aboard!");
 		lblNewLabel.setBounds(10, 10, 277, 47);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frmRocketManagerMain.getContentPane().add(lblNewLabel);
@@ -323,5 +330,60 @@ public class MainScreen {
 		btnProfile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnProfile.setBounds(589, 10, 143, 37);
 		frmRocketManagerMain.getContentPane().add(btnProfile);
+		
+		String s = Controller.readFromFile();
+		String[] p = s.split("-");
+		int typeId = Integer.parseInt(p[0].trim());
+		String farmerName = p[1];
+		String farmName = p[2];
+		int playDays = Integer.parseInt(p[3].trim());
+		Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
+		Controller.readPlayConfigureFromFile();
+		
+		Controller.showStore();
+		Map<String, Integer> map = Controller.showStore(); 
+		Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 
+		while (entries.hasNext()) { 
+		  Map.Entry<String, Integer> entry = entries.next(); 
+		  System.out.print(entry.getKey()+ entry.getValue());
+		  switch(entry.getKey())
+		  {
+		  	
+		  case "Corn":
+				lblCornNumber.setText(entry.getValue().toString());
+				break;
+			case "Carrot":
+				lblCarrotNumber.setText(entry.getValue().toString());
+				break;
+			case "Eggplant":
+				lblEggplantNumber.setText(entry.getValue().toString());
+				break;
+			case "KiwiFruit":
+				lblKiwiFruitNumber.setText(entry.getValue().toString());
+				break;
+			case "Tomato":
+				lblTomatoNumber.setText(entry.getValue().toString());
+				break;
+			case "Pig":
+				lblPigNumber.setText(entry.getValue().toString());
+				break;
+			case "Hen":
+				lblHenNumber.setText(entry.getValue().toString());
+				break;
+			case "Cow":
+				lblCowNumber.setText(entry.getValue().toString());
+				break;
+			case "AnimalFeedItems":
+				lblAnimalFeedItems.setText(entry.getValue().toString());
+				break;
+			case "TimeAgentItems":
+				lblTimeAgentItems.setText(entry.getValue().toString());
+				break;
+			case "HappyAgentItems":
+				lblHappyAgentItems.setText(entry.getValue().toString());
+				break;
+		  }
+		  System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue()); 
+		}
 	}
 }

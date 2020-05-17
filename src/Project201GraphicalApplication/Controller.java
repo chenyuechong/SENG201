@@ -7,9 +7,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Random;
 
-import Lab7.Observable;
+
 
 import java.lang.Math;
 
@@ -23,7 +27,6 @@ public class Controller {
 	static String[] crops = {"Carrot", "Corn", "Eggplant", "KiwiFruit", "Tomato"};
 	static String[] animals = {"Pig", "Hen", "Cow"};
 	static String[] items = {"AnimalFeedItems", "HappyAgentItems", "TimeAgentItems"};
-	
 	///(a) The wells have dried up, and the crops are thirsty.
 	//(b) The player loses half of their growing crops. The exact crops are determined randomly.
 	public  void drought() {
@@ -159,13 +162,15 @@ public class Controller {
 
 	
 	
-	public static void showStore()
-	{
+	public static Map<String, Integer>  showStore()
+	{ 
+		 Map<String, Integer> storeMap = new HashMap<String, Integer>(); 
 		System.out.print( "You have\n crops:  ");
 		for(int i = 0; i<5; i++)
 		{
 			System.out.print( crops[i] + ":"+ myFarmer.countCrops(crops[i], myFarm) +"   " );
 			//writeToFile(crops[i]+ "-"+ myFarmer.countCrops(crops[i], myFarm));
+			storeMap.put(crops[i], myFarmer.countCrops(crops[i], myFarm));
 		}
 		System.out.print( "\n");
 		System.out.print("animals:  ");
@@ -173,6 +178,7 @@ public class Controller {
 		{
 			System.out.print(animals[i] + ":"+ myFarmer.countAnimal(animals[i], myFarm) +"   " );
 			//writeToFile(animals[i]+ "-"+ myFarmer.countAnimal(animals[i], myFarm));
+			storeMap.put(animals[i], myFarmer.countAnimal(animals[i], myFarm));
 		}
 		System.out.print( "\n");
 		System.out.print("items:  ");
@@ -180,9 +186,10 @@ public class Controller {
 		{
 			System.out.print(items[i] + ":" + myFarmer.countItems(items[i], myFarm) + "  " );
 			//writeToFile(items[i]+ "-"+ myFarmer.countItems(items[i], myFarm));
+			storeMap.put(items[i], myFarmer.countItems(items[i], myFarm));
 		}
 		System.out.print( "\n");
-		
+		return storeMap;
 	}
 
 
