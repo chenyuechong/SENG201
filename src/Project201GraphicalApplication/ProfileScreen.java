@@ -14,21 +14,20 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
-
-import Project201.Controller;
-
 import java.awt.Color;
 import javax.swing.JComboBox;
 
 
-public class StoreScreen {
+public class ProfileScreen {
 
 	private JFrame window;
 	private JTextField textField;
 	private ScreenManager manager;
 	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
 	
-	public StoreScreen(ScreenManager incomingManager) {
+	public ProfileScreen(ScreenManager incomingManager) {
 		manager = incomingManager;
 		initialize();
 		window.setVisible(true);
@@ -40,7 +39,7 @@ public class StoreScreen {
 	}
 	
 	public void finishedWindow() {
-		manager.closeStoreScreen(this);
+		manager.closeProfileScreen(this);
 	}
 
 	/**
@@ -48,44 +47,46 @@ public class StoreScreen {
 	 */
 	private void initialize() {
 		window = new JFrame();
-		window.setTitle("Funning Farm Setup");
-		window.setBounds(100, 100, 742, 683);
+		window.setTitle("Funning Farm Profile");
+		window.setBounds(100, 100, 495, 502);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
 			
-		JLabel lblNewLabel = new JLabel("Welcome to Funning Farm !");
+		JLabel lblNewLabel = new JLabel("Farm Information");
 		lblNewLabel.setBounds(10, 10, 277, 47);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("What is your farm name?");
+		JLabel lblNewLabel_1 = new JLabel("Farm Name:");
 		lblNewLabel_1.setBounds(10, 67, 217, 28);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textField.setBounds(237, 67, 200, 38);
 		window.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		
-		JLabel lblWhatIsYour = new JLabel("What is your farmer name?");
+		JLabel lblWhatIsYour = new JLabel("Farmer Name:");
 		lblWhatIsYour.setBounds(10, 127, 217, 28);
 		lblWhatIsYour.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblWhatIsYour);
 		
 		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textField_1.setBounds(237, 125, 200, 38);
 		textField_1.setColumns(10);
 		window.getContentPane().add(textField_1);
 		
-		JLabel lblWhichTypeWould = new JLabel("Which type would you like");
+		JLabel lblWhichTypeWould = new JLabel("Farm Type:");
 		lblWhichTypeWould.setBounds(10, 183, 217, 28);
 		lblWhichTypeWould.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblWhichTypeWould);
 		
-		JLabel lblHowManyDays = new JLabel("How many days to play?");
+		JLabel lblHowManyDays = new JLabel("CurrentPlayDay:");
 		lblHowManyDays.setBounds(10, 245, 217, 28);
 		lblHowManyDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblHowManyDays);
@@ -103,19 +104,10 @@ public class StoreScreen {
 		window.getContentPane().add(comboBox);
 		
 		
-		String playDays[]={"5","6","7","8","9","10"};  
-		JComboBox comboBox_1 = new JComboBox(playDays);
-		comboBox_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String playday =  comboBox_1.getItemAt(comboBox_1.getSelectedIndex()).toString();
-				System.out.print("choose to play "+ comboBox_1.getItemAt(comboBox_1.getSelectedIndex()) + " days\n" );
-			}
-		});
-		comboBox_1.setBounds(237, 242, 200, 38);
-		window.getContentPane().add(comboBox_1);
+		String playDays[]={"5","6","7","8","9","10"};
 		
-		JButton btnNewButton_6 = new JButton("Back to MainScreen");
-		btnNewButton_6.setBounds(262, 584, 175, 52);
+		JButton btnNewButton_6 = new JButton("Back To MainScreen");
+		btnNewButton_6.setBounds(95, 393, 261, 52);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
@@ -124,6 +116,30 @@ public class StoreScreen {
 		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(btnNewButton_6);
 		
+		JLabel lblCurrentMoney = new JLabel("Current Money:");
+		lblCurrentMoney.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCurrentMoney.setBounds(10, 310, 217, 28);
+		window.getContentPane().add(lblCurrentMoney);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textField_2.setColumns(10);
+		textField_2.setBounds(237, 308, 200, 38);
+		window.getContentPane().add(textField_2);	
+		
+		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textField_3.setColumns(10);
+		textField_3.setBounds(237, 240, 200, 38);
+		window.getContentPane().add(textField_3);
+		
+		
+		String[] s = Controller.getFarmMessage().split(";");
+		textField.setText(s[0]);
+		textField_1.setText(s[1]);
+		comboBox.setSelectedIndex(Integer.parseInt(s[2]));
+		textField_3.setText(s[3]);
+		textField_2.setText(s[4]);
 		
 	}
 }

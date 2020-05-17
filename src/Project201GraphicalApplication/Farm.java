@@ -44,6 +44,8 @@ public class Farm extends Observable{
 		 if (type == 4)
 			 money = 2400;
 		 
+		 System.out.print("farm name set: "+ name);
+		 
 	}
 	
 	public void setType(int n)
@@ -102,10 +104,14 @@ public class Farm extends Observable{
 	{
 		return name;
 	}
+	
+	
 	public int getType()
 	{
 		return type;
 	}
+	
+	
 	public void lostCrop(String seedName) {
 		switch(seedName) {
 		case "Corn":

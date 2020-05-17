@@ -60,7 +60,7 @@ public class MainScreen {
 		frmRocketManagerMain.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Welcome Aboard!");
-		lblNewLabel.setBounds(10, 10, 277, 47);
+		lblNewLabel.setBounds(10, 10,2837, 47);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frmRocketManagerMain.getContentPane().add(lblNewLabel);
 		
@@ -326,19 +326,42 @@ public class MainScreen {
 		lblTimeAgentItems.setBounds(166, 121, 127, 26);
 		panel_2.add(lblTimeAgentItems);
 		
-		JButton btnProfile = new JButton("Profile");
-		btnProfile.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnProfile.setBounds(589, 10, 143, 37);
-		frmRocketManagerMain.getContentPane().add(btnProfile);
+	JButton btnNewButton = new JButton("Profile");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				manager.launchProfileScreen();
+				finishedWindow();
+				
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnNewButton.setBounds(571, 10, 136, 37);
+		frmRocketManagerMain.getContentPane().add(btnNewButton);
+		
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		String s = Controller.readFromFile();
-		String[] p = s.split("-");
-		int typeId = Integer.parseInt(p[0].trim());
-		String farmerName = p[1];
-		String farmName = p[2];
-		int playDays = Integer.parseInt(p[3].trim());
-		Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
-		Controller.readPlayConfigureFromFile();
+		Controller.init(s);
 		
 		Controller.showStore();
 		Map<String, Integer> map = Controller.showStore(); 

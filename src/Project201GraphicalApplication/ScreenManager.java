@@ -45,6 +45,11 @@ public class ScreenManager {
 		StoreScreen storeWindow = new StoreScreen(this);
 	}
 	
+	public void launchProfileScreen() {
+		ProfileScreen profileWindow = new ProfileScreen(this);
+	}
+	
+	
 	public void closeSetupScreen(SetupScreen setupWindow) {
 		setupWindow.closeWindows();
 		launchMainScreen();
@@ -65,19 +70,17 @@ public class ScreenManager {
 	}
 	
 	
+	public void closeProfileScreen(ProfileScreen profileWindow) {
+		profileWindow.closeWindows();
+		launchMainScreen();
+	}
+	
 	public static void main(String[] args) {
 		String s = Controller.readFromFile();
 		ScreenManager manager = new ScreenManager();
 		if (s.length() == 0) {		
 			manager.launchSetupScreen();
 		} else {
-			String[] p = s.split("-");
-			int typeId = Integer.parseInt(p[0].trim());
-			String farmerName = p[1];
-			String farmName = p[2];
-			int playDays = Integer.parseInt(p[3].trim());
-			Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
-			Controller.readPlayConfigureFromFile();
 			manager.launchMainScreen();
 		}
 

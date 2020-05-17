@@ -118,8 +118,8 @@ public class SetupScreen {
 		btnNewButton_6.setBounds(210, 325, 175, 52);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String farmName = textField.getText();
-				String farmerName = textField_1.getText();
+				String farmName = textField.getText().toString();
+				String farmerName = textField_1.getText().toString();
 				int playDay = comboBox_1.getSelectedIndex();
 				int type = comboBox.getSelectedIndex();
 				String types[] = {"1","2","3","4"};

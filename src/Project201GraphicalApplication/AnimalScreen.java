@@ -118,14 +118,6 @@ public class AnimalScreen {
 		btnNewButton_6.setBounds(210, 325, 175, 52);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String farmName = textField.getText();
-				String farmerName = textField_1.getText();
-				int playDay = comboBox_1.getSelectedIndex();
-				int type = comboBox.getSelectedIndex();
-				String types[] = {"1","2","3","4"};
-				String ss = types[type] + "-" + farmerName + "-" + farmName + "-" + playDays[playDay];
-				Controller.writeToFile(ss);
-				System.out.print(farmName+ farmerName + playDay + type);
 				finishedWindow();
 			}
 		});

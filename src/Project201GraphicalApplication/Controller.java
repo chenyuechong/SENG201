@@ -283,4 +283,32 @@ public class Controller {
             e.printStackTrace();
         }
 	}
+
+	public static String getFarmMessage() {
+		String s = "";
+		s += myFarm.getName();
+		s += ";";
+		s += myFarmer.getName();
+		s += ";";
+		s += myFarm.getType();
+		s += ";";
+		s += currentDay;
+		s += ";";
+		s += myFarm.getMoney();
+		return s;
+	}
+
+
+	public static void init(String s)
+	{
+		String[] p = s.split("-");
+		int typeId = Integer.parseInt(p[0].trim());
+		String farmerName = p[1];
+		String farmName = p[2];
+		int playDays = Integer.parseInt(p[3].trim());
+		Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
+		Controller.readPlayConfigureFromFile();
+		
+		System.out.print("init the farm paraments");
+	}
 }
