@@ -15,8 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
-import Project201.Controller;
-
 import java.awt.Color;
 import javax.swing.JComboBox;
 
@@ -24,18 +22,28 @@ import javax.swing.JComboBox;
 public class AnimalScreen {
 
 	private JFrame window;
-	private JTextField textField;
+	private JTextField textFieldPurchasePrice;
 	private ScreenManager manager;
-	private JTextField textField_1;
+	private JTextField textFieldHappiness;
 	private String name;
-	private int index;
 	
+	
+
+	private JTextField textField;
+	private JTextField textFieldSerialNumber;
+
+	static String[] animals = {"Pig", "Hen", "Cow"};
+	int index;
 	public AnimalScreen(ScreenManager incomingManager,String animalName, int n) {
+		
+		System.out.print("AnimalScreen constructor:" + animalName + n);
 		manager = incomingManager;
-		initialize();
-		window.setVisible(true);
 		name = animalName;
 		index = n;
+		initialize();
+		window.setVisible(true);
+
+
 	}
 	
 	
@@ -51,75 +59,44 @@ public class AnimalScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Hen hen = new Hen();
+		Pig pig = new Pig();
+		Cow cow = new Cow();
 		window = new JFrame();
-		window.setTitle("Funning Farm Setup");
-		window.setBounds(100, 100, 548, 440);
+		window.setTitle("Funning Farm - Animal");
+		window.setBounds(100, 100, 521, 403);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
-			
-		JLabel lblNewLabel = new JLabel("Welcome to Funning Farm !");
-		lblNewLabel.setBounds(10, 10, 277, 47);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		window.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("What is your farm name?");
+					
+		JLabel lblNewLabel_1 = new JLabel("Purchase Price:");
 		lblNewLabel_1.setBounds(10, 67, 217, 28);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(237, 67, 200, 38);
-		window.getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldPurchasePrice = new JTextField();
+		textFieldPurchasePrice.setBounds(279, 67, 200, 38);
+		window.getContentPane().add(textFieldPurchasePrice);
+		textFieldPurchasePrice.setColumns(10);
 		
 		
-		JLabel lblWhatIsYour = new JLabel("What is your farmer name?");
+		JLabel lblWhatIsYour = new JLabel("Happiness:");
 		lblWhatIsYour.setBounds(10, 127, 217, 28);
 		lblWhatIsYour.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblWhatIsYour);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(237, 125, 200, 38);
-		textField_1.setColumns(10);
-		window.getContentPane().add(textField_1);
+		textFieldHappiness = new JTextField();
+		textFieldHappiness.setBounds(279, 125, 200, 38);
+		textFieldHappiness.setColumns(10);
+		window.getContentPane().add(textFieldHappiness);
 		
-		JLabel lblWhichTypeWould = new JLabel("Which type would you like");
-		lblWhichTypeWould.setBounds(10, 183, 217, 28);
-		lblWhichTypeWould.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		window.getContentPane().add(lblWhichTypeWould);
-		
-		JLabel lblHowManyDays = new JLabel("How many days to play?");
-		lblHowManyDays.setBounds(10, 245, 217, 28);
-		lblHowManyDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		window.getContentPane().add(lblHowManyDays);
-		
-		String farmTypes[]={"1: Normal","2:20% more money","3: 20% more animal's happiness","4: 20% crop grow speed"};  
-		JComboBox comboBox = new JComboBox(farmTypes);
-		comboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String type = "Selected: "   
-						   + comboBox.getSelectedItem().toString()+ " \n";  
-				System.out.print(type);
-			}
-		});
-		comboBox.setBounds(237, 180, 200, 38);
-		window.getContentPane().add(comboBox);
+		String farmTypes[]={"1: Normal","2:20% more money","3: 20% more animal's happiness","4: 20% crop grow speed"};
 		
 		
-		String playDays[]={"5","6","7","8","9","10"};  
-		JComboBox comboBox_1 = new JComboBox(playDays);
-		comboBox_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String playday =  comboBox_1.getItemAt(comboBox_1.getSelectedIndex()).toString();
-				System.out.print("choose to play "+ comboBox_1.getItemAt(comboBox_1.getSelectedIndex()) + " days\n" );
-			}
-		});
-		comboBox_1.setBounds(237, 242, 200, 38);
-		window.getContentPane().add(comboBox_1);
+		String playDays[]={"5","6","7","8","9","10"};
 		
 		JButton btnNewButton_6 = new JButton("Back To MainScreen");
-		btnNewButton_6.setBounds(210, 325, 175, 52);
+		btnNewButton_6.setBounds(279, 317, 200, 38);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
@@ -127,6 +104,81 @@ public class AnimalScreen {
 		});
 		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(btnNewButton_6);
+		
+		JLabel lblHealth = new JLabel("Health:");
+		lblHealth.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblHealth.setBounds(10, 186, 217, 28);
+		window.getContentPane().add(lblHealth);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(279, 184, 200, 38);
+		window.getContentPane().add(textField);
+		
+		JButton btnNewButtonFeed = new JButton("Feed");
+		btnNewButtonFeed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("\n" + name + index);
+				
+				Controller.feedAnimal(name, index);
+				
+				String[] s = Controller.getAnimalObjectStatus(name, index).split(";");
+				
+				textFieldPurchasePrice.setText(s[0]);
+				textFieldHappiness.setText(s[1]);
+				textField.setText(s[2]);
+				
+			}
+		});
+		btnNewButtonFeed.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnNewButtonFeed.setBounds(10, 258, 200, 38);
+		window.getContentPane().add(btnNewButtonFeed);
+		
+		JButton btnPlayWithIt = new JButton("Play with it");
+		btnPlayWithIt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.playWithAnimal(name, index);
+				String[] s = Controller.getAnimalObjectStatus(name, index).split(";");
+				
+				textFieldPurchasePrice.setText(s[0]);
+				textFieldHappiness.setText(s[1]);
+				textField.setText(s[2]);
+			}
+		});
+		btnPlayWithIt.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnPlayWithIt.setBounds(279, 258, 200, 38);
+		window.getContentPane().add(btnPlayWithIt);
+		
+		JLabel lblSerialNumber = new JLabel("Serial Number:");
+		lblSerialNumber.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSerialNumber.setBounds(10, 10, 217, 28);
+		window.getContentPane().add(lblSerialNumber);
+		
+		textFieldSerialNumber = new JTextField();
+		textFieldSerialNumber.setColumns(10);
+		textFieldSerialNumber.setBounds(279, 10, 200, 38);
+		window.getContentPane().add(textFieldSerialNumber);
+		
+		JButton btnUsingHappyagentitem = new JButton("Using HappyAgentItem");
+		btnUsingHappyagentitem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnUsingHappyagentitem.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnUsingHappyagentitem.setBounds(10, 317, 200, 38);
+		window.getContentPane().add(btnUsingHappyagentitem);
+		
+		
+
+		
+		textFieldSerialNumber.setText(String.valueOf(index));
+		
+		String[] s = Controller.getAnimalObjectStatus(name, index).split(";");
+		
+		textFieldPurchasePrice.setText(s[0]);
+		textFieldHappiness.setText(s[1]);
+		textField.setText(s[2]);
+			
 		
 		
 	}

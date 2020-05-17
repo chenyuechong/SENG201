@@ -34,6 +34,7 @@ public class ScreenManager {
 	}
 
 	public void launchAnimalScreen(String animalName, int index) {
+		System.out.print("lunchAnimalScreen");
 		AnimalScreen setupWindow = new AnimalScreen(this, animalName, index);
 	}
 	

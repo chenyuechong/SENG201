@@ -166,7 +166,9 @@ public class MainScreen {
 		JButton btnChooseCow = new JButton("Interaction");
 		btnChooseCow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.launchAnimalScreen("Cow", Integer.parseInt(textCowField.getText()));
+				int index = Integer.parseInt(textCowField.getText());
+				System.out.print(index);
+				manager.launchAnimalScreen("Cow", index);
 				finishedWindow();
 			}
 		});

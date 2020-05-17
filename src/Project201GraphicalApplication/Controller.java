@@ -74,11 +74,10 @@ public class Controller {
 		myFarm.setIsChangeDay(true);		
 	}
 	
-	public static void playWithAnimal(int index)
+	public static void playWithAnimal(String animalName, int index)
 	{
 		try {
-			
-				myFarmer.playWithAnimal(animals[index-1], myFarm);
+			myFarmer.playWithAnimal(animalName, index, myFarm);
 				System.out.print("You have played with  " + animals[index-1] + "for a while\n");
 			
 		} catch (IOException e) {
@@ -88,11 +87,13 @@ public class Controller {
 		
 	}
 	
-	public static void feedAnimal(int index)
+	public static void feedAnimal(String animalName, int index)
 	{
 		try {		
-			myFarmer.feedAnimal(animals[index-1], myFarm);
-			System.out.print("You have played with  " + animals[index-1] + "for a while\n");		
+			myFarmer.feedAnimal(animalName,index, myFarm);
+			
+			System.out.print("You have played with  " + animalName + "for a while\n");	
+			
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
@@ -311,4 +312,99 @@ public class Controller {
 		
 		System.out.print("init the farm paraments");
 	}
+	
+	
+	public static String getCropObjectStatus(String cropName, int index) {
+		
+		String s = "";
+		switch (cropName) {
+		case "Corn":
+			Corn cron= myFarm.cornList.get(index -1);
+			s +=  String.valueOf(cron.getPurchasePrice());
+			s += ";";
+			s +=  String.valueOf(cron.getHeigth());
+			s += ";";
+			s +=  String.valueOf(cron.getHarvestTime());
+			break;
+		case "Carrot":
+			Carrot p= myFarm.carrotList.get(index -1);
+			s +=  String.valueOf(p.getPurchasePrice());
+			s += ";";
+			s +=  String.valueOf(p.getHeigth());
+			s += ";";
+			s +=  String.valueOf(p.getHarvestTime());
+			break;
+		case "Eggplant":
+			Eggplant e= myFarm.eggplantList.get(index -1);
+			s +=  String.valueOf(e.getPurchasePrice());
+			s += ";";
+			s +=  String.valueOf(e.getHeigth());
+			s += ";";
+			s +=  String.valueOf(e.getHarvestTime());
+			break;
+		case "KiwiFruit":
+			KiwiFruit k= myFarm.kiwifruitList.get(index -1);
+			s +=  String.valueOf(k.getPurchasePrice());
+			s += ";";
+			s +=  String.valueOf(k.getHeigth());
+			s += ";";
+			s +=  String.valueOf(k.getHarvestTime());
+			break;
+		case "Tomato":
+			Tomato t= myFarm.tomatoList.get(index -1);
+			s +=  String.valueOf(t.getPurchasePrice());
+			s += ";";
+			s +=  String.valueOf(t.getHeigth());
+			s += ";";
+			s +=  String.valueOf(t.getHarvestTime());
+			break;
+		}
+		return s;
+	}
+		
+	public static String getAnimalObjectStatus(String animalName, int index) {
+		String s = "";
+		switch (animalName) {
+		case "Pig":
+			Pig p= myFarm.pigList.get(index -1);
+			s += String.valueOf(p.getPurchasePrice());
+			s += ";";
+			s += String.valueOf(p.getHappiness());
+			s += ";";
+			s += String.valueOf(p.getHealth());
+			break;
+		case "Hen":
+			Hen h= myFarm.henList.get(index -1);
+			s += String.valueOf(h.getPurchasePrice());
+			s += ";";
+			s += String.valueOf(h.getHappiness());
+			s += ";";
+			s += String.valueOf(h.getHealth());
+			break;
+		case "Cow":
+			Cow c= myFarm.cowList.get(index -1);
+			s += String.valueOf(c.getPurchasePrice());
+			s += ";";
+			s += String.valueOf(c.getHappiness());
+			s += ";";
+			s += String.valueOf(c.getHealth());
+			break;
+		
+		}
+		return s;
+	}
+		
+	public static void waterCrop(String cropName, int index) {
+		
+		try {		
+			myFarmer.waterCrop(cropName, index - 1, myFarm);
+			System.out.print("You watered  " + cropName + "\n");		
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+		System.out.print(e.getMessage());
+		}
+	}
 }
+
+	
+	

@@ -317,31 +317,25 @@ public class Farmer {
 	
 	
 	
-	public void feedAnimal(String animalName, Farm myfarm) throws IOException {
+	public void feedAnimal(String animalName, int index , Farm myfarm) throws IOException {
 		try {
-			if(countAnimal(animalName, myfarm) == 0)
+			if(countAnimal(animalName, myfarm) == 0 || myfarm.animalFeedItemsList.size() <= 0)
 				throw new IOException("oops, you do not have animal to feed\n");
 			switch (animalName) {
 			case "Pig":
-				for (int i = 0; i < myfarm.pigList.size(); i++) {
-					Pig p = myfarm.pigList.get(i);
+					Pig p = myfarm.pigList.get(index);
 					myfarm.consumeFeedItems();
 					p.feed();
-				}
 				break;
 			case "Hen":
-				for (int i = 0; i < myfarm.henList.size(); i++) {
-					Hen h = myfarm.henList.get(i);
+					Hen h = myfarm.henList.get(index);
 					myfarm.consumeFeedItems();
 					h.feed();
-				}
 				break;
 			case "Cow":
-				for (int i = 0; i < myfarm.cowList.size(); i++) {
-					Cow c = myfarm.cowList.get(i);
+					Cow c = myfarm.cowList.get(index);
 					myfarm.consumeFeedItems();
 					c.feed();
-				}
 				break;
 			}
 		} catch (IllegalArgumentException e) {
@@ -437,36 +431,72 @@ public class Farmer {
 			}
 	}
 	
-	public void playWithAnimal(String animalName, Farm myfarm) throws IOException{
+	public void playWithAnimal(String animalName, int index, Farm myfarm) throws IOException {
 
-			if (countAnimal(animalName, myfarm) ==0 )
-			{
-				throw new IOException("oops, you do not have " + animalName + " to play\n" );
-			}
-			
-			switch (animalName) {
-			case "Pig":
-				for (int i = 0; i < myfarm.pigList.size(); i++) {
-					Pig p = myfarm.pigList.get(i);
-					p.play();
-				}
-				break;
-			case "Hen":
-				for (int i = 0; i < myfarm.henList.size(); i++) {
-					Hen h = myfarm.henList.get(i);
-					h.play();
-				}
-				break;
-			case "Cow":
-				for (int i = 0; i < myfarm.cowList.size(); i++) {
-					Cow c = myfarm.cowList.get(i);
-					c.play();
-				}
-				break;
-			}
-		
+		if (countAnimal(animalName, myfarm) == 0) {
+			throw new IOException("oops, you do not have " + animalName + " to play\n");
+		}
+
+		switch (animalName) {
+		case "Pig":
+
+			Pig p = myfarm.pigList.get(index);
+			p.play();
+
+			break;
+		case "Hen":
+
+			Hen h = myfarm.henList.get(index);
+			h.play();
+
+			break;
+		case "Cow":
+
+			Cow c = myfarm.cowList.get(index);
+			c.play();
+
+			break;
+		}
+
 	}
 	
+	
+	public void waterCrop(String cropName, int index, Farm myfarm) throws IOException {
+		try {
+			if (countCrops(cropName, myfarm) == 0)
+				throw new IOException("oops, you do not have crops or timeAgentItems to use \n");
+			switch (cropName) {
+			case "Corn":
+				Corn corn = myfarm.cornList.get(index);
+				corn.water();
+				break;
+			case "Carrot":
+
+				Carrot c = myfarm.carrotList.get(index);
+				c.water();
+				System.out.print("water Carrot in Farmer \n");
+				break;
+			case "Eggplant":
+
+				Eggplant e = myfarm.eggplantList.get(index);
+				e.water();
+				break;
+			case "KiwiFruit":
+
+				KiwiFruit k = myfarm.kiwifruitList.get(index);
+				k.water();
+				break;
+			case "Tomato":
+
+				Tomato t = myfarm.tomatoList.get(index);
+				t.water();
+
+				break;
+			}
+		} catch (Exception e) {
+			throw new IOException(e.getMessage());
+		}
+	}
 	
 	public static String getItemDetail(Farm myFarm) {
 		String s = "Items-AnimalFeedItems: "+ myFarm.animalFeedItemsList.size()+ "\n";
