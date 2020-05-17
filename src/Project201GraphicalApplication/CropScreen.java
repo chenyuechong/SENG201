@@ -21,14 +21,14 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 
 
-public class SetupScreen {
+public class CropScreen {
 
 	private JFrame window;
 	private JTextField textField;
 	private ScreenManager manager;
 	private JTextField textField_1;
 	
-	public SetupScreen(ScreenManager incomingManager) {
+	public CropScreen(ScreenManager incomingManager) {
 		manager = incomingManager;
 		initialize();
 		window.setVisible(true);
@@ -40,7 +40,7 @@ public class SetupScreen {
 	}
 	
 	public void finishedWindow() {
-		manager.closeSetupScreen(this);
+		manager.closeCropScreen(this);
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class SetupScreen {
 		comboBox_1.setBounds(237, 242, 200, 38);
 		window.getContentPane().add(comboBox_1);
 		
-		JButton btnNewButton_6 = new JButton("Start Adventure");
+		JButton btnNewButton_6 = new JButton("Back To MainScreen");
 		btnNewButton_6.setBounds(210, 325, 175, 52);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

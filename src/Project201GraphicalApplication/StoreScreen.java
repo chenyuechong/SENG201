@@ -21,14 +21,14 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 
 
-public class SetupScreen {
+public class StoreScreen {
 
 	private JFrame window;
 	private JTextField textField;
 	private ScreenManager manager;
 	private JTextField textField_1;
 	
-	public SetupScreen(ScreenManager incomingManager) {
+	public StoreScreen(ScreenManager incomingManager) {
 		manager = incomingManager;
 		initialize();
 		window.setVisible(true);
@@ -40,7 +40,7 @@ public class SetupScreen {
 	}
 	
 	public void finishedWindow() {
-		manager.closeSetupScreen(this);
+		manager.closeStoreScreen(this);
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class SetupScreen {
 	private void initialize() {
 		window = new JFrame();
 		window.setTitle("Funning Farm Setup");
-		window.setBounds(100, 100, 548, 440);
+		window.setBounds(100, 100, 742, 683);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
@@ -114,8 +114,8 @@ public class SetupScreen {
 		comboBox_1.setBounds(237, 242, 200, 38);
 		window.getContentPane().add(comboBox_1);
 		
-		JButton btnNewButton_6 = new JButton("Start Adventure");
-		btnNewButton_6.setBounds(210, 325, 175, 52);
+		JButton btnNewButton_6 = new JButton("Back to MainScreen");
+		btnNewButton_6.setBounds(262, 584, 175, 52);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String farmName = textField.getText();
