@@ -126,39 +126,39 @@ public class Controller {
 	
 	
 	
-	public static void buySeed(int index, int count) {		
+	public static void buySeed(String cropName, int count) {		
 		try {
 			System.out.print("need to buy " + count + "seeds\n");
 			for (int i = 0; i < count; i++) {
-				myFarmer.buySeed(crops[index - 1], myFarm);
+				myFarmer.buySeed(cropName, myFarm);
 			}
-			System.out.print("you bought " + crops[index - 1] + " count:" + count + ", there are " + myFarm.getMoney()
+			System.out.print("you bought " + cropName + " count:" + count + ", there are " + myFarm.getMoney()
 					+ " dollars left\n");
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
 		}
 	}
 	
-	public static void buyAnimal(int index, int count) {
+	public static void buyAnimal(String animalName, int count) {
 		try {
 			System.out.print("need to buy " + count + "animals\n");
 			for (int i = 0; i < count; i++) {
-				myFarmer.buyAnimal(animals[index - 1], myFarm);
+				myFarmer.buyAnimal(animalName, myFarm);
 			}
-			System.out.print("you bought " + animals[index - 1] + " count:" + count + ", there are " + myFarm.getMoney()
+			System.out.print("you bought " + animalName + " count:" + count + ", there are " + myFarm.getMoney()
 					+ " dollars left\n");
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
 		}
 	}
 
-	public static void buyItems(int index, int count) {
+	public static void buyItems(String itemsName, int count) {
 		try {
 			System.out.print("need to buy " + count + "items\n");
 			for (int i = 0; i < count; i++) {
-				myFarmer.buyItems(items[index - 1], myFarm);
+				myFarmer.buyItems(itemsName, myFarm);
 			}
-			System.out.print("you bought " + items[index - 1] + " count:" + count + ", there are " + myFarm.getMoney()
+			System.out.print("you bought " + itemsName + " count:" + count + ", there are " + myFarm.getMoney()
 					+ " dollars left\n");
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
@@ -237,9 +237,9 @@ public class Controller {
 	
 	public static void writePlayConfigureToFile() {
 		String s ="";
-		s= "money-" + myFarm.getMoney()+"\n";
-		s = "area-" + myFarm.getArea() +"\n";
-		s ="day-" + currentDay+"\n";
+		s += "money-" + myFarm.getMoney()+"\n";
+		s += "area-" + myFarm.getArea() +"\n";
+		s +="day-" + currentDay+"\n";
 		s+= myFarmer.getItemDetail(myFarm);
 		s+= myFarmer.getAniamlDetail(myFarm);
 		s+= myFarmer.getCropDetail(myFarm);
@@ -269,7 +269,7 @@ public class Controller {
 			if(line[0].equals("money"))
 			{
 				//System.out.println("money");
-				myFarm.setMoney(Double.parseDouble(line[1]));
+				myFarm.setMoney(Integer.parseInt(line[1]));
 			}
 			if(line[0].equals("area"))
 			{

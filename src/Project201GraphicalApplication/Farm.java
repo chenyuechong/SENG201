@@ -15,7 +15,7 @@ public class Farm extends Observable{
 	
 	private String name ;
 	private int type ;
-	private double money;
+	private int money;
 	static boolean isChangeDay = false;
 	static int area ;
 	
@@ -67,7 +67,7 @@ public class Farm extends Observable{
 		type = n;
 	}
 	
-	public void setMoney(double leftMoney)
+	public void setMoney(int leftMoney)
 	{
 		money = leftMoney;
 	}
@@ -77,7 +77,7 @@ public class Farm extends Observable{
 		this.name = name;
 	}
 	
-	public double getMoney() {
+	public int getMoney() {
 		return this.money;
 	}
 		

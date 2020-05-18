@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -14,9 +15,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
-
-import Project201.Controller;
-
 import java.awt.Color;
 import javax.swing.JComboBox;
 
@@ -64,23 +62,23 @@ public class StoreScreen {
 		lblHowManyDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblHowManyDays);
 		
-	  
+		String goodsName = "";
 		JComboBox comboBox = new JComboBox(crops);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String type = "Selected: "   
-						   + comboBox.getSelectedItem().toString()+ " \n";  
-				System.out.print(type);
+			String	cropName = comboBox.getSelectedItem().toString();
+
 			}
 		});
 		comboBox.setBounds(126, 360, 200, 38);
 		window.getContentPane().add(comboBox);
 		
 		
+		 
 		JComboBox comboBox_1 = new JComboBox(animals);
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String playday =  comboBox_1.getItemAt(comboBox_1.getSelectedIndex()).toString();
+				String animalName =  comboBox_1.getSelectedItem().toString();
 				System.out.print("choose to play "+ comboBox_1.getItemAt(comboBox_1.getSelectedIndex()) + " days\n" );
 			}
 		});
@@ -103,22 +101,76 @@ public class StoreScreen {
 		window.getContentPane().add(lblItemList);
 		
 		JComboBox comboBox_2 = new JComboBox(items);
+		comboBox_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		comboBox_2.setBounds(126, 490, 200, 38);
 		window.getContentPane().add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox(numbers);
+		comboBox_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		comboBox_3.setBounds(352, 360, 200, 38);
 		window.getContentPane().add(comboBox_3);
 		
 		JComboBox comboBox_4 = new JComboBox(numbers);
+		comboBox_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		comboBox_4.setBounds(352, 422, 200, 38);
 		window.getContentPane().add(comboBox_4);
 		
 		JComboBox comboBox_5 = new JComboBox(numbers);
+		comboBox_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		comboBox_5.setBounds(352, 490, 200, 38);
 		window.getContentPane().add(comboBox_5);
 		
 		JButton btnNewButton = new JButton("Buy");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cropName = crops[comboBox.getSelectedIndex()];
+				String animalName = animals[comboBox_1.getSelectedIndex()];
+				String ItemName = items[comboBox_2.getSelectedIndex()];
+				
+				String cropNumber = numbers[comboBox_3.getSelectedIndex()];
+				String animalNumber = numbers[comboBox_4.getSelectedIndex()];
+				String itemsNumber = numbers[comboBox_5.getSelectedIndex()];
+				
+				System.out.print("chose "+ cropName + " " + cropNumber +"\n" );
+				System.out.print("chose "+ animalName + " " + animalNumber +"\n" );
+				System.out.print("chose "+ ItemName + " " + itemsNumber +"\n" );
+				
+				String s = "You choose ";
+				if(cropName.equals("None") == false && cropNumber.equals("0")==false)
+				{
+					Controller.buySeed(cropName,Integer.parseInt(cropNumber));
+					s += (cropName + " " + cropNumber);
+				}
+				else if(animalName.equals("None") == false && animalNumber.equals("0") == false)
+				{
+					Controller.buyAnimal(animalName,Integer.parseInt(animalNumber));
+					s += (animalName + " " + animalNumber);
+					
+				}
+				else if(ItemName.equals("None") == false && itemsNumber.equals("0")==false)
+				{
+					Controller.buyItems(ItemName,Integer.parseInt(itemsNumber));
+					s += (ItemName + " " + itemsNumber);
+					
+				}
+				else {
+					s += " nothing";
+				}
+				JOptionPane.showMessageDialog(null,s , "Message",JOptionPane.PLAIN_MESSAGE);
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(126, 579, 200, 38);
 		window.getContentPane().add(btnNewButton);
