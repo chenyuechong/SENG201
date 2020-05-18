@@ -52,7 +52,7 @@ public class MainScreen {
 	}
 	
 	public void finishedWindow() {
-		Controller.writePlayConfigureToFile();
+		
 		manager.closeMainScreen(this);
 	}
 	
@@ -118,12 +118,13 @@ public class MainScreen {
 			
 		});
 		btnRefuelRocket.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnRefuelRocket.setBounds(347, 691, 167, 37);
+		btnRefuelRocket.setBounds(296, 691, 167, 37);
 		frmManagerMain.getContentPane().add(btnRefuelRocket);
 		
 		JButton btnNewButton_6 = new JButton("Quit");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Controller.writePlayConfigureToFile();
 				finishedWindow();
 			}
 		});
@@ -479,6 +480,18 @@ public class MainScreen {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(571, 10, 136, 37);
 		frmManagerMain.getContentPane().add(btnNewButton);
+		
+		JButton btnCleardata = new JButton("Finish Game");
+		btnCleardata.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.finishGame();
+				finishedWindow();
+				
+			}
+		});
+		btnCleardata.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCleardata.setBounds(521, 691, 167, 37);
+		frmManagerMain.getContentPane().add(btnCleardata);
 		
 			
 		

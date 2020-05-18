@@ -456,6 +456,17 @@ public class Controller {
 		return index;
 	}
 
+	
+	public static void finishGame()
+	{
+		 File file = new File("farm.txt");
+         if(file.exists())
+        	 file.delete();
+         File file1 = new File("play.txt");
+         if(file1.exists())
+        	 file1.delete();
+         
+	}
 }
 
 	
