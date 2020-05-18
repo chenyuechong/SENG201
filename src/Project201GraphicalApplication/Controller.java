@@ -29,33 +29,6 @@ public class Controller {
 	static String[] animals = {"Pig", "Hen", "Cow"};
 	static String[] items = {"AnimalFeedItems", "HappyAgentItems", "TimeAgentItems"};
 	static int cropCount = 0;
-	///(a) The wells have dried up, and the crops are thirsty.
-	//(b) The player loses half of their growing crops. The exact crops are determined randomly.
-	public  void drought() {
-		Random random = new Random();
-		int i = random.nextInt(5);
-		myFarm.lostCrop(crops[i - 1]);
-		
-	}
-	
-	//(a) One or more of your animals have escaped through a broken fence.
-	//(b) The player loses one or more of their animals, the exact number	determined randomly.
-	//(c) The remaining animals lose a substantial amount of happiness.
-	public static void brokenfence() {
-		Random random = new Random();
-		int i2 = random.nextInt(3);
-		
-		
-	}
-	//(a) Your farm has won the top award at the annual county fair.
-	//(b) The player earns a reasonable sum of money.
-	//(c) The amount of money earned should be scaled by the number of crops and animals the farm contains.
-	public static void countyFair() {
-		Random random = new Random();
-		int i2 = random.nextInt(100);
-		
-	}
-		
 	
 	public static void createFarm(int typeId, String farmerName, String farmName, int nPlayDays)
 	{
@@ -455,6 +428,34 @@ public class Controller {
 		System.out.print(e.getMessage());
 		}
 	}
+
+	
+	
+	public static int dealRandomEvent() {
+		int max=3;
+
+		int min=1;
+
+		Random random = new Random();
+
+		int index = random.nextInt(max)%(max-min+1) + min;
+		
+		if(index == 1)
+		{
+			for(int i = 0; i< 5; i++)
+				myFarm.droughtEvent(crops[i]);
+		}
+		if(index == 2)
+		{
+			myFarm.fenceBrokenEvent();
+		}
+		if(index == 3)
+		{
+			myFarm.countryFairEvent();
+		}
+		return index;
+	}
+
 }
 
 	

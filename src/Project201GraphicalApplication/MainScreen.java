@@ -84,9 +84,18 @@ public class MainScreen {
 				else
 				{
 				Controller.moveToNextDay();
-				
 				String s = "Move to next day Success! Acconding the number of crops you'v got " + Controller.cropCount *5 +" dollers , every animal and crop's status is changed";
 				JOptionPane.showMessageDialog(null, s, "Message",JOptionPane.PLAIN_MESSAGE);
+				
+				
+				int n = Controller.dealRandomEvent();
+				  if (n == 1)
+					  JOptionPane.showMessageDialog(null,"oops, you wells have dried up, and the crops are thirsty, you will lost some crops,check it" , "Message",JOptionPane.PLAIN_MESSAGE);
+				  if (n == 2)
+					  JOptionPane.showMessageDialog(null,"oops, your fence is broken, you will lost some animals,check it" , "Message",JOptionPane.PLAIN_MESSAGE);
+				  if (n == 3)
+					  JOptionPane.showMessageDialog(null,"Congratulation! Your farm has won the top award at the annual county fair.You earn a lot a money, you can check in your profile" , "Message",JOptionPane.PLAIN_MESSAGE);
+
 				}
 			}
 		});
@@ -539,6 +548,7 @@ public class MainScreen {
 				break;
 		  }
 		  System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue()); 
-		}
+		  	  
+		 		}
 	}
 }

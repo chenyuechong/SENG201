@@ -128,7 +128,70 @@ public class Farm extends Observable{
 	}
 	
 	
-	public void lostCrop(String seedName) {
+	
+	
+	public void setIsChangeDay(boolean isChangeDay)
+	{
+		if(isChangeDay)
+		{
+			this.isChangeDay = isChangeDay;
+			
+			super.setChanged();
+			super.notifyObservers("move to next day");
+			
+			money += getBouns(5);
+		}
+		else
+			this.isChangeDay = isChangeDay;
+	}
+
+	public int getBouns(int ndollar) {
+		int b = 0;
+		b += pigList.size()*ndollar;
+		b += henList.size()*ndollar;
+		b += cowList.size()*ndollar;
+		b += carrotList.size()*ndollar;
+		b += cornList.size()*ndollar;
+		b += eggplantList.size()*ndollar;
+		b += kiwifruitList.size()*ndollar;
+		b += tomatoList.size()*ndollar;
+		return b;
+	}
+	
+
+	public int countryFairEvent()
+	{
+		int nIncreaseMoney = getBouns(10);
+		increaseMoney(nIncreaseMoney);
+		return nIncreaseMoney;
+	}
+	
+	public int fenceBrokenEvent()
+	{
+		int count = 0;
+		count += henList.size();
+		count += cowList.size();
+		count += pigList.size();
+		final double d = Math.random();
+		int lostCount = (int)(d*count);//get the random lost count
+		for(int i = 0; i< lostCount; i++)
+		{
+			if(henList.size()>=1)
+				henList.remove(henList.size()-1);
+			else
+			{
+				if (cowList.size()>=1)
+					cowList.remove(cowList.size()-1);
+				else
+					pigList.remove(pigList.size()-1);
+				
+			}
+		}
+		
+		return lostCount;
+	}
+	
+	public void droughtEvent(String seedName) {
 		switch(seedName) {
 		case "Corn":
 			int len = cornList.size();
@@ -156,35 +219,6 @@ public class Farm extends Observable{
 				tomatoList.remove(i);
 			break;
 		}
-	}
-	
-	
-	public void setIsChangeDay(boolean isChangeDay)
-	{
-		if(isChangeDay)
-		{
-			this.isChangeDay = isChangeDay;
-			
-			super.setChanged();
-			super.notifyObservers("move to next day");
-			
-			money += moveToNextDayBouns();
-		}
-		else
-			this.isChangeDay = isChangeDay;
-	}
-
-	public double moveToNextDayBouns() {
-		double b = 0.0;
-		b += pigList.size()*5;
-		b += henList.size()*5;
-		b += cowList.size()*5;
-		b += carrotList.size()*5;
-		b += cornList.size()*5;
-		b += eggplantList.size()*5;
-		b += kiwifruitList.size()*5;
-		b += tomatoList.size()*5;
-		return b;
 	}
 	
 	public String toString()
