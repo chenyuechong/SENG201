@@ -3,7 +3,7 @@ package Project201GraphicalApplication;
 public class Cow  extends Animal{
 	public Cow()
 	{
-		super("Cow", 2.0, 1.0, 1.0);
+		super("Cow", 2, 1, 1);
 	}
 	
 	public String toString() {

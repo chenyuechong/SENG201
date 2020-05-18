@@ -3,7 +3,7 @@ package Project201GraphicalApplication;
 public class KiwiFruit extends Crop{
 	public KiwiFruit()
 	{
-		super("KiwiFruit", 1.0, 10.0, 2.0,2.0);
+		super("KiwiFruit", 1, 10, 2,2);
 	}
 	
 	public String toString() {

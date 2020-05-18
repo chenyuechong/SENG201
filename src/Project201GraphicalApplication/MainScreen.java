@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JSlider;
@@ -51,6 +52,7 @@ public class MainScreen {
 	}
 	
 	public void finishedWindow() {
+		Controller.writePlayConfigureToFile();
 		manager.closeMainScreen(this);
 	}
 	
@@ -73,11 +75,39 @@ public class MainScreen {
 		frmManagerMain.getContentPane().add(lblNewLabel);
 		
 		JButton btnCleanRocket = new JButton("Move to next day");
+		btnCleanRocket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Controller.currentDay == Controller.playDays)
+				{
+					JOptionPane.showMessageDialog(null, "oops, you are in the final day,can not move to the next day", "Message",JOptionPane.PLAIN_MESSAGE);
+				}
+				else
+				{
+				Controller.moveToNextDay();
+				
+				String s = "Move to next day Success! Acconding the number of crops you'v got " + Controller.cropCount *5 +" dollers , every animal and crop's status is changed";
+				JOptionPane.showMessageDialog(null, s, "Message",JOptionPane.PLAIN_MESSAGE);
+				}
+			}
+		});
 		btnCleanRocket.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCleanRocket.setBounds(59, 691, 187, 37);
 		frmManagerMain.getContentPane().add(btnCleanRocket);
 		
 		JButton btnRefuelRocket = new JButton("Expand Land");
+		btnRefuelRocket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean isSuccess = Controller.expandFarmArea();
+				if(isSuccess) {
+				int n = Controller.getFarmArea() * 5;
+				
+				String s = "Expand Area Success! You can have " + n +" crops";
+				JOptionPane.showMessageDialog(null, s, "Message",JOptionPane.PLAIN_MESSAGE);}
+				else {
+					JOptionPane.showMessageDialog(null, "oops, you do not have enough money to expand area", "Message",JOptionPane.PLAIN_MESSAGE);}
+				}
+			
+		});
 		btnRefuelRocket.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRefuelRocket.setBounds(347, 691, 167, 37);
 		frmManagerMain.getContentPane().add(btnRefuelRocket);
@@ -463,8 +493,7 @@ public class MainScreen {
 		
 		
 		
-		String s = Controller.readFromFile();
-		Controller.init(s);
+		
 		
 		Map<String, Integer> map = Controller.showStore(); 
 		Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 

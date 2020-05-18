@@ -5,18 +5,20 @@ import Lab7.Observer;
 
 public class Crop implements Observer {
 	private String name = "";
-	private double sellingPrice = 0.0;
-	private double purchasePrice = 0.0;
-	private double heigth = 0.0;
-	private double harvestTime = 0.0;
-	private double leftTimeToHarvest = 0.0;
-	private double seedTime = 0.0;
+	private int sellingPrice = 0;
+	private int purchasePrice = 0;
+	private int heigth = 0;
+	private int harvestTime =0;
+	private int leftTimeToHarvest = 0;
+	private double seedTime = 0;
 	Items item;
 
 	@Override
 	public void update(Observable o, Object arg) {
 		System.out.println("Received move to next day update!");
 		this.leftTimeToHarvest -= 5;
+		if(this.leftTimeToHarvest <= 0)
+			this.leftTimeToHarvest = 0;
 		this.heigth += 5;
 	}
 
@@ -33,7 +35,7 @@ public class Crop implements Observer {
 
 	}
 
-	public Crop(String sName, double sPurchasePrice, double sSellingPrice, double sHeigth, double sHarvestTime) {
+	public Crop(String sName, int sPurchasePrice, int sSellingPrice, int sHeigth, int sHarvestTime) {
 		// TODO Auto-generated constructor stub
 		name = sName;
 		purchasePrice = sPurchasePrice;
@@ -48,35 +50,35 @@ public class Crop implements Observer {
 		this.harvestTime -= 2.0;
 	}
 
-	public void setSellingPrice(double sellingPrice) {
+	public void setSellingPrice(int sellingPrice) {
 		this.sellingPrice = sellingPrice;
 	}
 
-	public double getSellingPrice() {
+	public int getSellingPrice() {
 		return sellingPrice;
 	}
 
-	public void setPurchasePrice(double purchasePrice) {
+	public void setPurchasePrice(int purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public double getPurchasePrice() {
+	public int getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setHeigth(double heigth) {
+	public void setHeigth(int heigth) {
 		this.heigth = heigth;
 	}
 
-	public double getHeigth() {
+	public int getHeigth() {
 		return heigth;
 	}
 
-	public void setHarvestTime(double harvestTime) {
+	public void setHarvestTime(int harvestTime) {
 		this.harvestTime = harvestTime;
 	}
 
-	public double getHarvestTime() {
+	public int getHarvestTime() {
 		return harvestTime;
 	}
 
@@ -85,11 +87,11 @@ public class Crop implements Observer {
 	// this.leftTimeToHarvest = leftTimeToHarvest;
 	// }
 
-	public double getLeftTimeToHarvest() {
+	public int getLeftTimeToHarvest() {
 		return leftTimeToHarvest;
 	}
 
-	public void setLeftTimeToHarvers(double t) {
+	public void setLeftTimeToHarvers(int t) {
 		leftTimeToHarvest = t;
 
 	}

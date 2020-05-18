@@ -3,7 +3,7 @@ package Project201GraphicalApplication;
 public class Corn extends Crop{
 	public Corn()
 	{
-		super("Corn", 1.0, 10.0, 2.0,2.0);
+		super("Corn", 1, 10, 2,2);
 	}
 	
 	public String toString() {

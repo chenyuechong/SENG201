@@ -17,7 +17,7 @@ public class Farm extends Observable{
 	private int type ;
 	private double money;
 	static boolean isChangeDay = false;
-	
+	static int area ;
 	
 	static ArrayList <Pig> pigList = new ArrayList<Pig> ();
 	static ArrayList <Hen> henList = new ArrayList<Hen> ();
@@ -43,15 +43,30 @@ public class Farm extends Observable{
 		 money = 2000;
 		 if (type == 4)
 			 money = 2400;
-		 
+		 area = 1;
 		 System.out.print("farm name set: "+ name);
 		 
+	}
+	
+	
+	public void expandArea() {
+		area ++;
+		money -= 200;
+	}
+	
+	public int getArea() {
+		return area;
+	}
+	
+	public void setArea(int n) {
+		area = n;
 	}
 	
 	public void setType(int n)
 	{
 		type = n;
 	}
+	
 	public void setMoney(double leftMoney)
 	{
 		money = leftMoney;
@@ -61,6 +76,7 @@ public class Farm extends Observable{
 	{
 		this.name = name;
 	}
+	
 	public double getMoney() {
 		return this.money;
 	}
@@ -148,7 +164,7 @@ public class Farm extends Observable{
 		if(isChangeDay)
 		{
 			this.isChangeDay = isChangeDay;
-		
+			
 			super.setChanged();
 			super.notifyObservers("move to next day");
 			

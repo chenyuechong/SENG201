@@ -76,6 +76,7 @@ public class AnimalScreen {
 		
 		textFieldPurchasePrice = new JTextField();
 		textFieldPurchasePrice.setBounds(279, 67, 200, 38);
+		textFieldPurchasePrice.setEditable(false);
 		window.getContentPane().add(textFieldPurchasePrice);
 		textFieldPurchasePrice.setColumns(10);
 		
@@ -88,6 +89,7 @@ public class AnimalScreen {
 		textFieldHappiness = new JTextField();
 		textFieldHappiness.setBounds(279, 125, 200, 38);
 		textFieldHappiness.setColumns(10);
+		textFieldHappiness.setEditable(false);
 		window.getContentPane().add(textFieldHappiness);
 		
 		String farmTypes[]={"1: Normal","2:20% more money","3: 20% more animal's happiness","4: 20% crop grow speed"};
@@ -113,6 +115,7 @@ public class AnimalScreen {
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(279, 184, 200, 38);
+		textField.setEditable(false);
 		window.getContentPane().add(textField);
 		
 		JButton btnNewButtonFeed = new JButton("Feed");
@@ -157,12 +160,19 @@ public class AnimalScreen {
 		textFieldSerialNumber = new JTextField();
 		textFieldSerialNumber.setColumns(10);
 		textFieldSerialNumber.setBounds(279, 10, 200, 38);
+		textFieldSerialNumber.setEditable(false);
 		window.getContentPane().add(textFieldSerialNumber);
 		
 		JButton btnUsingHappyagentitem = new JButton("Using HappyAgentItem");
 		btnUsingHappyagentitem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Controller.useHappyAgent(name, index);
+				String[] s = Controller.getAnimalObjectStatus(name, index ).split(";");			
+				textFieldPurchasePrice.setText(s[0]);
+				textFieldHappiness.setText(s[1]);
+				textField.setText(s[2]);
 			}
+			
 		});
 		btnUsingHappyagentitem.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnUsingHappyagentitem.setBounds(10, 317, 200, 38);

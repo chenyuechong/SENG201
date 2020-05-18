@@ -2,7 +2,6 @@ package Project201GraphicalApplication;
 
 import java.util.ArrayList;
 
-import Project201.Controller;
 public class ScreenManager {
 	String name;
 	//ArrayList<Rocket> RocketList = new ArrayList<Rocket>();
@@ -77,8 +76,9 @@ public class ScreenManager {
 	}
 	
 	public static void main(String[] args) {
-		String s = Controller.readFromFile();
 		ScreenManager manager = new ScreenManager();
+		String s = Controller.readFromFile();
+		Controller.init(s);
 		if (s.length() == 0) {		
 			manager.launchSetupScreen();
 		} else {

@@ -6,9 +6,9 @@ import Lab7.Observer;
 
 public class Animal implements Observer {
 	private String name = "";
-	private double purchasePrice = 0.0;
-	private double health = 0.0;
-	private double happiness = 0.0;
+	private int purchasePrice = 0;
+	private int health = 0;
+	private int happiness = 0;
 	Items item;
 
 	@Override
@@ -31,7 +31,7 @@ public class Animal implements Observer {
 
 	}
 
-	public Animal(String sname, double spurchasePrice, double shealth, double shappiness) {
+	public Animal(String sname, int spurchasePrice, int shealth, int shappiness) {
 		// TODO Auto-generated constructor stub
 		name = sname;
 		purchasePrice = spurchasePrice;
@@ -40,7 +40,7 @@ public class Animal implements Observer {
 	}
 
 	public void feed() {
-		this.health += 2;
+		this.health += 10;
 	}
 
 	public void play() {
@@ -51,27 +51,27 @@ public class Animal implements Observer {
 		this.happiness += 20;
 	}
 
-	public void setPurchasePrice(double purchasePrice) {
+	public void setPurchasePrice(int purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public double getPurchasePrice() {
+	public int getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setHealth(double health) {
+	public void setHealth(int health) {
 		this.health = health;
 	}
 
-	public double getHealth() {
+	public int getHealth() {
 		return health;
 	}
 
-	public void setHappiness(double happiness) {
+	public void setHappiness(int happiness) {
 		this.happiness = happiness;
 	}
 
-	public double getHappiness() {
+	public int getHappiness() {
 		return happiness;
 	}
 }

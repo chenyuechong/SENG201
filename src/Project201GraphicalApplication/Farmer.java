@@ -2,11 +2,11 @@ package Project201GraphicalApplication;
 
 import java.io.IOException;
 
-import Lab5.LandingException;
 
 public class Farmer {
 	private String name = "";
 	private int age = 18;
+
 
 	public Farmer(String farmerName) {
 		name = farmerName;
@@ -77,46 +77,46 @@ public class Farmer {
 		switch (sTemp[0]) {
 		case "Corn":
 			Corn corn = new Corn();			
-			corn.setHeigth(Double.parseDouble(paraments[0]));
-			corn.setHarvestTime(Double.parseDouble(paraments[1]));
-			corn.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
-			corn.setPurchasePrice(Double.parseDouble(paraments[3]));
+			corn.setHeigth(Integer.parseInt(paraments[0]));
+			corn.setHarvestTime(Integer.parseInt(paraments[1]));
+			corn.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
+			corn.setPurchasePrice(Integer.parseInt(paraments[3]));
 			corn.startObserving(myFarm);
 			myFarm.cornList.add(corn);
 			break;
 		case "Carrot":
 			Carrot carrot = new Carrot();			
-			carrot.setHeigth(Double.parseDouble(paraments[0]));
-			carrot.setHarvestTime(Double.parseDouble(paraments[1]));
-			carrot.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
-			carrot.setPurchasePrice(Double.parseDouble(paraments[3]));
+			carrot.setHeigth(Integer.parseInt(paraments[0]));
+			carrot.setHarvestTime(Integer.parseInt(paraments[1]));
+			carrot.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
+			carrot.setPurchasePrice(Integer.parseInt(paraments[3]));
 			carrot.startObserving(myFarm);
 			myFarm.carrotList.add(carrot);
 			break;
 		case "Eggplant":
 			Eggplant eggplant = new Eggplant();
-			eggplant.setHeigth(Double.parseDouble(paraments[0]));
-			eggplant.setHarvestTime(Double.parseDouble(paraments[1]));
-			eggplant.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
-			eggplant.setPurchasePrice(Double.parseDouble(paraments[3]));
+			eggplant.setHeigth(Integer.parseInt(paraments[0]));
+			eggplant.setHarvestTime(Integer.parseInt(paraments[1]));
+			eggplant.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
+			eggplant.setPurchasePrice(Integer.parseInt(paraments[3]));
 			eggplant.startObserving(myFarm);
 			myFarm.eggplantList.add(eggplant);
 			break;
 		case "KiwiFruit":
 			KiwiFruit kiwifruit = new KiwiFruit();			
-			kiwifruit.setHeigth(Double.parseDouble(paraments[0]));
-			kiwifruit.setHarvestTime(Double.parseDouble(paraments[1]));
-			kiwifruit.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
-			kiwifruit.setPurchasePrice(Double.parseDouble(paraments[3]));
+			kiwifruit.setHeigth(Integer.parseInt(paraments[0]));
+			kiwifruit.setHarvestTime(Integer.parseInt(paraments[1]));
+			kiwifruit.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
+			kiwifruit.setPurchasePrice(Integer.parseInt(paraments[3]));
 			myFarm.kiwifruitList.add(kiwifruit);
 			kiwifruit.startObserving(myFarm);
 			break;
 		case "Tomato":
 			Tomato tomato = new Tomato();			
-			tomato.setHeigth(Double.parseDouble(paraments[0]));
-			tomato.setHarvestTime(Double.parseDouble(paraments[1]));
-			tomato.setLeftTimeToHarvers(Double.parseDouble(paraments[2]));
-			tomato.setPurchasePrice(Double.parseDouble(paraments[3]));
+			tomato.setHeigth(Integer.parseInt(paraments[0]));
+			tomato.setHarvestTime(Integer.parseInt(paraments[1]));
+			tomato.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
+			tomato.setPurchasePrice(Integer.parseInt(paraments[3]));
 			myFarm.tomatoList.add(tomato);
 			tomato.startObserving(myFarm);
 			break;
@@ -157,22 +157,22 @@ public class Farmer {
 		switch (sTemp[0]) {
 		case "Pig":
 			Pig p = new Pig();
-			p.setHappiness(Double.parseDouble(paraments[0]));
-			p.setHealth(Double.parseDouble(paraments[1]));
+			p.setHappiness(Integer.parseInt(paraments[0]));
+			p.setHealth(Integer.parseInt(paraments[1]));
 			myFarm.pigList.add(p);
 			p.startObserving(myFarm);
 			break;
 		case "Hen":
 			Hen h = new Hen();
-			h.setHappiness(Double.parseDouble(paraments[0]));
-			h.setHealth(Double.parseDouble(paraments[1]));
+			h.setHappiness(Integer.parseInt(paraments[0]));
+			h.setHealth(Integer.parseInt(paraments[1]));
 			myFarm.henList.add(h);
 			h.startObserving(myFarm);
 			break;
 		case "Cow":
 			Cow c = new Cow();
-			c.setHappiness(Double.parseDouble(paraments[0]));
-			c.setHealth(Double.parseDouble(paraments[1]));
+			c.setHappiness(Integer.parseInt(paraments[0]));
+			c.setHealth(Integer.parseInt(paraments[1]));
 			myFarm.cowList.add(c);
 			c.startObserving(myFarm);
 			break;
@@ -305,6 +305,11 @@ public class Farmer {
 	}
 	
 	
+	public void expandFarmLand(Farm myFarm) {
+		myFarm.expandArea();
+		
+	}
+	
 	
 	public void SoldCrop(String seedName) {
 		
@@ -347,31 +352,26 @@ public class Farmer {
 	
 
 	
-	public void useHappyAgentItem(String animalName, Farm myfarm) throws IOException {
+	public void useHappyAgentItem(String animalName, int index, Farm myfarm) throws IOException {
 		try {
 			if (myfarm.happyAgentItemsList.size() == 0 || countAnimal(animalName,myfarm) == 0)
 				throw new IOException("oops, you do not have happyAgentItem to use\n");
 			switch (animalName) {
 			case "Pig":
-				for (int i = 0; i < myfarm.pigList.size(); i++) {
-					Pig p = myfarm.pigList.get(i);
+					Pig p = myfarm.pigList.get(index);
 					myfarm.consumeHappyAgentItem();
 					p.increaseHappiness();
-				}
 				break;
 			case "Hen":
-				for (int i = 0; i < myfarm.henList.size(); i++) {
-					Hen h = myfarm.henList.get(i);
+
+					Hen h = myfarm.henList.get(index);
 					myfarm.consumeHappyAgentItem();
 					h.increaseHappiness();
-				}
 				break;
 			case "Cow":
-				for (int i = 0; i < myfarm.cowList.size(); i++) {
-					Cow c = myfarm.cowList.get(i);
+					Cow c = myfarm.cowList.get(index);
 					myfarm.consumeHappyAgentItem();
 					c.increaseHappiness();
-				}
 				break;
 			}
 		} catch (IllegalStateException e) {
@@ -379,50 +379,46 @@ public class Farmer {
 		}
 	}
 
-	public void useTimeAgentItem(String seedName, Farm myfarm) throws IOException {
+	public void useTimeAgentItem(String seedName, int index,Farm myfarm) throws IOException {
 		try {
 			if(countCrops(seedName,myfarm)==0 || myfarm.timeAgentitemsList.size() == 0)
 				throw new IOException("oops, you do not have crops or timeAgentItems to use \n");
 			switch (seedName) {
 			case "Corn":
-				for (int i = 0; i < myfarm.cornList.size(); i++) 
-				{
-					Corn corn = myfarm.cornList.get(i);			
+				
+					Corn corn = myfarm.cornList.get(index);			
 					myfarm.consumeTimeAgentItem();
 					corn.decreaseHarvestTime();
-				}
+					corn.water();
 				break;
 			case "Carrot":
-				for (int i = 0; i < myfarm.carrotList.size(); i++) 
-				{
-					Carrot c = myfarm.carrotList.get(i);			
+
+					Carrot c = myfarm.carrotList.get(index);			
 					myfarm.consumeTimeAgentItem();
 					c.decreaseHarvestTime();
-				}
+					c.water();
+
 				break;
 			case "Eggplant":
-				for (int i = 0; i < myfarm.eggplantList.size(); i++) 
-				{
-					Eggplant c = myfarm.eggplantList.get(i);			
+
+					Eggplant e = myfarm.eggplantList.get(index);			
 					myfarm.consumeTimeAgentItem();
-					c.decreaseHarvestTime();
-				}
+					e.decreaseHarvestTime();
+					e.water();
+	
 				break;
 			case "KiwiFruit":
-				for (int i = 0; i < myfarm.kiwifruitList.size(); i++) 
-				{
-					KiwiFruit c = myfarm.kiwifruitList.get(i);			
+
+					KiwiFruit k = myfarm.kiwifruitList.get(index);			
 					myfarm.consumeTimeAgentItem();
-					c.decreaseHarvestTime();
-				}
+					k.decreaseHarvestTime();
+					k.water();
 				break;
 			case "Tomato":
-				for (int i = 0; i < myfarm.tomatoList.size(); i++) 
-				{
-					Tomato c = myfarm.tomatoList.get(i);			
+					Tomato t = myfarm.tomatoList.get(index);			
 					myfarm.consumeTimeAgentItem();
-					c.decreaseHarvestTime();
-				}
+					t.decreaseHarvestTime();
+					t.water();
 				break;
 			}
 			}

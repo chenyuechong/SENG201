@@ -27,6 +27,7 @@ public class Controller {
 	static String[] crops = {"Carrot", "Corn", "Eggplant", "KiwiFruit", "Tomato"};
 	static String[] animals = {"Pig", "Hen", "Cow"};
 	static String[] items = {"AnimalFeedItems", "HappyAgentItems", "TimeAgentItems"};
+	static int cropCount = 0;
 	///(a) The wells have dried up, and the crops are thirsty.
 	//(b) The player loses half of their growing crops. The exact crops are determined randomly.
 	public  void drought() {
@@ -71,13 +72,15 @@ public class Controller {
 	public static void moveToNextDay()
 	{
 		currentDay ++;
+		int bonus = cropCount * 5;
+		myFarm.increaseMoney(bonus);
 		myFarm.setIsChangeDay(true);		
 	}
 	
 	public static void playWithAnimal(String animalName, int index)
 	{
 		try {
-			myFarmer.playWithAnimal(animalName, index, myFarm);
+			myFarmer.playWithAnimal(animalName, index - 1, myFarm);
 				System.out.print("You have played with  " + animals[index-1] + "for a while\n");
 			
 		} catch (IOException e) {
@@ -90,7 +93,7 @@ public class Controller {
 	public static void feedAnimal(String animalName, int index)
 	{
 		try {		
-			myFarmer.feedAnimal(animalName,index, myFarm);
+			myFarmer.feedAnimal(animalName,index - 1, myFarm);
 			
 			System.out.print("You have played with  " + animalName + "for a while\n");	
 			
@@ -100,10 +103,10 @@ public class Controller {
 		}
 	}
 	
-	public static void useTimeAgent(int index)
+	public static void useTimeAgent(String cropName, int index)
 	{
 		try {		
-			myFarmer.useTimeAgentItem(crops[index-1], myFarm);
+			myFarmer.useTimeAgentItem(cropName, index - 1, myFarm);
 			System.out.print("You have used the timeAgentItem to " + crops[index-1] + "\n");		
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
@@ -111,15 +114,16 @@ public class Controller {
 		}
 	}
 	
-	public static void useHappyAgent(int index) {
+	public static void useHappyAgent(String animalName,int index) {
 		try {		
-			myFarmer.useHappyAgentItem(animals[index-1], myFarm);
+			myFarmer.useHappyAgentItem(animalName,index - 1, myFarm);
 			System.out.print("You have used happyAgentItem to   " + animals[index-1] + "\n");		
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
 		}
 	}
+	
 	
 	
 	public static void buySeed(int index, int count) {		
@@ -161,7 +165,8 @@ public class Controller {
 		}
 	}
 
-	
+	public static void harvestCrop(String animalName,int index) {	
+	}
 	
 	public static Map<String, Integer>  showStore()
 	{ 
@@ -172,6 +177,7 @@ public class Controller {
 			System.out.print( crops[i] + ":"+ myFarmer.countCrops(crops[i], myFarm) +"   " );
 			//writeToFile(crops[i]+ "-"+ myFarmer.countCrops(crops[i], myFarm));
 			storeMap.put(crops[i], myFarmer.countCrops(crops[i], myFarm));
+			cropCount ++;
 		}
 		System.out.print( "\n");
 		System.out.print("animals:  ");
@@ -180,6 +186,7 @@ public class Controller {
 			System.out.print(animals[i] + ":"+ myFarmer.countAnimal(animals[i], myFarm) +"   " );
 			//writeToFile(animals[i]+ "-"+ myFarmer.countAnimal(animals[i], myFarm));
 			storeMap.put(animals[i], myFarmer.countAnimal(animals[i], myFarm));
+			cropCount ++;
 		}
 		System.out.print( "\n");
 		System.out.print("items:  ");
@@ -188,15 +195,28 @@ public class Controller {
 			System.out.print(items[i] + ":" + myFarmer.countItems(items[i], myFarm) + "  " );
 			//writeToFile(items[i]+ "-"+ myFarmer.countItems(items[i], myFarm));
 			storeMap.put(items[i], myFarmer.countItems(items[i], myFarm));
+			cropCount ++;
 		}
 		System.out.print( "\n");
 		return storeMap;
 	}
 
 
+	public static boolean expandFarmArea() {
+		boolean isMoneyEnough = false;
+		if (myFarm.getMoney() > 200 )
+			{myFarmer.expandFarmLand(myFarm);
+				isMoneyEnough = true;
+			}
+		System.out.print("expand area success");
+		return isMoneyEnough;
+	}
 	
-	
- 	public static String readFromFile() {
+	public static int getFarmArea() {
+		return myFarm.getArea();
+	}
+	 	
+	public static String readFromFile() {
 		String s ="";
 		 try {
 			 	
@@ -218,6 +238,8 @@ public class Controller {
 	public static void writePlayConfigureToFile() {
 		String s ="";
 		s= "money-" + myFarm.getMoney()+"\n";
+		s = "area-" + myFarm.getArea() +"\n";
+		s ="day-" + currentDay+"\n";
 		s+= myFarmer.getItemDetail(myFarm);
 		s+= myFarmer.getAniamlDetail(myFarm);
 		s+= myFarmer.getCropDetail(myFarm);
@@ -242,12 +264,22 @@ public class Controller {
 		String str = null;
 		while((str = bufferedReader.readLine()) != null)//read line by line
 		{
-			//System.out.println(str);
+			System.out.println(str);
 			String[] line = str.split("-");
 			if(line[0].equals("money"))
 			{
 				//System.out.println("money");
 				myFarm.setMoney(Double.parseDouble(line[1]));
+			}
+			if(line[0].equals("area"))
+			{
+				//System.out.println("money");
+				myFarm.setArea(Integer.parseInt(line[1]));
+			}
+			if(line[0].equals("day"))
+			{
+				//System.out.println("money");
+				currentDay = Integer.parseInt(line[1]);
 			}
 			if(line[0].equals("Items")) {
 				//System.out.println("Items");
@@ -300,6 +332,7 @@ public class Controller {
 	}
 
 
+	
 	public static void init(String s)
 	{
 		String[] p = s.split("-");

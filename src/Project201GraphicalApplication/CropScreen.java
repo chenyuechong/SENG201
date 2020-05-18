@@ -65,6 +65,7 @@ public class CropScreen {
 		window.getContentPane().add(lblNewLabel_1);
 		
 		textFieldPurchasePrice = new JTextField();
+		textFieldPurchasePrice.setEditable(false);
 		textFieldPurchasePrice.setBounds(237, 67, 200, 38);
 		window.getContentPane().add(textFieldPurchasePrice);
 		textFieldPurchasePrice.setColumns(10);
@@ -78,6 +79,7 @@ public class CropScreen {
 		textFieldHeight = new JTextField();
 		textFieldHeight.setBounds(237, 125, 200, 38);
 		textFieldHeight.setColumns(10);
+		textFieldHeight.setEditable(false);
 		window.getContentPane().add(textFieldHeight);
 		
 		JLabel lblWhichTypeWould = new JLabel("Harvest Time:");
@@ -103,6 +105,7 @@ public class CropScreen {
 		textFieldHarvestTime = new JTextField();
 		textFieldHarvestTime.setColumns(10);
 		textFieldHarvestTime.setBounds(237, 190, 200, 38);
+		textFieldHarvestTime.setEditable(false);
 		window.getContentPane().add(textFieldHarvestTime);
 		
 		JLabel lblSerialNumber = new JLabel("Serial Number:");
@@ -114,6 +117,7 @@ public class CropScreen {
 		textFieldSerialNumber.setColumns(10);
 		textFieldSerialNumber.setBounds(237, 10, 200, 38);
 		window.getContentPane().add(textFieldSerialNumber);
+		textFieldSerialNumber.setEditable(false);
 		
 		JButton btnNewButton = new JButton("Water it");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -134,7 +138,15 @@ public class CropScreen {
 		JButton btnUsingTimeagentitem = new JButton("Using TimeAgentItems");
 		btnUsingTimeagentitem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Controller.useTimeAgent(name, index);
+				String[] s = Controller.getCropObjectStatus(name, index).split(";");
+				System.out.print(s[0] + s[1] + s[2]);
+				textFieldPurchasePrice.setText(s[0]);
+				textFieldHeight.setText(s[1]);
+				textFieldHarvestTime.setText(s[2]);
 			}
+			
+			
 		});
 		btnUsingTimeagentitem.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnUsingTimeagentitem.setBounds(237, 266, 200, 38);
@@ -152,7 +164,14 @@ public class CropScreen {
 		JButton btnNewButton_1 = new JButton("Harvest it");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Controller.useTimeAgent(name, index);
+				String[] s = Controller.getCropObjectStatus(name, index).split(";");
+				System.out.print(s[0] + s[1] + s[2]);
+				textFieldPurchasePrice.setText(s[0]);
+				textFieldHeight.setText(s[1]);
+				textFieldHarvestTime.setText(s[2]);
 			}
+			
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_1.setBounds(10, 319, 200, 38);
