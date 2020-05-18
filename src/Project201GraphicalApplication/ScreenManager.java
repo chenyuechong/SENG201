@@ -77,11 +77,20 @@ public class ScreenManager {
 	
 	public static void main(String[] args) {
 		ScreenManager manager = new ScreenManager();
-		String s = Controller.readFromFile();
-		Controller.init(s);
-		if (s.length() == 0) {		
+
+		if (Controller.isFirstLogin() == false) {		
 			manager.launchSetupScreen();
 		} else {
+			
+			if(Controller.isPlayed())
+				Controller.init();
+			String s = Controller.readFromFile();
+			String[] p = s.split("-");
+			int typeId = Integer.parseInt(p[0].trim());
+			String farmerName = p[1];
+			String farmName = p[2];
+			int playDays = Integer.parseInt(p[3].trim());
+			Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
 			manager.launchMainScreen();
 		}
 

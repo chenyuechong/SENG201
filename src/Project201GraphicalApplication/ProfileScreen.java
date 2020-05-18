@@ -26,6 +26,7 @@ public class ProfileScreen {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTextField textField_4;
 	
 	public ProfileScreen(ScreenManager incomingManager) {
 		manager = incomingManager;
@@ -91,17 +92,7 @@ public class ProfileScreen {
 		lblHowManyDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblHowManyDays);
 		
-		String farmTypes[]={"1: Normal","2:20% more money","3: 20% more animal's happiness","4: 20% crop grow speed"};  
-		JComboBox comboBox = new JComboBox(farmTypes);
-		comboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String type = "Selected: "   
-						   + comboBox.getSelectedItem().toString()+ " \n";  
-				System.out.print(type);
-			}
-		});
-		comboBox.setBounds(237, 180, 200, 38);
-		window.getContentPane().add(comboBox);
+		String farmTypes[]={"1: Normal","2:  20% more money","3: 20% more animal's happiness","4: 20% crop grow speed"};
 		
 		
 		String playDays[]={"5","6","7","8","9","10"};
@@ -136,10 +127,22 @@ public class ProfileScreen {
 		
 		String[] s = Controller.getFarmMessage().split(";");
 		textField.setText(s[0]);
+		textField.setEditable(false);
 		textField_1.setText(s[1]);
-		comboBox.setSelectedIndex(Integer.parseInt(s[2]));
+		textField_1.setEditable(false);
 		textField_3.setText(s[3]);
+		textField_3.setEditable(false);
 		textField_2.setText(s[4]);
+		textField_2.setEditable(false);
+		
+		textField_4 = new JTextField();
+		textField_4.setText((String) null);
+		textField_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textField_4.setEditable(false);
+		textField_4.setColumns(10);
+		textField_4.setBounds(237, 183, 200, 38);
+		textField_4.setText(farmTypes[Integer.parseInt(s[2])]);
+		window.getContentPane().add(textField_4);
 		
 	}
 }

@@ -2,6 +2,7 @@ package Project201GraphicalApplication;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -81,7 +82,7 @@ public class Controller {
 	{
 		try {
 			myFarmer.playWithAnimal(animalName, index - 1, myFarm);
-				System.out.print("You have played with  " + animals[index-1] + "for a while\n");
+				System.out.print("You have played with  " + animalName + " for a while\n");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -165,7 +166,10 @@ public class Controller {
 		}
 	}
 
-	public static void harvestCrop(String animalName,int index) {	
+	public static boolean harvestCrop(String seedName,int index) {	
+		boolean b = myFarmer.harvestAndSoldCrop(seedName, index - 1, myFarm);
+		System.out.print(b);
+		return  b;
 	}
 	
 	public static Map<String, Integer>  showStore()
@@ -174,10 +178,11 @@ public class Controller {
 		System.out.print( "You have\n crops:  ");
 		for(int i = 0; i<5; i++)
 		{
-			System.out.print( crops[i] + ":"+ myFarmer.countCrops(crops[i], myFarm) +"   " );
+			System.out.print(crops[i]);
+			int n = myFarmer.countCrops(crops[i], myFarm);
+			cropCount+= n;
 			//writeToFile(crops[i]+ "-"+ myFarmer.countCrops(crops[i], myFarm));
 			storeMap.put(crops[i], myFarmer.countCrops(crops[i], myFarm));
-			cropCount ++;
 		}
 		System.out.print( "\n");
 		System.out.print("animals:  ");
@@ -186,7 +191,6 @@ public class Controller {
 			System.out.print(animals[i] + ":"+ myFarmer.countAnimal(animals[i], myFarm) +"   " );
 			//writeToFile(animals[i]+ "-"+ myFarmer.countAnimal(animals[i], myFarm));
 			storeMap.put(animals[i], myFarmer.countAnimal(animals[i], myFarm));
-			cropCount ++;
 		}
 		System.out.print( "\n");
 		System.out.print("items:  ");
@@ -195,7 +199,7 @@ public class Controller {
 			System.out.print(items[i] + ":" + myFarmer.countItems(items[i], myFarm) + "  " );
 			//writeToFile(items[i]+ "-"+ myFarmer.countItems(items[i], myFarm));
 			storeMap.put(items[i], myFarmer.countItems(items[i], myFarm));
-			cropCount ++;
+
 		}
 		System.out.print( "\n");
 		return storeMap;
@@ -221,12 +225,16 @@ public class Controller {
 		 try {
 			 	
 	            FileReader reader = new FileReader("farm.txt");
-	            int character;
+	            if(reader != null)
+	            {
+	            	int character;
 	 
-	            while ((character = reader.read()) != -1) {
-	                s += (char)character;
+	            	while ((character = reader.read()) != -1) {
+	            		s += (char)character;
+	            	}
+	            	reader.close();
 	            }
-	            reader.close();
+	            
 	 
 	        } catch (IOException e) {
 	            e.printStackTrace();
@@ -332,17 +340,27 @@ public class Controller {
 	}
 
 
+	public static boolean isFirstLogin() {
+
+		File file = new File("farm.txt");
+		return file.exists();
+	}
 	
-	public static void init(String s)
+	public static boolean isPlayed() {
+		File file = new File("play.txt");
+		return file.exists();
+	}
+	
+	public static void init()
 	{
+		String s = readFromFile();
 		String[] p = s.split("-");
 		int typeId = Integer.parseInt(p[0].trim());
 		String farmerName = p[1];
 		String farmName = p[2];
 		int playDays = Integer.parseInt(p[3].trim());
 		Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
-		Controller.readPlayConfigureFromFile();
-		
+		Controller.readPlayConfigureFromFile();	
 		System.out.print("init the farm paraments");
 	}
 	

@@ -497,6 +497,7 @@ public class MainScreen {
 		
 		Map<String, Integer> map = Controller.showStore(); 
 		Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 
+		 System.out.println("run here"); 
 		while (entries.hasNext()) { 
 		  Map.Entry<String, Integer> entry = entries.next(); 
 		  System.out.print(entry.getKey()+ entry.getValue());

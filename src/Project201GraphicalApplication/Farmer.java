@@ -234,26 +234,38 @@ public class Farmer {
 	
 	public int countCrops(String seedName, Farm myFarm) {
 		int count = 0;
+		
+		System.out.print(seedName); 
 		switch (seedName) {
 		case "Corn":
 			count = 0;
-			count = myFarm.cornList.size();
+			System.out.print("here"); 
+			if(myFarm.cornList.isEmpty() == false)
+				count = myFarm.cornList.size();
 			break;
 		case "Carrot":
 			count = 0;
-			count = myFarm.carrotList.size();
+			System.out.print("here1"); 
+			if(myFarm.carrotList.isEmpty() == false)
+				count = myFarm.carrotList.size();
 			break;
 		case "Eggplant":
 			count = 0;
-			count = myFarm.eggplantList.size();
+			System.out.print("here2"); 
+			if(myFarm.eggplantList.isEmpty() == false)
+				count = myFarm.eggplantList.size();
 			break;
 		case "KiwiFruit":
 			count = 0;
-			count = myFarm.kiwifruitList.size();
+			System.out.print("here3"); 
+			if(myFarm.kiwifruitList.isEmpty() == false)
+				count = myFarm.kiwifruitList.size();
 			break;
 		case "Tomato":
 			count = 0;
-			count = myFarm.tomatoList.size();
+			System.out.print("here4"); 
+			if(myFarm.tomatoList.isEmpty() == false)
+				count = myFarm.tomatoList.size();
 			break;
 		}
 		return count;
@@ -311,7 +323,61 @@ public class Farmer {
 	}
 	
 	
-	public void SoldCrop(String seedName) {
+	public boolean harvestAndSoldCrop(String seedName, int index , Farm myfarm) {
+		boolean isSuccess = false;
+		switch (seedName) {
+		case "Corn":			
+				Corn corn = myfarm.cornList.get(index);			
+				if(corn.getHarvestTime() == 0)
+				{
+					myfarm.cornList.remove(index);
+					isSuccess = true;
+					myfarm.increaseMoney(50);
+				}
+			break;
+		case "Carrot":
+
+				Carrot c = myfarm.carrotList.get(index);			
+				if(c.getHarvestTime() == 0)
+				{
+					myfarm.carrotList.remove(index);
+					isSuccess = true;
+					myfarm.increaseMoney(50);
+				}
+
+			break;
+		case "Eggplant":
+
+				Eggplant e = myfarm.eggplantList.get(index);			
+				if(e.getHarvestTime() == 0)
+				{
+					myfarm.eggplantList.remove(index);
+					isSuccess = true;
+					myfarm.increaseMoney(50);
+				}
+
+			break;
+		case "KiwiFruit":
+
+				KiwiFruit k = myfarm.kiwifruitList.get(index);			
+				if(k.getHarvestTime() == 0)
+				{
+					myfarm.kiwifruitList.remove(index);
+					isSuccess = true;
+					myfarm.increaseMoney(50);
+				}
+			break;
+		case "Tomato":
+				Tomato t = myfarm.tomatoList.get(index);			
+				if(t.getHarvestTime() == 0)
+				{
+					myfarm.tomatoList.remove(index);
+					isSuccess = true;
+					myfarm.increaseMoney(50);
+				}
+			break;
+		}
+		return isSuccess;		
 		
 	}
 

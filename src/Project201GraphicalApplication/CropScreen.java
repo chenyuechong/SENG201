@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -161,15 +162,13 @@ public class CropScreen {
 		textFieldHeight.setText(s[1]);
 		textFieldHarvestTime.setText(s[2]);
 		
-		JButton btnNewButton_1 = new JButton("Harvest it");
+		JButton btnNewButton_1 = new JButton("Harvest and Sell");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.useTimeAgent(name, index);
-				String[] s = Controller.getCropObjectStatus(name, index).split(";");
-				System.out.print(s[0] + s[1] + s[2]);
-				textFieldPurchasePrice.setText(s[0]);
-				textFieldHeight.setText(s[1]);
-				textFieldHarvestTime.setText(s[2]);
+				if(Controller.harvestCrop(name, index))
+					JOptionPane.showMessageDialog(null,"Sold success, you earn 50 dollars" , "Message",JOptionPane.PLAIN_MESSAGE);
+				else
+					JOptionPane.showMessageDialog(null,"Detect this crop is not mature, can not be sold" , "Message",JOptionPane.PLAIN_MESSAGE);
 			}
 			
 		});

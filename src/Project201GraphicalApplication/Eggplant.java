@@ -3,7 +3,7 @@ package Project201GraphicalApplication;
 public class Eggplant extends Crop{
 	public Eggplant()
 	{
-		super("Eggplant", 1, 10, 2,2);
+		super("Eggplant", 2, 5, 2,10);
 	}
 	
 	public String toString() {

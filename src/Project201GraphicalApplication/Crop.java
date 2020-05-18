@@ -47,7 +47,9 @@ public class Crop implements Observer {
 	}
 
 	public void decreaseHarvestTime() {
-		this.harvestTime -= 2.0;
+		harvestTime -= 2.0;
+		if (harvestTime <= 0)
+			harvestTime = 0;
 	}
 
 	public void setSellingPrice(int sellingPrice) {

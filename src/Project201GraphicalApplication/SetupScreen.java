@@ -90,7 +90,7 @@ public class SetupScreen {
 		lblHowManyDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblHowManyDays);
 		
-		String farmTypes[]={"1: Normal","2:20% more money","3: 20% more animal's happiness","4: 20% crop grow speed"};  
+		String farmTypes[]={"1:  Normal","2:  20% more money","3:  20% more animal's happiness","4:  20% crop grow speed"};  
 		JComboBox comboBox = new JComboBox(farmTypes);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -125,6 +125,7 @@ public class SetupScreen {
 				String types[] = {"1","2","3","4"};
 				String ss = types[type] + "-" + farmerName + "-" + farmName + "-" + playDays[playDay];
 				Controller.writeToFile(ss);
+				Controller.createFarm(type, farmerName, farmName, playDay);
 				System.out.print(farmName+ farmerName + playDay + type);
 				finishedWindow();
 			}

@@ -1,0 +1,19 @@
+money-496
+area-1
+day-3
+Items-AnimalFeedItems: 1
+Items-HappyAgentItems: 10
+Items-TimeAgentItems: 10
+Animals-Hen:71,31
+Animals-Cow:21,21
+Animals-Cow:21,21
+Animals-Cow:21,21
+Animals-Pig:21,21
+Animals-Pig:21,21
+Animals-Pig:1,1
+Animals-Pig:1,1
+Crop-Carrot:12,2,0,10
+Crop-Corn:12,2,0,10
+Crop-Eggplant:12,2,0,10
+Crop-KiwiFruit:12,2,0,10
+Crop-Tomato:12,2,0,10

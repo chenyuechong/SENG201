@@ -17,6 +17,9 @@ import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JComboBox;
+import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 
 public class StoreScreen {
@@ -27,6 +30,7 @@ public class StoreScreen {
 	static String[] animals = {"None","Pig", "Hen", "Cow"};
 	static String[] items = {"None","AnimalFeedItems", "HappyAgentItems", "TimeAgentItems"};
 	static String[] numbers = {"0","1", "2", "4","6","8"};
+	private JTable table;
 	public StoreScreen(ScreenManager incomingManager) {
 		manager = incomingManager;
 		initialize();
@@ -48,7 +52,7 @@ public class StoreScreen {
 	private void initialize() {
 		window = new JFrame();
 		window.setTitle("Funning Farm-Country Store");
-		window.setBounds(100, 100, 742, 683);
+		window.setBounds(100, 100, 587, 670);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
@@ -151,29 +155,63 @@ public class StoreScreen {
 				if(cropName.equals("None") == false && cropNumber.equals("0")==false)
 				{
 					Controller.buySeed(cropName,Integer.parseInt(cropNumber));
-					s += (cropName + " " + cropNumber);
+					s += (cropNumber + " " + cropName);
 				}
-				else if(animalName.equals("None") == false && animalNumber.equals("0") == false)
+				if(animalName.equals("None") == false && animalNumber.equals("0") == false)
 				{
 					Controller.buyAnimal(animalName,Integer.parseInt(animalNumber));
-					s += (animalName + " " + animalNumber);
+					s += (animalNumber + " " + animalName);
 					
 				}
-				else if(ItemName.equals("None") == false && itemsNumber.equals("0")==false)
+				if(ItemName.equals("None") == false && itemsNumber.equals("0")==false)
 				{
 					Controller.buyItems(ItemName,Integer.parseInt(itemsNumber));
-					s += (ItemName + " " + itemsNumber);
+					s += (itemsNumber + " " + ItemName);
 					
 				}
-				else {
-					s += " nothing";
-				}
+				
 				JOptionPane.showMessageDialog(null,s , "Message",JOptionPane.PLAIN_MESSAGE);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(126, 579, 200, 38);
 		window.getContentPane().add(btnNewButton);
+		
+		String[] columnNames = {"Name", "PurchasePrice","ExpectedSellPrice"};  
+		Object[][] data = {  
+			    {"Hen", "5", "20"},  
+			    {"Cow", "200","1020"},
+			    {"Pig", "100","500"},
+			    {"Corn", "2","5"},
+			    {"Carrot", "2","5"},
+			    {"Tomato", "2","5"},
+			    {"Eggplant", "2","5"},
+			    {"KiwiFruit", "20","100"},
+			    {"AnimalFeedItems", "50","None"},
+			    {"TimeAgentItems", "100","None"},
+			    {"HappinessAgentItems", "50","None"},
+			};
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 70, 548, 204);
+		window.getContentPane().add(scrollPane);
+		
+		
+		JTable table = new JTable(data, columnNames);
+		table.setEnabled(false);
+		scrollPane.setColumnHeaderView(table);
+		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("Menu");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(10, 22, 200, 38);
+		window.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Choose what you want");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(10, 305, 239, 38);
+		window.getContentPane().add(lblNewLabel_1);
+		
 		
 		
 	}
