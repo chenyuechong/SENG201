@@ -501,8 +501,13 @@ public class MainScreen {
 		
 		
 		
-		
-		
+		String s = Controller.readFromFile();
+		String[] p = s.split("-");
+		int typeId = Integer.parseInt(p[0].trim());
+		String farmerName = p[1];
+		String farmName = p[2];
+		int playDays = Integer.parseInt(p[3].trim());
+		Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
 		
 		Map<String, Integer> map = Controller.showStore(); 
 		Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 

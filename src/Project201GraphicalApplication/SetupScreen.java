@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -43,6 +44,15 @@ public class SetupScreen {
 		manager.closeSetupScreen(this);
 	}
 
+	
+	public static boolean isCharacter(String s) {
+		if ((s != null) && !"".equals(s.trim()))
+			return s.matches("^[a-zA-Z]*$");
+		else
+			return false;
+	}
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -122,12 +132,20 @@ public class SetupScreen {
 				String farmerName = textField_1.getText().toString();
 				int playDay = comboBox_1.getSelectedIndex();
 				int type = comboBox.getSelectedIndex();
-				String types[] = {"1","2","3","4"};
-				String ss = types[type] + "-" + farmerName + "-" + farmName + "-" + playDays[playDay];
-				Controller.writeToFile(ss);
-				Controller.createFarm(type, farmerName, farmName, playDay);
-				System.out.print(farmName+ farmerName + playDay + type);
-				finishedWindow();
+				
+				if((isCharacter(farmName) && (farmName.length()<=15 && farmName.length() >= 3)) &&(isCharacter(farmerName) && (farmerName.length()<=15 && farmerName.length() >= 3)))
+				{
+					String types[] = {"1","2","3","4"};
+					String ss = types[type] + "-" + farmerName + "-" + farmName + "-" + playDays[playDay];
+					Controller.writeToFile(ss);
+					Controller.createFarm(type, farmerName, farmName, playDay);
+					System.out.print(farmName+ farmerName + playDay + type);
+					finishedWindow();
+				}
+				else
+					JOptionPane.showMessageDialog(null,"Name must 3-15 characters", "Message",JOptionPane.PLAIN_MESSAGE);
+				
+				
 			}
 		});
 		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 16));

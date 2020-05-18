@@ -17,8 +17,8 @@ public class Controller {
 	
 	static Farm myFarm ;
 	static Farmer myFarmer;
-	static int playDays;
-	static int currentDay;
+	public static int playDays;
+	public static int currentDay;
 	static int farmType;
 	static String[] crops = {"Carrot", "Corn", "Eggplant", "KiwiFruit", "Tomato"};
 	static String[] animals = {"Pig", "Hen", "Cow"};
