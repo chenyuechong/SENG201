@@ -41,6 +41,13 @@ public class MainScreen {
 	private JTextField textFieldEggplaint;
 	private JTextField textField_KiwiFruit;
 	
+	
+	public static boolean isNumeric(String s) {
+		if (s != null && !"".equals(s.trim()))
+			return s.matches("^[0-9]*$");
+		else
+			return false;
+	}
 	public MainScreen(ScreenManager incomingManager) {
 		manager = incomingManager;
 		initialize();
@@ -168,6 +175,12 @@ public class MainScreen {
 		JButton btnChooseHen = new JButton("Interaction");
 		btnChooseHen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int nCount = Controller.countAnimal("Hen");
+				if(textHenField.getText().equals("0") || isNumeric(textHenField.getText()) == false || Integer.parseInt(textHenField.getText()) > nCount)
+				{
+					JOptionPane.showMessageDialog(null, "you need to choose the right serial number", "Message",JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				manager.launchAnimalScreen("Hen", Integer.parseInt(textHenField.getText()));
 				finishedWindow();
 			}
@@ -179,6 +192,12 @@ public class MainScreen {
 		JButton btnChooseCow = new JButton("Interaction");
 		btnChooseCow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int nCount = Controller.countAnimal("Cow");
+				if(textCowField.getText().equals("0") || isNumeric(textCowField.getText()) == false ||  Integer.parseInt(textCowField.getText()) > nCount)
+				{
+					JOptionPane.showMessageDialog(null, "you need to choose the right serial number", "Message",JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				int index = Integer.parseInt(textCowField.getText());
 				System.out.print(index);
 				manager.launchAnimalScreen("Cow", index);
@@ -192,6 +211,12 @@ public class MainScreen {
 		JButton btnChoosePig = new JButton("Interaction");
 		btnChoosePig.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int nCount = Controller.countAnimal("Pig");
+				if(textPigField.getText().equals("0") || isNumeric(textPigField.getText()) == false || Integer.parseInt(textPigField.getText()) > nCount)
+				{
+					JOptionPane.showMessageDialog(null, "you need to choose the right serial number", "Message",JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				manager.launchAnimalScreen("Pig", Integer.parseInt(textPigField.getText()));
 				finishedWindow();
 			}
@@ -295,6 +320,12 @@ public class MainScreen {
 		JButton btnChooseCarrot = new JButton("Operate");
 		btnChooseCarrot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int nCount = Controller.countCrop("Carrot");
+				if(textFieldCarrot.getText().equals("0") || isNumeric(textFieldCarrot.getText()) == false || Integer.parseInt(textFieldCarrot.getText()) >nCount)
+				{
+					JOptionPane.showMessageDialog(null, "you need to choose the right serial number", "Message",JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				manager.launchCropScreen("Carrot", Integer.parseInt(textFieldCarrot.getText()));
 				finishedWindow();
 			}
@@ -306,6 +337,12 @@ public class MainScreen {
 		JButton btnChooseCorn = new JButton("Operate");
 		btnChooseCorn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int nCount = Controller.countCrop("Corn");
+				if(textFieldCorn.getText().equals("0") || isNumeric(textFieldCorn.getText()) == false ||Integer.parseInt(textFieldCorn.getText()) > nCount)
+				{
+					JOptionPane.showMessageDialog(null, "you need to choose the right serial number", "Message",JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				manager.launchCropScreen("Corn", Integer.parseInt(textFieldCorn.getText()));
 				finishedWindow();
 			}
@@ -317,6 +354,12 @@ public class MainScreen {
 		JButton btnChooseEggplant = new JButton("Operate");
 		btnChooseEggplant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int nCount = Controller.countCrop("Eggplant");
+				if(textFieldEggplaint.getText().equals("0") || isNumeric(textFieldEggplaint.getText()) == false || Integer.parseInt(textFieldEggplaint.getText()) > nCount)
+				{
+					JOptionPane.showMessageDialog(null, "you need to choose the right serial number", "Message",JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				manager.launchCropScreen("Eggplant", Integer.parseInt(textFieldEggplaint.getText()));
 				finishedWindow();
 			}
@@ -328,6 +371,13 @@ public class MainScreen {
 		JButton btnChooseKiwiFruit = new JButton("Operate");
 		btnChooseKiwiFruit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int nCount = Controller.countCrop("KiwiFruit");
+				
+				if(textField_KiwiFruit.getText().equals("0") || isNumeric(textField_KiwiFruit.getText()) == false || Integer.parseInt(textField_KiwiFruit.getText()) > nCount)
+				{
+					JOptionPane.showMessageDialog(null, "you need to choose the right serial number", "Message",JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				manager.launchCropScreen("KiwiFruit", Integer.parseInt(textField_KiwiFruit.getText()));
 				finishedWindow();
 			}
@@ -394,6 +444,12 @@ public class MainScreen {
 		JButton btnChooseTomato = new JButton("Operate");
 		btnChooseTomato.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int nCount = Controller.countCrop("Tomato");
+				if(textFieldTomato.getText().equals("0") || isNumeric(textFieldTomato.getText()) == false || Integer.parseInt(textFieldTomato.getText()) > nCount)
+				{
+					JOptionPane.showMessageDialog(null, "you need to choose the right serial number", "Message",JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				manager.launchCropScreen("Tomato", Integer.parseInt(textFieldTomato.getText()));
 				finishedWindow();
 				

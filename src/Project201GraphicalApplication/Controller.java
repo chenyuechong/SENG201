@@ -448,7 +448,15 @@ public class Controller {
 	}
 
 	
+	public static int countCrop(String cropName) {
+		int n = myFarmer.countCrops(cropName, myFarm);
+		return n;
+	}
 	
+	public static int countAnimal(String animalName) {
+		int n = myFarmer.countAnimal(animalName, myFarm);;
+		return n;
+	}
 	public static int dealRandomEvent() {
 		int max=3;
 

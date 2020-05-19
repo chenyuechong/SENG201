@@ -239,31 +239,28 @@ public class Farmer {
 		switch (seedName) {
 		case "Corn":
 			count = 0;
-			System.out.print("here"); 
 			if(myFarm.cornList.isEmpty() == false)
 				count = myFarm.cornList.size();
 			break;
 		case "Carrot":
 			count = 0;
-			System.out.print("here1"); 
 			if(myFarm.carrotList.isEmpty() == false)
 				count = myFarm.carrotList.size();
 			break;
 		case "Eggplant":
 			count = 0;
-			System.out.print("here2"); 
+ 
 			if(myFarm.eggplantList.isEmpty() == false)
 				count = myFarm.eggplantList.size();
 			break;
 		case "KiwiFruit":
 			count = 0;
-			System.out.print("here3"); 
+
 			if(myFarm.kiwifruitList.isEmpty() == false)
 				count = myFarm.kiwifruitList.size();
 			break;
 		case "Tomato":
 			count = 0;
-			System.out.print("here4"); 
 			if(myFarm.tomatoList.isEmpty() == false)
 				count = myFarm.tomatoList.size();
 			break;
