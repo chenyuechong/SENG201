@@ -1,3 +1,7 @@
+/**
+ * 
+ * KiwiFruit class inherit from Crop
+ */
 package Project201GraphicalApplication;
 
 public class KiwiFruit extends Crop{

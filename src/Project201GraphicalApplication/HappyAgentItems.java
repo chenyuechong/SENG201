@@ -1,3 +1,6 @@
+/**
+ * HappyAgentItems inherit from Items class
+ */
 package Project201GraphicalApplication;
 
 public class HappyAgentItems extends Items{

@@ -1,3 +1,6 @@
+/**
+ * TimeAgentItems inherit from Items class
+ */
 package Project201GraphicalApplication;
 
 public class TimeAgentItems extends Items{

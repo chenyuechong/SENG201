@@ -1,5 +1,5 @@
 /**
- * 
+ * Farm class which including all the crop lists and animal list and items list
  */
 package Project201GraphicalApplication;
 
@@ -47,39 +47,79 @@ public class Farm extends Observable{
 		 
 	}
 	
-	
+	/**
+	 * when expand Area , money - 200
+	 * @param 
+	 * @return  
+	 */
 	public void expandArea() {
 		area ++;
 		money -= 200;
 	}
 	
+	/**
+	 * get the current Area
+	 * @param 
+	 * @return  
+	 */
 	public int getArea() {
 		return area;
 	}
 	
+	/**
+	 * set the current Area
+	 * @param n
+	 * @return  
+	 */
 	public void setArea(int n) {
 		area = n;
 	}
 	
+	/**
+	 * set the current Area
+	 * @param n
+	 * @return  
+	 */
 	public void setType(int n)
 	{
 		type = n;
 	}
 	
+	/**
+	 * set the current Money
+	 * @param leftMoney
+	 * @return  
+	 */
 	public void setMoney(int leftMoney)
 	{
 		money = leftMoney;
 	}
 	
+	/**
+	 * set the farm name
+	 * @param name
+	 * @return  
+	 */
 	public void setName(String sname)
 	{
 		name = sname;
 	}
 	
+	/**
+	 * get the farm current money
+	 * @param name
+	 * @return  
+	 */
 	public int getMoney() {
 		return money;
 	}
 		
+	
+	/**
+	 * calculate money which decrease m 
+	 * @param name
+	 * @return  
+	 */
 	public void decreaseMoney(int m)
 	{
 		if(money >= m)
@@ -91,11 +131,22 @@ public class Farm extends Observable{
 			throw new IllegalArgumentException("oops, you do not have enough money to buy");
 	}
 	
+	/**
+	 * calculate money which increase m 
+	 * @param name
+	 * @return  
+	 */
 	public void increaseMoney(int m)
 	{
 		money += m;
 	}
 	
+	
+	/**
+	 * when using the feedItems will need to -1 in the feedItemList 
+	 * @param 
+	 * @return  
+	 */
 	public void consumeFeedItems() {
 		if( animalFeedItemsList.size() >= 1)
 			animalFeedItemsList.remove(0);
@@ -104,6 +155,11 @@ public class Farm extends Observable{
 			
 	}
 	
+	/**
+	 * when using the HappyAgentItem will need to -1 in the HappyAgentItemList 
+	 * @param 
+	 * @return  
+	 */
 	public void consumeHappyAgentItem() {
 		if( happyAgentItemsList.size() >= 1)
 			happyAgentItemsList.remove(0);
@@ -111,6 +167,11 @@ public class Farm extends Observable{
 			throw new IllegalArgumentException("oops, you do not have happy agent to use");
 	}
 	
+	/**
+	 * when using the TimeAgentItem will need to -1 in the TimeAgentItemList 
+	 * @param 
+	 * @return  
+	 */
 	public void consumeTimeAgentItem() {
 		if( timeAgentitemsList.size() >= 1)
 			timeAgentitemsList.remove(0);
@@ -118,12 +179,22 @@ public class Farm extends Observable{
 			throw new IllegalArgumentException("oops, you do not have time agent to use");
 	}
 	
+	
+	/**
+	 * get the farm name
+	 * @param 
+	 * @return  
+	 */
 	public String getName()
 	{
 		return name;
 	}
 	
-	
+	/**
+	 * get the farm type
+	 * @param 
+	 * @return  
+	 */
 	public int getType()
 	{
 		return type;
@@ -131,7 +202,11 @@ public class Farm extends Observable{
 	
 	
 	
-	
+	/**
+	 * when move to the next day this function will be invoked and notice the observer
+	 * @param 
+	 * @return  
+	 */
 	public void setIsChangeDay(boolean isChangeDay)
 	{
 		if(isChangeDay)
@@ -147,6 +222,12 @@ public class Farm extends Observable{
 			this.isChangeDay = isChangeDay;
 	}
 
+	
+	/**
+	 * when move to the next day the farm will get bonus by the crops which he owners
+	 * @param 
+	 * @return  
+	 */
 	public int getBouns(int ndollar) {
 		int b = 0;
 		b += pigList.size()*ndollar;
@@ -161,6 +242,11 @@ public class Farm extends Observable{
 	}
 	
 
+	/**
+	 * if this accident happens, will increase bonus depends how many crops he have
+	 * @param 
+	 * @return  
+	 */
 	public int countryFairEvent()
 	{
 		int nIncreaseMoney = getBouns(10);
@@ -168,6 +254,11 @@ public class Farm extends Observable{
 		return nIncreaseMoney;
 	}
 	
+	/**
+	 * if this fenceBrokenEvent happens, will decrease animals randomly
+	 * @param 
+	 * @return  
+	 */
 	public int fenceBrokenEvent()
 	{
 		int count = 0;
@@ -193,6 +284,11 @@ public class Farm extends Observable{
 		return lostCount;
 	}
 	
+	/**
+	 * if this droughtEvent happens, will decrease crops randomly
+	 * @param 
+	 * @return  
+	 */
 	public void droughtEvent(String seedName) {
 		switch(seedName) {
 		case "Corn":

@@ -1,3 +1,6 @@
+/**
+ * Pig class inherit from Animal class
+ */
 package Project201GraphicalApplication;
 
 public class Pig extends Animal{

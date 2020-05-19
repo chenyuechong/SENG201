@@ -1,3 +1,7 @@
+/**
+ * 
+ * Carrot class inherit from Crop
+ */
 package Project201GraphicalApplication;
 
 public class Carrot extends Crop{

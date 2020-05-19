@@ -1,3 +1,7 @@
+/**
+ * 
+ * Tomato class inherit from Crop
+ */
 package Project201GraphicalApplication;
 
 public class Tomato extends Crop{

@@ -1,5 +1,9 @@
-package Project201GraphicalApplication;
+/**
+ * 
+ * Animal class the super class for any animals
+ */
 
+package Project201GraphicalApplication;
 
 
 
@@ -12,7 +16,7 @@ public class Animal implements Observer {
 
 	
 	/**
-	 * when receive the farm message ,the animal will increase their happiness and health.
+	 * when receive the farm message ,the animal will increase their happiness 10 and health + 10.
 	 * @param farm
 	 * @return 
 	 */

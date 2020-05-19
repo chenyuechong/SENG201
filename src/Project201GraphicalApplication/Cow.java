@@ -1,5 +1,8 @@
 package Project201GraphicalApplication;
 
+/**
+ * Cow class inherit from Animal class
+ */
 public class Cow  extends Animal{
 	public Cow()
 	{

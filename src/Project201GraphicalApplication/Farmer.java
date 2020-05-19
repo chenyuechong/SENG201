@@ -1,3 +1,6 @@
+/**
+ * Farmer class to control the daily thing 
+ */
 package Project201GraphicalApplication;
 
 import java.io.IOException;
@@ -28,6 +31,11 @@ public class Farmer {
 		return age;
 	}
 
+	/**
+	 * using the seedName to check which crop the player want to buy
+	 * @param seedName,myFarm
+	 * @return  
+	 */
 	public void buySeed(String seedName, Farm myFarm) throws IOException{
 		try {
 		switch (seedName) {
@@ -68,7 +76,13 @@ public class Farmer {
 		}
 
 	}
-
+	
+	
+	/**
+	 * when the play quit the game and start again , will need to reinitialized
+	 * @param s,myFarm
+	 * @return  
+	 */
 	public void addConfigureSeed(String s, Farm myFarm)
 	{
 		//String t = "Carrot:" + h.getHeigth()+ ","+h.getHarvestTime()+","+h.getLeftTimeToHarvest()+","+h.getSellingPrice()+"\n";
@@ -123,6 +137,12 @@ public class Farmer {
 		}
 	}
 	
+	
+	/**
+	 * using the animal name to identify which animal needs to by and how many needs to buy, and add the object to the list
+	 * @param animalName,myFarm
+	 * @return  
+	 */
 	public void buyAnimal(String animalName, Farm myFarm) throws IOException {
 		try {
 			switch (animalName) {
@@ -150,6 +170,11 @@ public class Farmer {
 		}
 	}
 
+	/**
+	 * when the play quit the game and start again , will need to reinitialized
+	 * @param s,myFarm
+	 * @return  
+	 */
 	public void addConfigureAnimal(String s, Farm myFarm) {
 		//String t = "Hen:" + h.getHappiness()+ ","+h.getHealth()+"\n";
 		String[] sTemp = s.split(":");
@@ -178,6 +203,12 @@ public class Farmer {
 			break;
 		}
 	}
+	
+	/**
+	 * using the items name to identify which crop needs to by and how many needs to buy, and add the object to the list
+	 * @param itemsName,myFarm
+	 * @return  
+	 */
 	public void buyItems(String itemsName, Farm myFarm) throws IOException{
 		try {
 			switch (itemsName) {
@@ -202,6 +233,11 @@ public class Farmer {
 		}
 	}
 
+	/**
+	 * when the play quit the game and start again , will need to reinitialized
+	 * @param s,myFarm
+	 * @return  
+	 */
 	public void addConfigureItems(String s, Farm myFarm) {
 		String[] sTemp = s.split(":");
 		if(sTemp[1].equals(" 0"))
@@ -232,6 +268,12 @@ public class Farmer {
 		}
 	}
 	
+	
+	/**
+	 * using the seedName to find the size in the list
+	 * @param seedName,myFarm
+	 * @return  count
+	 */
 	public int countCrops(String seedName, Farm myFarm) {
 		int count = 0;
 		
@@ -269,6 +311,11 @@ public class Farmer {
 
 	}
 
+	/**
+	 * using the animalName to find the size in the list
+	 * @param animalName,myFarm
+	 * @return  count
+	 */
 	public int countAnimal(String animalName, Farm myFarm) {
 		int count = 0;
 		switch (animalName) {
@@ -289,6 +336,11 @@ public class Farmer {
 
 	}
 
+	/**
+	 * using the itemsName to find the size in the list
+	 * @param itemsName,myFarm
+	 * @return  count
+	 */
 	public int countItems(String itemsName, Farm myFarm) {
 		int count = 0;
 		switch (itemsName) {
@@ -309,17 +361,22 @@ public class Farmer {
 	}
 
 	
-	public  void checkCropStore(int index, Farm myFarm) {
-		
-	}
 	
-	
+	/**
+	 * expand area
+	 * @param 
+	 * @return  
+	 */
 	public void expandFarmLand(Farm myFarm) {
 		myFarm.expandArea();
 		
 	}
 	
-	
+	/**
+	 * using the seedName and index to find which object to be harvested and sold
+	 * @param 
+	 * @return  
+	 */
 	public boolean harvestAndSoldCrop(String seedName, int index , Farm myfarm) {
 		boolean isSuccess = false;
 		switch (seedName) {
@@ -378,13 +435,15 @@ public class Farmer {
 		
 	}
 
-	public void SoldAnimal(String animalName) {
 
-	}
 
 	
 	
-	
+	/**
+	 * using the animalName and index to find which object to be feed 
+	 * @param animalName,index,myfarm
+	 * @return  
+	 */
 	public void feedAnimal(String animalName, int index , Farm myfarm) throws IOException {
 		try {
 			if(countAnimal(animalName, myfarm) == 0 || myfarm.animalFeedItemsList.size() <= 0)
@@ -414,7 +473,11 @@ public class Farmer {
 
 	
 
-	
+	/**
+	 * using the animalName and index to find which object to be feed 
+	 * @param animalName,index,farm
+	 * @return  
+	 */
 	public void useHappyAgentItem(String animalName, int index, Farm myfarm) throws IOException {
 		try {
 			if (myfarm.happyAgentItemsList.size() == 0 || countAnimal(animalName,myfarm) == 0)
@@ -442,6 +505,12 @@ public class Farmer {
 		}
 	}
 
+	
+	/**
+	 * using the seedName and index to find which object to be decrease harvest time 
+	 * @param seedName,index,farm
+	 * @return  
+	 */
 	public void useTimeAgentItem(String seedName, int index,Farm myfarm) throws IOException {
 		try {
 			if(countCrops(seedName,myfarm)==0 || myfarm.timeAgentitemsList.size() == 0)
@@ -490,6 +559,12 @@ public class Farmer {
 			}
 	}
 	
+	
+	/**
+	 * using the animalName and index to find which object to play
+	 * @param animalName,index,farm
+	 * @return  
+	 */
 	public void playWithAnimal(String animalName, int index, Farm myfarm) throws IOException {
 
 		if (countAnimal(animalName, myfarm) == 0) {
@@ -519,7 +594,11 @@ public class Farmer {
 
 	}
 	
-	
+	/**
+	 * using the cropName and index to find which object to water
+	 * @param cropName,index,farm
+	 * @return  
+	 */
 	public void waterCrop(String cropName, int index, Farm myfarm) throws IOException {
 		try {
 			if (countCrops(cropName, myfarm) == 0)
@@ -557,6 +636,11 @@ public class Farmer {
 		}
 	}
 	
+	/**
+	 * get the ItemDetail which the screen need to show
+	 * @param 
+	 * @return  
+	 */
 	public static String getItemDetail(Farm myFarm) {
 		String s = "Items-AnimalFeedItems: "+ myFarm.animalFeedItemsList.size()+ "\n";
 		s += "Items-HappyAgentItems: "+ myFarm.happyAgentItemsList.size()+ "\n";
@@ -564,6 +648,11 @@ public class Farmer {
 		return s;
 	}
 	
+	/**
+	 * get the getAniamlDetail which the screen need to show
+	 * @param 
+	 * @return  
+	 */
 	public static String getAniamlDetail(Farm myFarm) {
 		String s= "";
 		for(int i = 0 ; i<myFarm.henList.size(); i++)
@@ -588,6 +677,11 @@ public class Farmer {
 		return s;
 	}
 	
+	/**
+	 * get the getCropDetail which the screen need to show
+	 * @param 
+	 * @return  
+	 */
 	public static String getCropDetail(Farm myFarm) {
 		String s= "";
 		for(int i = 0 ; i<myFarm.carrotList.size(); i++)
