@@ -1,7 +1,6 @@
 package Project201GraphicalApplication;
 
-import Lab7.Observable;
-import Lab7.Observer;
+
 
 public class Crop implements Observer {
 	private String name = "";

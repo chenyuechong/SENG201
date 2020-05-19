@@ -2,7 +2,6 @@ package Project201GraphicalApplication;
 
 import java.awt.EventQueue;
 import java.awt.Font;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
@@ -125,14 +124,15 @@ public class ProfileScreen {
 		window.getContentPane().add(textField_3);
 		
 		
-		String[] s = Controller.getFarmMessage().split(";");
-		textField.setText(s[0]);
+		
+		textField.setText(Controller.myFarm.getName());
 		textField.setEditable(false);
-		textField_1.setText(s[1]);
+		textField_1.setText(Controller.myFarmer.getName());
 		textField_1.setEditable(false);
-		textField_3.setText(s[3]);
+		System.out.print("profile screen" + Controller.getMoney());
+		textField_2.setText(String.valueOf(Controller.getMoney()));
 		textField_3.setEditable(false);
-		textField_2.setText(s[4]);
+		textField_3.setText(String.valueOf(Controller.currentDay));
 		textField_2.setEditable(false);
 		
 		textField_4 = new JTextField();
@@ -141,7 +141,7 @@ public class ProfileScreen {
 		textField_4.setEditable(false);
 		textField_4.setColumns(10);
 		textField_4.setBounds(237, 183, 200, 38);
-		textField_4.setText(farmTypes[Integer.parseInt(s[2])]);
+		textField_4.setText(farmTypes[Controller.myFarm.getType()]);
 		window.getContentPane().add(textField_4);
 		
 	}

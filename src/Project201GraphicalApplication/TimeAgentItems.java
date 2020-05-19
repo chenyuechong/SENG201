@@ -4,7 +4,7 @@ public class TimeAgentItems extends Items{
 	
 	public TimeAgentItems()
 	{
-		super("TimeAgentItems",20.0,"decrease harvest time 2 days");
+		super("TimeAgentItems",100,"decrease harvest time 2 days");
 	}
 
 }

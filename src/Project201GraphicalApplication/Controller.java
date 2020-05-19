@@ -25,6 +25,7 @@ public class Controller {
 	static int playDays;
 	static int currentDay;
 	static int farmType;
+
 	static String[] crops = {"Carrot", "Corn", "Eggplant", "KiwiFruit", "Tomato"};
 	static String[] animals = {"Pig", "Hen", "Cow"};
 	static String[] items = {"AnimalFeedItems", "HappyAgentItems", "TimeAgentItems"};
@@ -64,56 +65,64 @@ public class Controller {
 		
 	}
 	
-	public static void feedAnimal(String animalName, int index)
+	public static boolean feedAnimal(String animalName, int index)
 	{
 		try {		
 			myFarmer.feedAnimal(animalName,index - 1, myFarm);
 			
 			System.out.print("You have played with  " + animalName + "for a while\n");	
-			
+			return true;
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
+			return false;
 		}
 	}
 	
-	public static void useTimeAgent(String cropName, int index)
+	public static boolean useTimeAgent(String cropName, int index)
 	{
 		try {		
 			myFarmer.useTimeAgentItem(cropName, index - 1, myFarm);
 			System.out.print("You have used the timeAgentItem to " + crops[index-1] + "\n");		
+			return true;
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
+		return false;
 		}
 	}
 	
-	public static void useHappyAgent(String animalName,int index) {
+	public static boolean useHappyAgent(String animalName,int index) {
 		try {		
 			myFarmer.useHappyAgentItem(animalName,index - 1, myFarm);
-			System.out.print("You have used happyAgentItem to   " + animals[index-1] + "\n");		
+			System.out.print("You have used happyAgentItem to   " + animals[index-1] + "\n");
+			return true;
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
+		return false;
 		}
 	}
 	
 	
 	
-	public static void buySeed(String cropName, int count) {		
+	public static boolean buySeed(String cropName, int count) {		
 		try {
 			System.out.print("need to buy " + count + "seeds\n");
 			for (int i = 0; i < count; i++) {
 				myFarmer.buySeed(cropName, myFarm);
+			
 			}
 			System.out.print("you bought " + cropName + " count:" + count + ", there are " + myFarm.getMoney()
 					+ " dollars left\n");
+			return true;
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
+			return false;
 		}
 	}
 	
-	public static void buyAnimal(String animalName, int count) {
+	public static boolean buyAnimal(String animalName, int count) {
 		try {
 			System.out.print("need to buy " + count + "animals\n");
 			for (int i = 0; i < count; i++) {
@@ -121,12 +130,14 @@ public class Controller {
 			}
 			System.out.print("you bought " + animalName + " count:" + count + ", there are " + myFarm.getMoney()
 					+ " dollars left\n");
+			return true;
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
+			return false;
 		}
 	}
 
-	public static void buyItems(String itemsName, int count) {
+	public static boolean buyItems(String itemsName, int count) {
 		try {
 			System.out.print("need to buy " + count + "items\n");
 			for (int i = 0; i < count; i++) {
@@ -134,8 +145,10 @@ public class Controller {
 			}
 			System.out.print("you bought " + itemsName + " count:" + count + ", there are " + myFarm.getMoney()
 					+ " dollars left\n");
+			return true;
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
+			return false;
 		}
 	}
 
@@ -193,6 +206,11 @@ public class Controller {
 		return myFarm.getArea();
 	}
 	 	
+	
+	public static int getMoney()
+	{
+		return myFarm.getMoney();
+	}
 	public static String readFromFile() {
 		String s ="";
 		 try {

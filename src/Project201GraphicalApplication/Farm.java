@@ -5,7 +5,6 @@ package Project201GraphicalApplication;
 
 import java.util.ArrayList;
 
-import Lab7.Observable;
 
 
 
@@ -41,7 +40,7 @@ public class Farm extends Observable{
 		type = typeId;
 		name = farmName;
 		 money = 2000;
-		 if (type == 4)
+		 if (type == 2)
 			 money = 2400;
 		 area = 1;
 		 System.out.print("farm name set: "+ name);
@@ -72,26 +71,29 @@ public class Farm extends Observable{
 		money = leftMoney;
 	}
 	
-	public void setName(String name)
+	public void setName(String sname)
 	{
-		this.name = name;
+		name = sname;
 	}
 	
 	public int getMoney() {
-		return this.money;
+		return money;
 	}
 		
-	public void decreaseMoney(double m)
+	public void decreaseMoney(int m)
 	{
-		if(this.money >= m)
-			this.money -=m ;
+		if(money >= m)
+			{
+			money -= m ;
+			System.out.print(money);
+			}
 		else
 			throw new IllegalArgumentException("oops, you do not have enough money to buy");
 	}
 	
-	public void increaseMoney(double m)
+	public void increaseMoney(int m)
 	{
-		this.money += m;
+		money += m;
 	}
 	
 	public void consumeFeedItems() {

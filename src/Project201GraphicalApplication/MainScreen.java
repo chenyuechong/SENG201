@@ -74,34 +74,7 @@ public class MainScreen {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		frmManagerMain.getContentPane().add(lblNewLabel);
 		
-		JButton btnCleanRocket = new JButton("Move to next day");
-		btnCleanRocket.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(Controller.currentDay == Controller.playDays)
-				{
-					JOptionPane.showMessageDialog(null, "oops, you are in the final day,can not move to the next day", "Message",JOptionPane.PLAIN_MESSAGE);
-				}
-				else
-				{
-				Controller.moveToNextDay();
-				String s = "Move to next day Success! Acconding the number of crops you'v got " + Controller.cropCount *5 +" dollers , every animal and crop's status is changed";
-				JOptionPane.showMessageDialog(null, s, "Message",JOptionPane.PLAIN_MESSAGE);
-				
-				
-				int n = Controller.dealRandomEvent();
-				  if (n == 1)
-					  JOptionPane.showMessageDialog(null,"oops, you wells have dried up, and the crops are thirsty, you will lost some crops,check it" , "Message",JOptionPane.PLAIN_MESSAGE);
-				  if (n == 2)
-					  JOptionPane.showMessageDialog(null,"oops, your fence is broken, you will lost some animals,check it" , "Message",JOptionPane.PLAIN_MESSAGE);
-				  if (n == 3)
-					  JOptionPane.showMessageDialog(null,"Congratulation! Your farm has won the top award at the annual county fair.You earn a lot a money, you can check in your profile" , "Message",JOptionPane.PLAIN_MESSAGE);
-
-				}
-			}
-		});
-		btnCleanRocket.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnCleanRocket.setBounds(59, 691, 187, 37);
-		frmManagerMain.getContentPane().add(btnCleanRocket);
+		
 		
 		JButton btnRefuelRocket = new JButton("Expand Land");
 		btnRefuelRocket.addActionListener(new ActionListener() {
@@ -498,6 +471,79 @@ public class MainScreen {
 		
 		
 		
+		JButton btnCleanRocket = new JButton("Move to next day");
+		btnCleanRocket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Controller.currentDay == Controller.playDays)
+				{
+					JOptionPane.showMessageDialog(null, "oops, you are in the final day,can not move to the next day", "Message",JOptionPane.PLAIN_MESSAGE);
+				}
+				else
+				{
+				Controller.moveToNextDay();
+				String s = "Move to next day Success! Acconding the number of crops you'v got " + Controller.cropCount *5 +" dollers , every animal and crop's status is changed";
+				JOptionPane.showMessageDialog(null, s, "Message",JOptionPane.PLAIN_MESSAGE);
+				
+				
+				int n = Controller.dealRandomEvent();
+				  if (n == 1)
+					  JOptionPane.showMessageDialog(null,"oops, you wells have dried up, and the crops are thirsty, you will lost some crops,check it" , "Message",JOptionPane.PLAIN_MESSAGE);
+				  if (n == 2)
+					  JOptionPane.showMessageDialog(null,"oops, your fence is broken, you will lost some animals,check it" , "Message",JOptionPane.PLAIN_MESSAGE);
+				  if (n == 3)
+					  JOptionPane.showMessageDialog(null,"Congratulation! Your farm has won the top award at the annual county fair.You earn a lot a money, you can check in your profile" , "Message",JOptionPane.PLAIN_MESSAGE);
+
+				  Map<String, Integer> map = Controller.showStore(); 
+					Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 
+					 System.out.println("run here"); 
+					while (entries.hasNext()) { 
+					  Map.Entry<String, Integer> entry = entries.next(); 
+					  System.out.print(entry.getKey()+ entry.getValue());
+					  switch(entry.getKey())
+					  {
+					  	
+					  case "Corn":
+							lblCornNumber.setText(entry.getValue().toString());
+							break;
+						case "Carrot":
+							lblCarrotNumber.setText(entry.getValue().toString());
+							break;
+						case "Eggplant":
+							lblEggplantNumber.setText(entry.getValue().toString());
+							break;
+						case "KiwiFruit":
+							lblKiwiFruitNumber.setText(entry.getValue().toString());
+							break;
+						case "Tomato":
+							lblTomatoNumber.setText(entry.getValue().toString());
+							break;
+						case "Pig":
+							lblPigNumber.setText(entry.getValue().toString());
+							break;
+						case "Hen":
+							lblHenNumber.setText(entry.getValue().toString());
+							break;
+						case "Cow":
+							lblCowNumber.setText(entry.getValue().toString());
+							break;
+						case "AnimalFeedItems":
+							lblAnimalFeedItems.setText(entry.getValue().toString());
+							break;
+						case "TimeAgentItems":
+							lblTimeAgentItems.setText(entry.getValue().toString());
+							break;
+						case "HappyAgentItems":
+							lblHappyAgentItems.setText(entry.getValue().toString());
+							break;
+					  }
+					}
+				  
+				}
+			}
+		});
+		btnCleanRocket.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCleanRocket.setBounds(59, 691, 187, 37);
+		frmManagerMain.getContentPane().add(btnCleanRocket);
 		
 		
 		
@@ -514,17 +560,10 @@ public class MainScreen {
 		
 		
 		
-		String s = Controller.readFromFile();
-		String[] p = s.split("-");
-		int typeId = Integer.parseInt(p[0].trim());
-		String farmerName = p[1];
-		String farmName = p[2];
-		int playDays = Integer.parseInt(p[3].trim());
-		Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
 		
 		Map<String, Integer> map = Controller.showStore(); 
 		Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 
-		 System.out.println("run here"); 
+	
 		while (entries.hasNext()) { 
 		  Map.Entry<String, Integer> entry = entries.next(); 
 		  System.out.print(entry.getKey()+ entry.getValue());
@@ -565,8 +604,8 @@ public class MainScreen {
 				lblHappyAgentItems.setText(entry.getValue().toString());
 				break;
 		  }
-		  System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue()); 
+		  //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue()); 
 		  	  
-		 		}
+		}
 	}
 }

@@ -1,8 +1,7 @@
 package Project201GraphicalApplication;
 
-import Lab7.GalaxyWeather;
-import Lab7.Observable;
-import Lab7.Observer;
+
+
 
 public class Animal implements Observer {
 	private String name = "";

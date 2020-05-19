@@ -4,6 +4,6 @@ public class HappyAgentItems extends Items{
 	
 	public HappyAgentItems()
 	{
-		super("HappyAgentItems",20.0,"increase the animal's happiness");
+		super("HappyAgentItems",50,"increase the animal's happiness");
 	}
 }

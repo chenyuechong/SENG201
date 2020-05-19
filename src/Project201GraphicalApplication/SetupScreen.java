@@ -138,7 +138,6 @@ public class SetupScreen {
 					String types[] = {"1","2","3","4"};
 					String ss = types[type] + "-" + farmerName + "-" + farmName + "-" + playDays[playDay];
 					Controller.writeToFile(ss);
-					Controller.createFarm(type, farmerName, farmName, playDay);
 					System.out.print(farmName+ farmerName + playDay + type);
 					finishedWindow();
 				}

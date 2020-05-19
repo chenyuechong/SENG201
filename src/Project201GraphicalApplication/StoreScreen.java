@@ -151,26 +151,36 @@ public class StoreScreen {
 				System.out.print("chose "+ animalName + " " + animalNumber +"\n" );
 				System.out.print("chose "+ ItemName + " " + itemsNumber +"\n" );
 				
-				String s = "You choose ";
+				String sShow = "You bought ";
+				String s = "";
 				if(cropName.equals("None") == false && cropNumber.equals("0")==false)
 				{
-					Controller.buySeed(cropName,Integer.parseInt(cropNumber));
-					s += (cropNumber + " " + cropName);
+					if(Controller.buySeed(cropName,Integer.parseInt(cropNumber))== false)
+						JOptionPane.showMessageDialog(null,"You do not have enough money to buy this item" , "Message",JOptionPane.PLAIN_MESSAGE);
+					else
+						s += ("  "+cropNumber + " " + cropName);
 				}
 				if(animalName.equals("None") == false && animalNumber.equals("0") == false)
 				{
-					Controller.buyAnimal(animalName,Integer.parseInt(animalNumber));
-					s += (animalNumber + " " + animalName);
+					if (Controller.buyAnimal(animalName,Integer.parseInt(animalNumber))== false)
+						JOptionPane.showMessageDialog(null,"You do not have enough money to buy this item" , "Message",JOptionPane.PLAIN_MESSAGE);
+					else
+						s += ("  "+animalNumber + " " + animalName);
 					
 				}
 				if(ItemName.equals("None") == false && itemsNumber.equals("0")==false)
 				{
-					Controller.buyItems(ItemName,Integer.parseInt(itemsNumber));
-					s += (itemsNumber + " " + ItemName);
+					if(Controller.buyItems(ItemName,Integer.parseInt(itemsNumber))==false)
+						JOptionPane.showMessageDialog(null,"You do not have enough money to buy this item" , "Message",JOptionPane.PLAIN_MESSAGE);
+					else
+						s += ("  "+itemsNumber + " " + ItemName);
 					
 				}
-				
-				JOptionPane.showMessageDialog(null,s , "Message",JOptionPane.PLAIN_MESSAGE);
+				if (s.length() == 0)
+					sShow += "nothing";
+				else
+					sShow += (s +" succeed! ");
+				JOptionPane.showMessageDialog(null,sShow , "Message",JOptionPane.PLAIN_MESSAGE);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
