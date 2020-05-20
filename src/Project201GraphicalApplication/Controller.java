@@ -38,8 +38,8 @@ public class Controller {
 	
 	/**
 	 * init Farm Object, Farmer object.
-	 * @param ypeId, farmerName,  farmName,  nPlayDays
-	 * @return 
+	 * @param typeId, farmerName,  farmName,  nPlayDays
+	 * 
 	 */
 	public static void createFarm(int typeId, String farmerName, String farmName, int nPlayDays)
 	{
@@ -55,8 +55,6 @@ public class Controller {
 	
 	/**
 	 * when move to the next day need to calculate the bonus.
-	 * @param 
-	 * @return 
 	 */
 	public static void moveToNextDay()
 	{
@@ -69,17 +67,18 @@ public class Controller {
 	/**
 	 * playWith the Animal in list the index = index -1 
 	 * @param animalName, Serial number
-	 * @return 
 	 */
-	public static void playWithAnimal(String animalName, int index)
+	public static Boolean playWithAnimal(String animalName, int index)
 	{
 		try {
 			myFarmer.playWithAnimal(animalName, index - 1, myFarm);
 				System.out.print("You have played with  " + animalName + " for a while\n");
+				return true;
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.print(e.getMessage());
+			return false;
 		}
 		
 	}
@@ -218,8 +217,6 @@ public class Controller {
 	
 	/**
 	 * show all the stuff in the farm
-	 * @param
-	 * @return Map<String, Integer>
 	 */
 	public static Map<String, Integer>  showStore()
 	{ 
@@ -256,8 +253,6 @@ public class Controller {
 
 	/**
 	 * expand Farm Area 
-	 * @param
-	 * @return true: succeed, false: false
 	 */
 	public static boolean expandFarmArea() {
 		boolean isMoneyEnough = false;
@@ -271,8 +266,7 @@ public class Controller {
 	
 	/**
 	 * getFarmArea
-	 * @param
-	 * @return  the area
+
 	 */
 	public static int getFarmArea() {
 		return myFarm.getArea();
@@ -280,8 +274,7 @@ public class Controller {
 	 	
 	/**
 	 * getMoney
-	 * @param
-	 * @return  the current money
+
 	 */
 	public static int getMoney()
 	{
@@ -290,8 +283,7 @@ public class Controller {
 	
 	/**
 	 * read "farm.txt" and get the information in the file
-	 * @param
-	 * @return  the information which using create Farm and Farmer object
+
 	 */
 	public static String readFromFile() {
 		String s ="";
@@ -319,8 +311,6 @@ public class Controller {
 	
 	/**
 	 * write all the Play data To "play.txt"
-	 * @param
-	 * @return  
 	 */
 	public static void writePlayConfigureToFile() {
 		String s ="";
@@ -346,8 +336,7 @@ public class Controller {
 	
 	/**
 	 * read all the Play data which wrote in "play.txt" and recover the data
-	 * @param
-	 * @return  
+
 	 */
 	public static void readPlayConfigureFromFile() {
 		try {
@@ -402,8 +391,7 @@ public class Controller {
 	
 	/**
 	 * write the farm setup information in the "farm.txt"
-	 * @param
-	 * @return  
+
 	 */
 	public static void writeToFile(String s) {
 		try {
@@ -418,8 +406,7 @@ public class Controller {
 
 	/**
 	 * get Farm information which will using in the screen
-	 * @param
-	 * @return  
+
 	 */
 	public static String getFarmMessage() {
 		String s = "";
@@ -437,8 +424,7 @@ public class Controller {
 
 	/**
 	 * check the file.text is or not exit to identify is or not the first login
-	 * @param
-	 * @return  boolean
+
 	 */
 	public static boolean isFirstLogin() {
 
@@ -449,8 +435,7 @@ public class Controller {
 	
 	/**
 	 * check the play.text is or not exit to identify is or not the first login
-	 * @param
-	 * @return  boolean
+
 	 */
 	public static boolean isPlayed() {
 		File file = new File("play.txt");
@@ -459,8 +444,7 @@ public class Controller {
 	
 	/**
 	 * init all the information which support to play games
-	 * @param
-	 * @return  boolean
+
 	 */
 	public static void init()
 	{
@@ -477,8 +461,7 @@ public class Controller {
 	
 	/**
 	 * get the all the information about  Crop
-	 * @param cropName,index
-	 * @return  String
+
 	 */
 	public static String getCropObjectStatus(String cropName, int index) {
 		
@@ -532,8 +515,6 @@ public class Controller {
 
 	/**
 	 * get the all the information about  animal
-	 * @param animalName,index
-	 * @return  String
 	 */
 	public static String getAnimalObjectStatus(String animalName, int index) {
 		String s = "";
@@ -569,24 +550,24 @@ public class Controller {
 		
 	/**
 	 * water the serial number crop
-	 * @param cropName,index
-	 * @return  
+
 	 */
-	public static void waterCrop(String cropName, int index) {
-		
-		try {		
+	public static boolean waterCrop(String cropName, int index) {
+
+		try {
 			myFarmer.waterCrop(cropName, index - 1, myFarm);
-			System.out.print("You watered  " + cropName + "\n");		
+			System.out.print("You watered  " + cropName + "\n");
+			return true;
 		} catch (IOException e) {
-		// TODO Auto-generated catch block
-		System.out.print(e.getMessage());
+			// TODO Auto-generated catch block
+			System.out.print(e.getMessage());
+			return false;
 		}
 	}
 
 	/**
 	 * count the crop list size
-	 * @param cropName
-	 * @return  int
+
 	 */
 	public static int countCrop(String cropName) {
 		int n = myFarmer.countCrops(cropName, myFarm);
@@ -595,8 +576,6 @@ public class Controller {
 	
 	/**
 	 * count the animal list size
-	 * @param animalName
-	 * @return  
 	 */
 	public static int countAnimal(String animalName) {
 		int n = myFarmer.countAnimal(animalName, myFarm);;
@@ -605,8 +584,6 @@ public class Controller {
 	
 	/**
 	 * create random event and return the index 
-	 * @param animalName
-	 * @return  int
 	 */
 	public static int dealRandomEvent() {
 		int max=3;
@@ -635,8 +612,7 @@ public class Controller {
 
 	/**
 	 * when finish game clear all the file which create by playing
-	 * @param animalName
-	 * @return  int
+
 	 */
 	public static void finishGame()
 	{

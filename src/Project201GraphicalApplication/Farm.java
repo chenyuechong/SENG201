@@ -1,5 +1,9 @@
 /**
- * Farm class which including all the crop lists and animal list and items list
+ * extend observable
+ *the farm keeps track of the amount of the money,the 
+ *amount of the animals ,the amountmof crops and the 
+ *amount of  items.  It informs observers of changes 
+ *and contains a list of observers
  */
 package Project201GraphicalApplication;
 
@@ -33,7 +37,11 @@ public class Farm extends Observable{
 	
 
 	/**
-	 * 
+	 * construct the farm 
+	 * initilise the type,there are four types of farm
+	 * set the initial money to 2000
+	 * if the type is the fourth of farm
+	 set the initial money to 2400
 	 */
 	public Farm( int typeId, String farmName) {
 		// TODO Auto-generated constructor stub
@@ -49,8 +57,7 @@ public class Farm extends Observable{
 	
 	/**
 	 * when expand Area , money - 200
-	 * @param 
-	 * @return  
+\
 	 */
 	public void expandArea() {
 		area ++;
@@ -59,7 +66,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * get the current Area
-	 * @param 
 	 * @return  
 	 */
 	public int getArea() {
@@ -69,7 +75,6 @@ public class Farm extends Observable{
 	/**
 	 * set the current Area
 	 * @param n
-	 * @return  
 	 */
 	public void setArea(int n) {
 		area = n;
@@ -78,7 +83,6 @@ public class Farm extends Observable{
 	/**
 	 * set the current Area
 	 * @param n
-	 * @return  
 	 */
 	public void setType(int n)
 	{
@@ -88,7 +92,6 @@ public class Farm extends Observable{
 	/**
 	 * set the current Money
 	 * @param leftMoney
-	 * @return  
 	 */
 	public void setMoney(int leftMoney)
 	{
@@ -97,8 +100,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * set the farm name
-	 * @param name
-	 * @return  
 	 */
 	public void setName(String sname)
 	{
@@ -107,7 +108,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * get the farm current money
-	 * @param name
 	 * @return  
 	 */
 	public int getMoney() {
@@ -116,9 +116,11 @@ public class Farm extends Observable{
 		
 	
 	/**
-	 * calculate money which decrease m 
-	 * @param name
-	 * @return  
+	 * /** create a decreaseMoney(double m) method
+	 *  if money is lager than m(includes),set money
+	 *   equals  the money to minus 2 
+	 *  else throw a exception 
+	 * @param m
 	 */
 	public void decreaseMoney(int m)
 	{
@@ -133,8 +135,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * calculate money which increase m 
-	 * @param name
-	 * @return  
 	 */
 	public void increaseMoney(int m)
 	{
@@ -143,9 +143,10 @@ public class Farm extends Observable{
 	
 	
 	/**
-	 * when using the feedItems will need to -1 in the feedItemList 
-	 * @param 
-	 * @return  
+	 * create a consumeFeedItems() method. if the size of animalFeedItemsList
+	 * is larger than one (includes),remove the first index of the 
+	 * animalFeedItemsList. else throw a exception
+\
 	 */
 	public void consumeFeedItems() {
 		if( animalFeedItemsList.size() >= 1)
@@ -157,8 +158,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * when using the HappyAgentItem will need to -1 in the HappyAgentItemList 
-	 * @param 
-	 * @return  
 	 */
 	public void consumeHappyAgentItem() {
 		if( happyAgentItemsList.size() >= 1)
@@ -169,8 +168,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * when using the TimeAgentItem will need to -1 in the TimeAgentItemList 
-	 * @param 
-	 * @return  
 	 */
 	public void consumeTimeAgentItem() {
 		if( timeAgentitemsList.size() >= 1)
@@ -182,8 +179,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * get the farm name
-	 * @param 
-	 * @return  
 	 */
 	public String getName()
 	{
@@ -192,8 +187,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * get the farm type
-	 * @param 
-	 * @return  
 	 */
 	public int getType()
 	{
@@ -204,8 +197,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * when move to the next day this function will be invoked and notice the observer
-	 * @param 
-	 * @return  
 	 */
 	public void setIsChangeDay(boolean isChangeDay)
 	{
@@ -225,8 +216,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * when move to the next day the farm will get bonus by the crops which he owners
-	 * @param 
-	 * @return  
 	 */
 	public int getBouns(int ndollar) {
 		int b = 0;
@@ -244,8 +233,6 @@ public class Farm extends Observable{
 
 	/**
 	 * if this accident happens, will increase bonus depends how many crops he have
-	 * @param 
-	 * @return  
 	 */
 	public int countryFairEvent()
 	{
@@ -255,9 +242,7 @@ public class Farm extends Observable{
 	}
 	
 	/**
-	 * if this fenceBrokenEvent happens, will decrease animals randomly
-	 * @param 
-	 * @return  
+	 * if this fenceBrokenEvent happens, will decrease animals randomly 
 	 */
 	public int fenceBrokenEvent()
 	{
@@ -286,8 +271,6 @@ public class Farm extends Observable{
 	
 	/**
 	 * if this droughtEvent happens, will decrease crops randomly
-	 * @param 
-	 * @return  
 	 */
 	public void droughtEvent(String seedName) {
 		switch(seedName) {

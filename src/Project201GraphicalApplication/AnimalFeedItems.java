@@ -2,9 +2,7 @@ package Project201GraphicalApplication;
 
 
 /**
- * AnimalFeedItems class inherit Items.
- *
- * 
+ * AnimalFeedItems inherit Items.
  */
 public class AnimalFeedItems extends Items{
 	public AnimalFeedItems()

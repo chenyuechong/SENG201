@@ -18,8 +18,6 @@ public class Crop implements Observer {
 	
 	/**
 	 * when receive the farm message ,the animal will decrease their leftTimeToHarvest 5 and heigth + 5.
-	 * @param farm
-	 * @return 
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -56,11 +54,10 @@ public class Crop implements Observer {
 	
 	/**
 	 * decrease Harvest Time.when using time agent the harvest time  -2
-	 * @param 
-	 * @return 
+
 	 */
 	public void decreaseHarvestTime() {
-		harvestTime -= 2.0;
+		harvestTime -= 2;
 		if (harvestTime <= 0)
 			harvestTime = 0;
 	}
@@ -68,8 +65,7 @@ public class Crop implements Observer {
 	
 	/**
 	 * set Selling Price.
-	 * @param sellingPrice
-	 * @return 
+
 	 */
 	public void setSellingPrice(int sellingPrice) {
 		this.sellingPrice = sellingPrice;
@@ -77,8 +73,6 @@ public class Crop implements Observer {
 
 	/**
 	 * get Selling Price.
-	 * @param 
-	 * @return int
 	 */
 	public int getSellingPrice() {
 		return sellingPrice;
@@ -86,8 +80,6 @@ public class Crop implements Observer {
 
 	/**
 	 * set Purchase Price.
-	 * @param purchasePrice
-	 * @return 
 	 */
 	public void setPurchasePrice(int purchasePrice) {
 		this.purchasePrice = purchasePrice;
@@ -95,8 +87,7 @@ public class Crop implements Observer {
 
 	/**
 	 * get Purchase Price.
-	 * @param purchasePrice
-	 * @return price
+
 	 */
 	public int getPurchasePrice() {
 		return purchasePrice;
@@ -104,8 +95,7 @@ public class Crop implements Observer {
 
 	/**
 	 * set heigth
-	 * @param heigth
-	 * @return 
+
 	 */
 	public void setHeigth(int heigth) {
 		this.heigth = heigth;
@@ -113,9 +103,8 @@ public class Crop implements Observer {
 
 
 	/**
-	 * get heigth
-	 * @param 
-	 * @return heigth
+	 * get height
+
 	 */
 	public int getHeigth() {
 		return heigth;
@@ -123,8 +112,6 @@ public class Crop implements Observer {
 
 	/**
 	 * set Harvest Time
-	 * @param harvestTime
-	 * @return 
 	 */
 	public void setHarvestTime(int harvestTime) {
 		this.harvestTime = harvestTime;
@@ -132,8 +119,7 @@ public class Crop implements Observer {
 
 	/**
 	 * return Harvest Time
-	 * @param harvestTime
-	 * @return 
+
 	 */
 	public int getHarvestTime() {
 		return harvestTime;
@@ -146,8 +132,6 @@ public class Crop implements Observer {
 
 	/**
 	 *get Left Time To Harvest
-	 * @param 
-	 * @return int
 	 */
 	public int getLeftTimeToHarvest() {
 		return leftTimeToHarvest;
@@ -155,8 +139,7 @@ public class Crop implements Observer {
 
 	/**
 	 * set Left Time To Harvers
-	 * @param harvestTime
-	 * @return 
+
 	 */
 	public void setLeftTimeToHarvers(int t) {
 		leftTimeToHarvest = t;
@@ -165,8 +148,7 @@ public class Crop implements Observer {
 	
 	/**
 	 * water crop add 10 to height
-	 * @param harvestTime
-	 * @return 
+ 
 	 */
 	public void water()
 	{

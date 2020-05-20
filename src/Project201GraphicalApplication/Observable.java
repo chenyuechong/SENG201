@@ -41,15 +41,15 @@ public class Observable {
 
     /**
      * If this object has changed, as indicated by the
-     * <code>hasChanged</code> method, then notify all of its observers
-     * and then call the <code>clearChanged</code> method to
+     * hasChangedmethod, then notify all of its observers
+     * and then call the clearChanged  method to
      * indicate that this object has no longer changed.
-     * <p>
-     * Each observer has its <code>update</code> method called with two
-     * arguments: this observable object and <code>null</code>. In other
+     * 
+     * Each observer has its update method called with two
+     * arguments: this observable object and null. In other
      * words, this method is equivalent to:
-     * <blockquote><tt>
-     * notifyObservers(null)</tt></blockquote>
+     * 
+     * notifyObservers(null)
      *
      * @see     java.util.Observable#clearChanged()
      * @see     java.util.Observable#hasChanged()
@@ -147,7 +147,7 @@ public class Observable {
     }
 
     /**
-     * Returns the number of observers of this <tt>Observable</tt> object.
+     * Returns the number of observers of this Observable object.
      *
      * @return  the number of observers of this object.
      */

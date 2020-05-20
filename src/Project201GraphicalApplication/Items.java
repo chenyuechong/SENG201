@@ -16,8 +16,8 @@ public class Items {
 	
 	/**
 	 * set Purchase Price
-	 * @param 
-	 * @return 
+	 * @param purchasePrice
+
 	 */
 	public void setPurchasePrice(int purchasePrice)
 	{
@@ -25,8 +25,8 @@ public class Items {
 	}
 	/**
 	 * return the purchasePrice
-	 * @param 
-	 * @return 
+	 *  
+	 * @return int
 	 */
 	public int getPurchasePrice()
 	{

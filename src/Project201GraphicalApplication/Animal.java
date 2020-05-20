@@ -17,8 +17,6 @@ public class Animal implements Observer {
 	
 	/**
 	 * when receive the farm message ,the animal will increase their happiness 10 and health + 10.
-	 * @param farm
-	 * @return 
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -30,7 +28,6 @@ public class Animal implements Observer {
 	/**
 	 * startObserving.
 	 * @param farm
-	 * @return 
 	 */
 	public void startObserving(Farm farm) {
 		farm.addObserver(this);
@@ -38,8 +35,7 @@ public class Animal implements Observer {
 
 	/**
 	 * stopObserving.
-	 * @param farm
-	 * @return 
+
 	 */
 	public void stopObserving(Farm farm) {
 		farm.deleteObserver(this);
@@ -53,8 +49,7 @@ public class Animal implements Observer {
 
 	/**
 	 * constructor.
-	 * @param name, purchasePrice,health,happiness
-	 * @return 
+ * @param   sname,  spurchasePrice,  health,  happiness
 	 */
 	public Animal(String sname, int spurchasePrice, int shealth, int shappiness) {
 		// TODO Auto-generated constructor stub
@@ -66,8 +61,7 @@ public class Animal implements Observer {
 
 	/**
 	 * feed animal, increase health.
-	 * @param 
-	 * @return 
+
 	 */
 	public void feed() {
 		this.health += 10;
@@ -75,8 +69,6 @@ public class Animal implements Observer {
 
 	/**
 	 * play with animal, increase happiness.
-	 * @param 
-	 * @return 
 	 */
 	public void play() {
 		this.happiness += 10;
@@ -85,8 +77,6 @@ public class Animal implements Observer {
 	
 	/**
 	 * when using happyAgentItems, increase happiness.
-	 * @param 
-	 * @return 
 	 */
 	public void increaseHappiness() {
 		this.happiness += 20;
@@ -95,8 +85,7 @@ public class Animal implements Observer {
 	
 	/**
 	 * setPurchasePrice.
-	 * @param  purchasePrice
-	 * @return 
+
 	 */
 	public void setPurchasePrice(int purchasePrice) {
 		this.purchasePrice = purchasePrice;
@@ -104,8 +93,6 @@ public class Animal implements Observer {
 
 	/**
 	 * getPurchasePrice.
-	 * @param  
-	 * @return purchasePrice
 	 */
 	public int getPurchasePrice() {
 		return purchasePrice;
@@ -114,7 +101,7 @@ public class Animal implements Observer {
 	/**
 	 * setHealth.
 	 * @param  health
-	 * @return 
+
 	 */
 	public void setHealth(int health) {
 		this.health = health;
@@ -122,7 +109,7 @@ public class Animal implements Observer {
 
 	/**
 	 * getHealth
-	 * @param  
+
 	 * @return 
 	 */
 	public int getHealth() {
@@ -132,7 +119,6 @@ public class Animal implements Observer {
 	/**
 	 * setHappiness.
 	 * @param  happiness
-	 * @return 
 	 */
 	public void setHappiness(int happiness) {
 		this.happiness = happiness;
@@ -141,7 +127,6 @@ public class Animal implements Observer {
 	
 	/**
 	 * getHappiness.
-	 * @param  
 	 * @return happiness
 	 */
 	public int getHappiness() {
