@@ -42,29 +42,39 @@ public class Farmer {
 			Corn corn = new Corn();			
 			myFarm.decreaseMoney(corn.getPurchasePrice());
 			corn.startObserving(myFarm);
+			if(myFarm.getType() == 4)
+				corn.setIsIncrease();
 			myFarm.cornList.add(corn);
 			break;
 		case "Carrot":
 			Carrot carrot = new Carrot();			
 			myFarm.decreaseMoney(carrot.getPurchasePrice());
 			carrot.startObserving(myFarm);
+			if(myFarm.getType() == 4)
+				carrot.setIsIncrease();
 			myFarm.carrotList.add(carrot);
 			break;
 		case "Eggplant":
 			Eggplant eggplant = new Eggplant();
 			myFarm.decreaseMoney(eggplant.getPurchasePrice());
 			eggplant.startObserving(myFarm);
+			if(myFarm.getType() == 4)
+				eggplant.setIsIncrease();
 			myFarm.eggplantList.add(eggplant);
 			break;
 		case "KiwiFruit":
 			KiwiFruit kiwifruit = new KiwiFruit();			
 			myFarm.decreaseMoney(kiwifruit.getPurchasePrice());
+			if(myFarm.getType() == 4)
+				kiwifruit.setIsIncrease();
 			myFarm.kiwifruitList.add(kiwifruit);
 			kiwifruit.startObserving(myFarm);
 			break;
 		case "Tomato":
 			Tomato tomato = new Tomato();			
 			myFarm.decreaseMoney(tomato.getPurchasePrice());
+			if(myFarm.getType() == 4)
+				tomato.setIsIncrease();
 			myFarm.tomatoList.add(tomato);
 			tomato.startObserving(myFarm);
 			break;
@@ -94,6 +104,8 @@ public class Farmer {
 			corn.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
 			corn.setPurchasePrice(Integer.parseInt(paraments[3]));
 			corn.startObserving(myFarm);
+			if(myFarm.getType() == 4)
+				corn.setIsIncrease();
 			myFarm.cornList.add(corn);
 			break;
 		case "Carrot":
@@ -103,6 +115,8 @@ public class Farmer {
 			carrot.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
 			carrot.setPurchasePrice(Integer.parseInt(paraments[3]));
 			carrot.startObserving(myFarm);
+			if(myFarm.getType() == 4)
+				carrot.setIsIncrease();
 			myFarm.carrotList.add(carrot);
 			break;
 		case "Eggplant":
@@ -112,6 +126,8 @@ public class Farmer {
 			eggplant.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
 			eggplant.setPurchasePrice(Integer.parseInt(paraments[3]));
 			eggplant.startObserving(myFarm);
+			if(myFarm.getType() == 4)
+				eggplant.setIsIncrease();
 			myFarm.eggplantList.add(eggplant);
 			break;
 		case "KiwiFruit":
@@ -120,6 +136,8 @@ public class Farmer {
 			kiwifruit.setHarvestTime(Integer.parseInt(paraments[1]));
 			kiwifruit.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
 			kiwifruit.setPurchasePrice(Integer.parseInt(paraments[3]));
+			if(myFarm.getType() == 4)
+				kiwifruit.setIsIncrease();
 			myFarm.kiwifruitList.add(kiwifruit);
 			kiwifruit.startObserving(myFarm);
 			break;
@@ -129,6 +147,8 @@ public class Farmer {
 			tomato.setHarvestTime(Integer.parseInt(paraments[1]));
 			tomato.setLeftTimeToHarvers(Integer.parseInt(paraments[2]));
 			tomato.setPurchasePrice(Integer.parseInt(paraments[3]));
+			if(myFarm.getType() == 4)
+				tomato.setIsIncrease();
 			myFarm.tomatoList.add(tomato);
 			tomato.startObserving(myFarm);
 			break;
@@ -146,18 +166,24 @@ public class Farmer {
 			case "Pig":
 				Pig p = new Pig();
 				myFarm.decreaseMoney(p.getPurchasePrice());
+				if(myFarm.getType() == 3)
+					p.setIsIncrease();
 				myFarm.pigList.add(p);
 				p.startObserving(myFarm);
 				break;
 			case "Hen":
 				Hen h = new Hen();
 				myFarm.decreaseMoney(h.getPurchasePrice());
+				if(myFarm.getType()==3)
+					h.setIsIncrease();
 				myFarm.henList.add(h);
 				h.startObserving(myFarm);
 				break;
 			case "Cow":
 				Cow c = new Cow();
 				myFarm.decreaseMoney(c.getPurchasePrice());
+				if(myFarm.getType()==3)
+					c.setIsIncrease();
 				myFarm.cowList.add(c);
 				c.startObserving(myFarm);
 				break;
@@ -180,6 +206,8 @@ public class Farmer {
 			Pig p = new Pig();
 			p.setHappiness(Integer.parseInt(paraments[0]));
 			p.setHealth(Integer.parseInt(paraments[1]));
+			if(myFarm.getType() == 3)
+				p.setIsIncrease();
 			myFarm.pigList.add(p);
 			p.startObserving(myFarm);
 			break;
@@ -187,6 +215,8 @@ public class Farmer {
 			Hen h = new Hen();
 			h.setHappiness(Integer.parseInt(paraments[0]));
 			h.setHealth(Integer.parseInt(paraments[1]));
+			if(myFarm.getType() == 3)
+				h.setIsIncrease();
 			myFarm.henList.add(h);
 			h.startObserving(myFarm);
 			break;
@@ -194,6 +224,8 @@ public class Farmer {
 			Cow c = new Cow();
 			c.setHappiness(Integer.parseInt(paraments[0]));
 			c.setHealth(Integer.parseInt(paraments[1]));
+			if(myFarm.getType() == 3)
+				c.setIsIncrease();
 			myFarm.cowList.add(c);
 			c.startObserving(myFarm);
 			break;
@@ -269,39 +301,25 @@ public class Farmer {
 	 */
 	public int countCrops(String seedName, Farm myFarm) {
 		int count = 0;
-		
-		System.out.print(seedName); 
 		switch (seedName) {
 		case "Corn":
-			count = 0;
-			if(myFarm.cornList.isEmpty() == false)
-				count = myFarm.cornList.size();
+			count = myFarm.cornList.size();
 			break;
 		case "Carrot":
-			count = 0;
-			if(myFarm.carrotList.isEmpty() == false)
-				count = myFarm.carrotList.size();
+			count = myFarm.carrotList.size();
 			break;
 		case "Eggplant":
-			count = 0;
- 
-			if(myFarm.eggplantList.isEmpty() == false)
-				count = myFarm.eggplantList.size();
+			count = myFarm.eggplantList.size();
 			break;
 		case "KiwiFruit":
-			count = 0;
-
-			if(myFarm.kiwifruitList.isEmpty() == false)
-				count = myFarm.kiwifruitList.size();
+			count = myFarm.kiwifruitList.size();
 			break;
 		case "Tomato":
-			count = 0;
-			if(myFarm.tomatoList.isEmpty() == false)
-				count = myFarm.tomatoList.size();
+			count = myFarm.tomatoList.size();
 			break;
 		}
+		System.out.print("\n" +seedName + "\n");
 		return count;
-
 	}
 
 	/**
@@ -372,7 +390,7 @@ public class Farmer {
 				isSuccess = false;
 			} else {
 				Corn corn = myfarm.cornList.get(index);
-				if (corn.getHarvestTime() == 0) {
+				if (corn.getLeftTimeToHarvest() == 0) {
 					myfarm.cornList.remove(index);
 					isSuccess = true;
 					myfarm.increaseMoney(50);
@@ -384,7 +402,7 @@ public class Farmer {
 				isSuccess = false;
 			} else {
 				Carrot c = myfarm.carrotList.get(index);
-				if (c.getHarvestTime() == 0) {
+				if (c.getLeftTimeToHarvest() == 0) {
 					myfarm.carrotList.remove(index);
 					isSuccess = true;
 					myfarm.increaseMoney(50);
@@ -396,7 +414,7 @@ public class Farmer {
 				isSuccess = false;
 			} else {
 				Eggplant e = myfarm.eggplantList.get(index);
-				if (e.getHarvestTime() == 0) {
+				if (e.getLeftTimeToHarvest() == 0) {
 					myfarm.eggplantList.remove(index);
 					isSuccess = true;
 					myfarm.increaseMoney(50);
@@ -409,7 +427,7 @@ public class Farmer {
 				isSuccess = false;
 			} else {
 				KiwiFruit k = myfarm.kiwifruitList.get(index);
-				if (k.getHarvestTime() == 0) {
+				if (k.getLeftTimeToHarvest() == 0) {
 					myfarm.kiwifruitList.remove(index);
 					isSuccess = true;
 					myfarm.increaseMoney(50);
@@ -421,7 +439,7 @@ public class Farmer {
 				isSuccess = false;
 			} else {
 				Tomato t = myfarm.tomatoList.get(index);
-				if (t.getHarvestTime() == 0) {
+				if (t.getLeftTimeToHarvest() == 0) {
 					myfarm.tomatoList.remove(index);
 					isSuccess = true;
 					myfarm.increaseMoney(50);
@@ -438,10 +456,11 @@ public class Farmer {
 	/**
 	 * using the animalName and index to find which object to be feed 
 	 */
-	public void feedAnimal(String animalName, int index , Farm myfarm) throws IOException {
-		try {
-			if(countAnimal(animalName, myfarm) == 0 || myfarm.animalFeedItemsList.size() <= 0)
-				throw new IOException("oops, you do not have animal to feed");
+	public boolean feedAnimal(String animalName, int index , Farm myfarm) throws IOException {
+	
+		System.out.print("\n Feed animal in farmer1");
+		if(myfarm.animalFeedItemsList.size() == 0)
+			return false;
 			switch (animalName) {
 			case "Pig":
 					Pig p = myfarm.pigList.get(index);
@@ -459,9 +478,8 @@ public class Farmer {
 					c.feed();
 				break;
 			}
-		} catch (IllegalArgumentException e) {
-			throw new IOException(e.getMessage());
-		}
+			return true;
+		
 
 	}
 
@@ -471,11 +489,11 @@ public class Farmer {
 	 * using the animalName and index to find which object to be feed 
 
 	 */
-	public void useHappyAgentItem(String animalName, int index, Farm myfarm) throws IOException {
-		try {
-			if (myfarm.happyAgentItemsList.size() == 0 || countAnimal(animalName,myfarm) == 0)
-				throw new IOException("oops, you do not have happyAgentItem to use");
-			switch (animalName) {
+	public boolean useHappyAgentItem(String animalName, int index, Farm myfarm) throws IOException {
+	
+		if(myfarm.happyAgentItemsList.size() == 0)
+				return false;
+		switch (animalName) {
 			case "Pig":
 					Pig p = myfarm.pigList.get(index);
 					myfarm.consumeHappyAgentItem();
@@ -493,9 +511,8 @@ public class Farmer {
 					c.increaseHappiness();
 				break;
 			}
-		} catch (IllegalStateException e) {
-			throw new IOException(e.getMessage());
-		}
+		return true;
+		
 	}
 
 	
@@ -503,10 +520,10 @@ public class Farmer {
 	 * using the seedName and index to find which object to be decrease harvest time 
 
 	 */
-	public void useTimeAgentItem(String seedName, int index,Farm myfarm) throws IOException {
-		try {
-			if(countCrops(seedName,myfarm)==0 || myfarm.timeAgentitemsList.size() == 0)
-				throw new IOException("oops, you do not have crops or timeAgentItems to use");
+	public boolean useTimeAgentItem(String seedName, int index,Farm myfarm) throws IOException {
+		if(myfarm.timeAgentitemsList.size() == 0)
+			return false;
+		
 			switch (seedName) {
 			case "Corn":		
 					Corn corn = myfarm.cornList.get(index);			
@@ -542,10 +559,8 @@ public class Farmer {
 					t.water();
 				break;
 			}
-			}
-			catch (Exception  e) {
-				throw new IOException(e.getMessage());
-			}
+			return true;
+			
 	}
 	
 	
@@ -554,10 +569,6 @@ public class Farmer {
 
 	 */
 	public void playWithAnimal(String animalName, int index, Farm myfarm) throws IOException {
-
-		if (countAnimal(animalName, myfarm) == 0) {
-			throw new IOException("oops, you do not have " + animalName + " to play");
-		}
 
 		switch (animalName) {
 		case "Pig":
@@ -586,10 +597,7 @@ public class Farmer {
 	 * using the cropName and index to find which object to water
 	 */
 	public void waterCrop(String cropName, int index, Farm myfarm) throws IOException {
-		try {
-			if (countCrops(cropName, myfarm) == 0 || index == 0) {
-				throw new IOException("oops, you do not have crops or timeAgentItems to use");
-			} else {
+		
 				switch (cropName) {
 				case "Corn":
 					Corn corn = myfarm.cornList.get(index);
@@ -618,12 +626,11 @@ public class Farmer {
 
 					break;
 				}
-			}
-		} catch (Exception e) {
-			throw new IOException(e.getMessage());
+			
+		
 		}
 		
-	}
+	
 	
 	/**
 	 * get the Iteme'ta

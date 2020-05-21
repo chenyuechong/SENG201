@@ -49,8 +49,9 @@ public class Farm extends Observable{
 		name = farmName;
 		 money = 2000;
 		 if (type == 2)
-			 money = 2400;
+			 money = 3000;
 		 area = 1;
+		 
 		 System.out.print("farm name set: "+ name);
 		 
 	}

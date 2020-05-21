@@ -91,10 +91,9 @@ public class Controller {
 	public static boolean feedAnimal(String animalName, int index)
 	{
 		try {		
-			myFarmer.feedAnimal(animalName,index - 1, myFarm);
+			System.out.print("\n Feed animal");
+			return myFarmer.feedAnimal(animalName,index - 1, myFarm);
 			
-			System.out.print("You have played with  " + animalName + "for a while\n");	
-			return true;
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
@@ -111,9 +110,8 @@ public class Controller {
 	public static boolean useTimeAgent(String cropName, int index)
 	{
 		try {		
-			myFarmer.useTimeAgentItem(cropName, index - 1, myFarm);
-			System.out.print("You have used the timeAgentItem to " + crops[index-1] + "\n");		
-			return true;
+			
+			return myFarmer.useTimeAgentItem(cropName, index - 1, myFarm);
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
@@ -129,9 +127,7 @@ public class Controller {
 	 */
 	public static boolean useHappyAgent(String animalName,int index) {
 		try {		
-			myFarmer.useHappyAgentItem(animalName,index - 1, myFarm);
-			System.out.print("You have used happyAgentItem to   " + animals[index-1] + "\n");
-			return true;
+			return myFarmer.useHappyAgentItem(animalName,index - 1, myFarm);
 		} catch (IOException e) {
 		// TODO Auto-generated catch block
 		System.out.print(e.getMessage());
@@ -454,8 +450,10 @@ public class Controller {
 		String farmerName = p[1];
 		String farmName = p[2];
 		int playDays = Integer.parseInt(p[3].trim());
-		Controller.createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
-		Controller.readPlayConfigureFromFile();	
+		createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
+		System.out.print("create farm success");
+		if(isPlayed())
+			readPlayConfigureFromFile();	
 		System.out.print("init the farm paraments");
 	}
 	
@@ -473,7 +471,7 @@ public class Controller {
 			s += ";";
 			s +=  String.valueOf(cron.getHeigth());
 			s += ";";
-			s +=  String.valueOf(cron.getHarvestTime());
+			s +=  String.valueOf(cron.getLeftTimeToHarvest());
 			break;
 		case "Carrot":
 			Carrot p= myFarm.carrotList.get(index -1);
@@ -481,7 +479,7 @@ public class Controller {
 			s += ";";
 			s +=  String.valueOf(p.getHeigth());
 			s += ";";
-			s +=  String.valueOf(p.getHarvestTime());
+			s +=  String.valueOf(p.getLeftTimeToHarvest());
 			break;
 		case "Eggplant":
 			Eggplant e= myFarm.eggplantList.get(index -1);
@@ -489,7 +487,7 @@ public class Controller {
 			s += ";";
 			s +=  String.valueOf(e.getHeigth());
 			s += ";";
-			s +=  String.valueOf(e.getHarvestTime());
+			s +=  String.valueOf(e.getLeftTimeToHarvest());
 			break;
 		case "KiwiFruit":
 			KiwiFruit k= myFarm.kiwifruitList.get(index -1);
@@ -497,7 +495,7 @@ public class Controller {
 			s += ";";
 			s +=  String.valueOf(k.getHeigth());
 			s += ";";
-			s +=  String.valueOf(k.getHarvestTime());
+			s +=  String.valueOf(k.getLeftTimeToHarvest());
 			break;
 		case "Tomato":
 			Tomato t= myFarm.tomatoList.get(index -1);
@@ -505,7 +503,7 @@ public class Controller {
 			s += ";";
 			s +=  String.valueOf(t.getHeigth());
 			s += ";";
-			s +=  String.valueOf(t.getHarvestTime());
+			s +=  String.valueOf(t.getLeftTimeToHarvest());
 			break;
 		}
 		return s;

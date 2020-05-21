@@ -15,9 +15,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
-
-import Project201.Controller;
-
 import java.awt.Color;
 import javax.swing.JComboBox;
 
@@ -41,6 +38,7 @@ public class SetupScreen {
 	}
 	
 	public void finishedWindow() {
+		Controller.init();
 		manager.closeSetupScreen(this);
 	}
 
@@ -100,7 +98,7 @@ public class SetupScreen {
 		lblHowManyDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblHowManyDays);
 		
-		String farmTypes[]={"1:  Normal","2:  20% more money","3:  20% more animal's happiness","4:  20% crop grow speed"};  
+		String farmTypes[]={"1:  Normal","2:  50% more money","3:  50% more animal's happiness","4:  50% crop grow speed"};  
 		JComboBox comboBox = new JComboBox(farmTypes);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -91,7 +91,7 @@ public class ProfileScreen {
 		lblHowManyDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblHowManyDays);
 		
-		String farmTypes[]={"1: Normal","2:  20% more money","3: 20% more animal's happiness","4: 20% crop grow speed"};
+		String farmTypes[]={"1: Normal","2:  50% more money","3: 50% more animal's happiness","4: 50% crop grow speed"};
 		
 		
 		String playDays[]={"5","6","7","8","9","10"};
@@ -141,7 +141,7 @@ public class ProfileScreen {
 		textField_4.setEditable(false);
 		textField_4.setColumns(10);
 		textField_4.setBounds(237, 183, 200, 38);
-		textField_4.setText(farmTypes[Controller.myFarm.getType()]);
+		textField_4.setText(farmTypes[Controller.myFarm.getType() - 1]);
 		window.getContentPane().add(textField_4);
 		
 	}

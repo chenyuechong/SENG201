@@ -52,6 +52,7 @@ public class MainScreen {
 		manager = incomingManager;
 		initialize();
 		frmManagerMain.setVisible(true);
+
 	}
 	
 	public void closeWindows() {
@@ -616,6 +617,8 @@ public class MainScreen {
 		
 		
 		
+		 
+
 		
 		Map<String, Integer> map = Controller.showStore(); 
 		Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 

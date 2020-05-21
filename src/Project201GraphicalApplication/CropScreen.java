@@ -30,6 +30,7 @@ public class CropScreen {
 	private JTextField textFieldHarvestTime;
 	private JTextField textFieldSerialNumber;
 	static String[] crops = {"Carrot", "Corn", "Eggplant", "KiwiFruit", "Tomato"};
+	private JTextField textFieldName;
 	
 	
 	public CropScreen(ScreenManager incomingManager,String cropName, int n) {
@@ -56,35 +57,35 @@ public class CropScreen {
 	private void initialize() {
 		window = new JFrame();
 		window.setTitle("Funning Farm-Crop");
-		window.setBounds(100, 100, 484, 407);
+		window.setBounds(100, 100, 484, 508);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Purchase Price");
-		lblNewLabel_1.setBounds(10, 67, 217, 28);
+		lblNewLabel_1.setBounds(10, 141, 217, 28);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1);
 		
 		textFieldPurchasePrice = new JTextField();
 		textFieldPurchasePrice.setEditable(false);
-		textFieldPurchasePrice.setBounds(237, 67, 200, 38);
+		textFieldPurchasePrice.setBounds(237, 141, 200, 38);
 		window.getContentPane().add(textFieldPurchasePrice);
 		textFieldPurchasePrice.setColumns(10);
 		
 		
 		JLabel lblWhatIsYour = new JLabel("Height:");
-		lblWhatIsYour.setBounds(10, 127, 217, 28);
+		lblWhatIsYour.setBounds(10, 201, 217, 28);
 		lblWhatIsYour.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblWhatIsYour);
 		
 		textFieldHeight = new JTextField();
-		textFieldHeight.setBounds(237, 125, 200, 38);
+		textFieldHeight.setBounds(237, 199, 200, 38);
 		textFieldHeight.setColumns(10);
 		textFieldHeight.setEditable(false);
 		window.getContentPane().add(textFieldHeight);
 		
 		JLabel lblWhichTypeWould = new JLabel("Harvest Time:");
-		lblWhichTypeWould.setBounds(10, 192, 217, 28);
+		lblWhichTypeWould.setBounds(10, 266, 217, 28);
 		lblWhichTypeWould.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblWhichTypeWould);
 		
@@ -94,7 +95,7 @@ public class CropScreen {
 		String playDays[]={"5","6","7","8","9","10"};
 		
 		JButton btnNewButton_6 = new JButton("Back To MainScreen");
-		btnNewButton_6.setBounds(237, 319, 200, 38);
+		btnNewButton_6.setBounds(237, 393, 200, 38);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
@@ -105,18 +106,18 @@ public class CropScreen {
 		
 		textFieldHarvestTime = new JTextField();
 		textFieldHarvestTime.setColumns(10);
-		textFieldHarvestTime.setBounds(237, 190, 200, 38);
+		textFieldHarvestTime.setBounds(237, 264, 200, 38);
 		textFieldHarvestTime.setEditable(false);
 		window.getContentPane().add(textFieldHarvestTime);
 		
 		JLabel lblSerialNumber = new JLabel("Serial Number:");
 		lblSerialNumber.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblSerialNumber.setBounds(10, 10, 217, 28);
+		lblSerialNumber.setBounds(10, 84, 217, 28);
 		window.getContentPane().add(lblSerialNumber);
 		
 		textFieldSerialNumber = new JTextField();
 		textFieldSerialNumber.setColumns(10);
-		textFieldSerialNumber.setBounds(237, 10, 200, 38);
+		textFieldSerialNumber.setBounds(237, 84, 200, 38);
 		window.getContentPane().add(textFieldSerialNumber);
 		textFieldSerialNumber.setEditable(false);
 		
@@ -133,24 +134,30 @@ public class CropScreen {
 			
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnNewButton.setBounds(10, 266, 200, 38);
+		btnNewButton.setBounds(10, 340, 200, 38);
 		window.getContentPane().add(btnNewButton);
 		
 		JButton btnUsingTimeagentitem = new JButton("Using TimeAgentItems");
 		btnUsingTimeagentitem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.useTimeAgent(name, index);
+				if(Controller.useTimeAgent(name, index)) {
+					
 				String[] s = Controller.getCropObjectStatus(name, index).split(";");
 				System.out.print(s[0] + s[1] + s[2]);
 				textFieldPurchasePrice.setText(s[0]);
 				textFieldHeight.setText(s[1]);
 				textFieldHarvestTime.setText(s[2]);
 			}
+			else {
+				 JOptionPane.showMessageDialog(null,"oops, you do not have enough timeAgent items" , "Message",JOptionPane.PLAIN_MESSAGE);
+			}
+				
+			}
 			
 			
 		});
 		btnUsingTimeagentitem.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnUsingTimeagentitem.setBounds(237, 266, 200, 38);
+		btnUsingTimeagentitem.setBounds(237, 340, 200, 38);
 		window.getContentPane().add(btnUsingTimeagentitem);
 		
 		
@@ -173,7 +180,19 @@ public class CropScreen {
 			
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnNewButton_1.setBounds(10, 319, 200, 38);
+		btnNewButton_1.setBounds(10, 393, 200, 38);
 		window.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblName = new JLabel("Name:");
+		lblName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblName.setBounds(10, 30, 217, 28);
+		window.getContentPane().add(lblName);
+		
+		textFieldName = new JTextField();
+		textFieldName.setText(name);
+		textFieldName.setEditable(false);
+		textFieldName.setColumns(10);
+		textFieldName.setBounds(237, 20, 200, 38);
+		window.getContentPane().add(textFieldName);
 	}
 }

@@ -12,7 +12,7 @@ public class Animal implements Observer {
 	private int purchasePrice = 0;
 	private int health = 0;
 	private int happiness = 0;
-	Items item;
+	private boolean isIncrease ;
 
 	
 	/**
@@ -23,6 +23,7 @@ public class Animal implements Observer {
 		System.out.println("Received move to next day update!");
 		this.happiness += 10;
 		this.health += 10;
+		isIncrease = false;
 	}
 
 	/**
@@ -64,14 +65,20 @@ public class Animal implements Observer {
 
 	 */
 	public void feed() {
-		this.health += 10;
+		if(isIncrease)
+			this.health += 15;
+		else
+			this.health += 10;
 	}
 
 	/**
 	 * play with animal, increase happiness.
 	 */
 	public void play() {
-		this.happiness += 10;
+		if(isIncrease)
+			this.happiness += 15;
+		else
+			this.happiness += 10;
 	}
 
 	
@@ -79,7 +86,10 @@ public class Animal implements Observer {
 	 * when using happyAgentItems, increase happiness.
 	 */
 	public void increaseHappiness() {
-		this.happiness += 20;
+		if(isIncrease)
+			this.happiness += 30;
+		else
+			this.happiness += 15;
 	}
 
 	
@@ -131,5 +141,13 @@ public class Animal implements Observer {
 	 */
 	public int getHappiness() {
 		return happiness;
+	}
+	
+	/**
+	 * if isIncrease  =  true, this animal's happiness will 20% more than usual
+	 * 
+	 */
+	public void setIsIncrease() {
+		isIncrease = true;
 	}
 }

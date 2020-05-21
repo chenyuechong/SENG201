@@ -12,8 +12,8 @@ public class Crop implements Observer {
 	private int heigth = 0;
 	private int harvestTime =0;
 	private int leftTimeToHarvest = 0;
-	private double seedTime = 0;
-	Items item;
+	private boolean isIncrease ;
+
 
 	
 	/**
@@ -37,8 +37,9 @@ public class Crop implements Observer {
 
 	}
 
-	public Crop() {
-
+	public Crop(int type) {
+		if(type == 4)
+			isIncrease= true;
 	}
 
 	public Crop(String sName, int sPurchasePrice, int sSellingPrice, int sHeigth, int sHarvestTime) {
@@ -49,7 +50,6 @@ public class Crop implements Observer {
 		heigth = sHeigth;
 		harvestTime = sHarvestTime;
 		leftTimeToHarvest = harvestTime;
-		seedTime = System.currentTimeMillis();
 	}
 	
 	/**
@@ -57,9 +57,9 @@ public class Crop implements Observer {
 
 	 */
 	public void decreaseHarvestTime() {
-		harvestTime -= 2;
-		if (harvestTime <= 0)
-			harvestTime = 0;
+		leftTimeToHarvest -= 2;
+		if (leftTimeToHarvest <= 0)
+			leftTimeToHarvest = 0;
 	}
 
 	
@@ -138,7 +138,7 @@ public class Crop implements Observer {
 	}
 
 	/**
-	 * set Left Time To Harvers
+	 * set Left Time To Harverts
 
 	 */
 	public void setLeftTimeToHarvers(int t) {
@@ -152,8 +152,18 @@ public class Crop implements Observer {
 	 */
 	public void water()
 	{
-		heigth += 10;
-		System.out.print("Crop watered height= "+ heigth );
+		if(isIncrease)
+			heigth += 15;
+		else
+			heigth += 10;
+		leftTimeToHarvest -= 2;
+		System.out.print("\n Crop watered height= "+ heigth );
 	}
-
+	/**
+	 * if isIncrease  =  true, this animal's happiness will 20% more than usual
+	 * 
+	 */
+	public void setIsIncrease() {
+		isIncrease = true;
+	}
 }
