@@ -111,8 +111,8 @@ public class Observable {
     }
 
     /**
-     * Marks this <tt>Observable</tt> object as having been changed; the
-     * <tt>hasChanged</tt> method will now return <tt>true</tt>.
+     * Marks this Observableobject as having been changed; the
+     * hasChanged method will now return true
      */
     protected synchronized void setChanged() {
         changed = true;
@@ -121,9 +121,9 @@ public class Observable {
     /**
      * Indicates that this object has no longer changed, or that it has
      * already notified all of its observers of its most recent change,
-     * so that the <tt>hasChanged</tt> method will now return <tt>false</tt>.
+     * so that the hasChanged method will now return false
      * This method is called automatically by the
-     * <code>notifyObservers</code> methods.
+     * notifyObservers methods.
      *
      * @see     java.util.Observable#notifyObservers()
      * @see     java.util.Observable#notifyObservers(java.lang.Object)

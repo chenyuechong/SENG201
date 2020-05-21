@@ -569,10 +569,8 @@ public class Farmer {
 
 	 */
 	public void playWithAnimal(String animalName, int index, Farm myfarm) throws IOException {
-
 		switch (animalName) {
 		case "Pig":
-
 			Pig p = myfarm.pigList.get(index);
 			p.play();
 

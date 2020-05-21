@@ -34,12 +34,14 @@ class ControllerTest {
 
 	@Test
 	void testPlayWithAnimal() {
+		Controller.buyAnimal("Hen", 2);
 		boolean b = Controller.playWithAnimal("Hen", 1);
-		assertEquals(false,b);
+		assertEquals(true,b);
 	}
 
 	@Test
 	void testFeedAnimal() {
+		Controller.buyAnimal("Hen", 2);
 		boolean b = Controller.feedAnimal("Hen", 1);
 		assertEquals(false,b);
 	}
@@ -117,7 +119,7 @@ class ControllerTest {
 	@Test
 	void testWaterCrop() {
 		boolean b = Controller.waterCrop("corn", 1);
-		assertEquals(false,b);
+		assertEquals(true,b);
 	}
 
 	@Test
