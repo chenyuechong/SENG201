@@ -157,6 +157,8 @@ public class Crop implements Observer {
 		else
 			heigth += 10;
 		leftTimeToHarvest -= 2;
+		if (leftTimeToHarvest <= 0)
+			leftTimeToHarvest = 0;
 		System.out.print("\n Crop watered height= "+ heigth );
 	}
 	/**

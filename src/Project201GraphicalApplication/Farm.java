@@ -228,6 +228,7 @@ public class Farm extends Observable{
 		b += eggplantList.size()*ndollar;
 		b += kiwifruitList.size()*ndollar;
 		b += tomatoList.size()*ndollar;
+		System.out.print("get bouns " + b);
 		return b;
 	}
 	
@@ -238,7 +239,7 @@ public class Farm extends Observable{
 	public int countryFairEvent()
 	{
 		int nIncreaseMoney = getBouns(10);
-		increaseMoney(nIncreaseMoney);
+		money += nIncreaseMoney;
 		return nIncreaseMoney;
 	}
 	

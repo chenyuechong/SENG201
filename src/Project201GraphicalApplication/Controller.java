@@ -56,12 +56,13 @@ public class Controller {
 	/**
 	 * when move to the next day need to calculate the bonus.
 	 */
-	public static void moveToNextDay()
+	public static int moveToNextDay()
 	{
 		currentDay ++;
-		int bonus = cropCount * 5;
+		int bonus = myFarm.getBouns(5) ;
 		myFarm.increaseMoney(bonus);
-		myFarm.setIsChangeDay(true);		
+		myFarm.setIsChangeDay(true);
+		return bonus;
 	}
 	
 	/**
@@ -72,7 +73,7 @@ public class Controller {
 	{
 		try {
 			myFarmer.playWithAnimal(animalName, index - 1, myFarm);
-				System.out.print("You have played with  " + animalName + " for a while\n");
+				//System.out.print("You have played with  " + animalName + " for a while\n");
 				return true;
 			
 		} catch (IOException e) {
@@ -91,7 +92,7 @@ public class Controller {
 	public static boolean feedAnimal(String animalName, int index)
 	{
 		try {		
-			System.out.print("\n Feed animal");
+			//System.out.print("\n Feed animal");
 			return myFarmer.feedAnimal(animalName,index - 1, myFarm);
 			
 		} catch (IOException e) {
@@ -147,8 +148,7 @@ public class Controller {
 			for (int i = 0; i < count; i++) {
 				myFarmer.buySeed(cropName, myFarm);
 			}
-			System.out.print("you bought " + cropName + " count:" + count + ", there are " + myFarm.getMoney()
-					+ " dollars left\n");
+			//System.out.print("you bought " + cropName + " count:" + count + ", there are " + myFarm.getMoney()+ " dollars left\n");
 			return true;
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
@@ -168,8 +168,7 @@ public class Controller {
 			for (int i = 0; i < count; i++) {
 				myFarmer.buyAnimal(animalName, myFarm);
 			}
-			System.out.print("you bought " + animalName + " count:" + count + ", there are " + myFarm.getMoney()
-					+ " dollars left\n");
+			//System.out.print("you bought " + animalName + " count:" + count + ", there are " + myFarm.getMoney()+ " dollars left\n");
 			return true;
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
@@ -189,8 +188,7 @@ public class Controller {
 			for (int i = 0; i < count; i++) {
 				myFarmer.buyItems(itemsName, myFarm);
 			}
-			System.out.print("you bought " + itemsName + " count:" + count + ", there are " + myFarm.getMoney()
-					+ " dollars left\n");
+			//System.out.print("you bought " + itemsName + " count:" + count + ", there are " + myFarm.getMoney()+ " dollars left\n");
 			return true;
 		} catch (IOException e) {
 			System.out.print(e.getMessage());
@@ -217,7 +215,7 @@ public class Controller {
 	public static Map<String, Integer>  showStore()
 	{ 
 		 Map<String, Integer> storeMap = new HashMap<String, Integer>(); 
-		System.out.print( "You have\n crops:  ");
+		//System.out.print( "You have\n crops:  ");
 		for(int i = 0; i<5; i++)
 		{
 			System.out.print(crops[i]);
@@ -226,24 +224,24 @@ public class Controller {
 			//writeToFile(crops[i]+ "-"+ myFarmer.countCrops(crops[i], myFarm));
 			storeMap.put(crops[i], myFarmer.countCrops(crops[i], myFarm));
 		}
-		System.out.print( "\n");
-		System.out.print("animals:  ");
+		//System.out.print( "\n");
+		//System.out.print("animals:  ");
 		for(int i = 0; i<3; i++)
 		{
-			System.out.print(animals[i] + ":"+ myFarmer.countAnimal(animals[i], myFarm) +"   " );
+			//System.out.print(animals[i] + ":"+ myFarmer.countAnimal(animals[i], myFarm) +"   " );
 			//writeToFile(animals[i]+ "-"+ myFarmer.countAnimal(animals[i], myFarm));
 			storeMap.put(animals[i], myFarmer.countAnimal(animals[i], myFarm));
 		}
-		System.out.print( "\n");
-		System.out.print("items:  ");
+		//System.out.print( "\n");
+		//System.out.print("items:  ");
 		for(int i = 0; i<3; i++)
 		{
-			System.out.print(items[i] + ":" + myFarmer.countItems(items[i], myFarm) + "  " );
+			//System.out.print(items[i] + ":" + myFarmer.countItems(items[i], myFarm) + "  " );
 			//writeToFile(items[i]+ "-"+ myFarmer.countItems(items[i], myFarm));
 			storeMap.put(items[i], myFarmer.countItems(items[i], myFarm));
 
 		}
-		System.out.print( "\n");
+		//System.out.print( "\n");
 		return storeMap;
 	}
 
@@ -323,7 +321,7 @@ public class Controller {
             bufferWritter.write(s);
             bufferWritter.close();
 
-            System.out.println("Done");
+            //System.out.println("Done");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -342,7 +340,7 @@ public class Controller {
 		String str = null;
 		while((str = bufferedReader.readLine()) != null)//read line by line
 		{
-			System.out.println(str);
+			//System.out.println(str);
 			String[] line = str.split("-");
 			if(line[0].equals("money"))
 			{
@@ -451,10 +449,10 @@ public class Controller {
 		String farmName = p[2];
 		int playDays = Integer.parseInt(p[3].trim());
 		createFarm(typeId, farmerName.toUpperCase(), farmName.toUpperCase(), playDays);
-		System.out.print("create farm success");
+		//System.out.print("create farm success");
 		if(isPlayed())
 			readPlayConfigureFromFile();	
-		System.out.print("init the farm paraments");
+		//System.out.print("init the farm paraments");
 	}
 	
 	/**
@@ -554,7 +552,7 @@ public class Controller {
 
 		try {
 			myFarmer.waterCrop(cropName, index - 1, myFarm);
-			System.out.print("You watered  " + cropName + "\n");
+			//System.out.print("You watered  " + cropName + "\n");
 			return true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

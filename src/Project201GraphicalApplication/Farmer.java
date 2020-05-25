@@ -318,7 +318,7 @@ public class Farmer {
 			count = myFarm.tomatoList.size();
 			break;
 		}
-		System.out.print("\n" +seedName + "\n");
+		//System.out.print("\n" +seedName + "\n");
 		return count;
 	}
 
@@ -458,7 +458,7 @@ public class Farmer {
 	 */
 	public boolean feedAnimal(String animalName, int index , Farm myfarm) throws IOException {
 	
-		System.out.print("\n Feed animal in farmer1");
+		//System.out.print("\n Feed animal in farmer1");
 		if(myfarm.animalFeedItemsList.size() == 0)
 			return false;
 			switch (animalName) {

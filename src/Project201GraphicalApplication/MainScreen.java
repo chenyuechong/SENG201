@@ -200,7 +200,7 @@ public class MainScreen {
 					return;
 				}
 				int index = Integer.parseInt(textCowField.getText());
-				System.out.print(index);
+				////System.out.print(index);
 				manager.launchAnimalScreen("Cow", index);
 				finishedWindow();
 			}
@@ -537,8 +537,8 @@ public class MainScreen {
 				}
 				else
 				{
-				Controller.moveToNextDay();
-				String s = "Move to next day Success! Acconding the number of crops you'v got " + Controller.cropCount *5 +" dollers , every animal and crop's status is changed";
+				int nMoney=Controller.moveToNextDay();
+				String s = "Move to next day Success! Acconding the number of crops you'v got " + nMoney +" dollers , every animal and crop's status is changed";
 				JOptionPane.showMessageDialog(null, s, "Message",JOptionPane.PLAIN_MESSAGE);
 				
 				
@@ -552,10 +552,10 @@ public class MainScreen {
 
 				  Map<String, Integer> map = Controller.showStore(); 
 					Iterator<Map.Entry<String, Integer>> entries = map.entrySet().iterator(); 
-					 System.out.println("run here"); 
+					 //////System.out.println("run here"); 
 					while (entries.hasNext()) { 
 					  Map.Entry<String, Integer> entry = entries.next(); 
-					  System.out.print(entry.getKey()+ entry.getValue());
+					  //////System.out.print(entry.getKey()+ entry.getValue());
 					  switch(entry.getKey())
 					  {
 					  	
@@ -625,7 +625,7 @@ public class MainScreen {
 	
 		while (entries.hasNext()) { 
 		  Map.Entry<String, Integer> entry = entries.next(); 
-		  System.out.print(entry.getKey()+ entry.getValue());
+		  //////System.out.print(entry.getKey()+ entry.getValue());
 		  switch(entry.getKey())
 		  {
 		  	
@@ -663,7 +663,7 @@ public class MainScreen {
 				lblHappyAgentItems.setText(entry.getValue().toString());
 				break;
 		  }
-		  //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue()); 
+		  //////System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue()); 
 		  	  
 		}
 	}

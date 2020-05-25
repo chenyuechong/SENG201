@@ -57,36 +57,40 @@ public class StoreScreen {
 		window.getContentPane().setLayout(null);
 		
 		JLabel lblWhichTypeWould = new JLabel("Crop List");
-		lblWhichTypeWould.setBounds(10, 363, 106, 28);
+		lblWhichTypeWould.setBounds(10, 390, 106, 28);
 		lblWhichTypeWould.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblWhichTypeWould);
 		
 		JLabel lblHowManyDays = new JLabel("Animal List");
-		lblHowManyDays.setBounds(10, 425, 106, 28);
+		lblHowManyDays.setBounds(10, 452, 106, 28);
 		lblHowManyDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		window.getContentPane().add(lblHowManyDays);
 		
 		String goodsName = "";
 		JComboBox comboBox = new JComboBox(crops);
+		comboBox.setBounds(126, 387, 200, 38);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String	cropName = comboBox.getSelectedItem().toString();
 
 			}
 		});
-		comboBox.setBounds(126, 360, 200, 38);
 		window.getContentPane().add(comboBox);
 		
+		JLabel labelBalance = new JLabel("0");
+		labelBalance.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		labelBalance.setBounds(192, 294, 184, 38);
+		window.getContentPane().add(labelBalance);
+		labelBalance.setText("$"+String.valueOf(Controller.getMoney()));
 		
-		 
 		JComboBox comboBox_1 = new JComboBox(animals);
+		comboBox_1.setBounds(126, 449, 200, 38);
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String animalName =  comboBox_1.getSelectedItem().toString();
 				System.out.print("choose to play "+ comboBox_1.getItemAt(comboBox_1.getSelectedIndex()) + " days\n" );
 			}
 		});
-		comboBox_1.setBounds(126, 422, 200, 38);
 		window.getContentPane().add(comboBox_1);
 		
 		JButton btnNewButton_6 = new JButton("Back to MainScreen");
@@ -100,43 +104,44 @@ public class StoreScreen {
 		window.getContentPane().add(btnNewButton_6);
 		
 		JLabel lblItemList = new JLabel("Item List");
+		lblItemList.setBounds(10, 520, 106, 28);
 		lblItemList.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblItemList.setBounds(10, 493, 106, 28);
 		window.getContentPane().add(lblItemList);
 		
 		JComboBox comboBox_2 = new JComboBox(items);
+		comboBox_2.setBounds(126, 517, 200, 38);
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		comboBox_2.setBounds(126, 490, 200, 38);
 		window.getContentPane().add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox(numbers);
+		comboBox_3.setBounds(352, 387, 200, 38);
 		comboBox_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		comboBox_3.setBounds(352, 360, 200, 38);
 		window.getContentPane().add(comboBox_3);
 		
 		JComboBox comboBox_4 = new JComboBox(numbers);
+		comboBox_4.setBounds(352, 449, 200, 38);
 		comboBox_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		comboBox_4.setBounds(352, 422, 200, 38);
 		window.getContentPane().add(comboBox_4);
 		
 		JComboBox comboBox_5 = new JComboBox(numbers);
+		comboBox_5.setBounds(352, 517, 200, 38);
 		comboBox_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		comboBox_5.setBounds(352, 490, 200, 38);
 		window.getContentPane().add(comboBox_5);
 		
 		JButton btnNewButton = new JButton("Buy");
+		btnNewButton.setBounds(126, 579, 200, 38);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cropName = crops[comboBox.getSelectedIndex()];
@@ -180,11 +185,11 @@ public class StoreScreen {
 					sShow += "nothing";
 				else
 					sShow += (s +" succeed! ");
+				labelBalance.setText("$" +String.valueOf(Controller.getMoney()));
 				JOptionPane.showMessageDialog(null,sShow , "Message",JOptionPane.PLAIN_MESSAGE);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnNewButton.setBounds(126, 579, 200, 38);
 		window.getContentPane().add(btnNewButton);
 		
 		String[] columnNames = {"Name", "PurchasePrice","ExpectedSellPrice"};  
@@ -213,14 +218,21 @@ public class StoreScreen {
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel = new JLabel("Menu");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setBounds(10, 22, 200, 38);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		window.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Choose what you want");
+		lblNewLabel_1.setBounds(10, 342, 239, 38);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(10, 305, 239, 38);
 		window.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblBalance = new JLabel("Balance");
+		lblBalance.setBounds(10, 294, 184, 38);
+		lblBalance.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		window.getContentPane().add(lblBalance);
+		
+		
 		
 		
 		
